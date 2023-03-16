@@ -2,11 +2,11 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "dev": "next dev",
+  "home": "cambiardivisa.quickgold.es",
+ "scripts": {
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "NODE_ENV=production node server.js"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
