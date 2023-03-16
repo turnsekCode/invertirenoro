@@ -1,0 +1,137 @@
+import Head from "next/head";
+import Layout from "@/componentes/Layout/Layout";
+import SeccionDos from "@/componentes/SeccionDos/SeccionDos";
+import SeccionUno from "@/componentes/SeccionUno/SeccionUno";
+import React from "react";
+
+const index = ({
+  ciudad,
+  dataReverse,
+  dataReverseVenta,
+  tienda1,
+  tienda2,
+  tienda1Google,
+  tienda2Google,
+}) => {
+  const arrayTiendas = [
+    {
+      id: 1,
+      nombreTienda: tienda1?.acf?.nombre_tienda,
+      idTienda: tienda1?.acf?.tienda,
+      telefono: ciudad?.acf?.telefono,
+      mobil: tienda1?.acf?.mobile,
+      enlacemobil: tienda1?.acf?.mobile,
+      direccion: tienda1Google?.result?.formatted_address,
+      mapa: tienda1?.acf?.mapa_landing,
+      enlace_resenas: tienda1?.acf?.enlace_resenas,
+      escribir_resenas: tienda1?.acf?.escribir_resenas_landings,
+      foto1: tienda1?.acf?.foto_1,
+      foto2: tienda1?.acf?.foto_2,
+      foto3: tienda1?.acf?.foto_3,
+      estrellas: tienda1Google?.result?.rating,
+      resenas: tienda1Google?.result?.user_ratings_total,
+    },
+    {
+      id: 2,
+      nombreTienda: tienda2?.acf?.nombre_tienda,
+      idTienda: tienda2?.acf?.tienda,
+      telefono: ciudad?.acf?.telefono,
+      mobil: tienda2?.acf?.mobile,
+      enlacemobil: tienda2?.acf?.mobile,
+      direccion: tienda2Google?.result?.formatted_address,
+      mapa: tienda2?.acf?.mapa_landing,
+      enlace_resenas: tienda2?.acf?.enlace_resenas,
+      escribir_resenas: tienda2?.acf?.escribir_resenas_landings,
+      foto1: tienda2?.acf?.foto_1,
+      foto2: tienda2?.acf?.foto_2,
+      foto3: tienda2?.acf?.foto_3,
+      estrellas: tienda2Google?.result?.rating,
+      resenas: tienda2Google?.result?.user_ratings_total,
+    },
+  ];
+  return (
+    <>
+      <Head>
+        <title>
+          El mejor cambio de divisas de {ciudad.acf.ciudad_landing} | Quickgold
+        </title>
+        <meta
+          name="description"
+          content={`La mejor tasa de cambio por tu divisa en ${ciudad.acf.ciudad_landing} Tenemos más de 30 monedas diferentes al momento y sin comisiones`}
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="../../../assets/icon.png" />
+      </Head>
+      <Layout ciudad={ciudad}>
+        <SeccionUno
+          nombreCiudad={ciudad.acf.ciudad_landing}
+          telefono={ciudad.acf.telefono}
+        />
+        <SeccionDos
+          dataReverse={dataReverse}
+          dataReverseVenta={dataReverseVenta}
+          ciudad={ciudad}
+          comprar={ciudad.acf.vende_divisa}
+          arrayTiendas={arrayTiendas}
+        />
+      </Layout>
+    </>
+  );
+};
+
+export default index;
+const idPaginaWp = "4975";
+const nombreCiudad = "alicante";
+//variables id de tiendas de la api de wordpress
+const id1 = "5371";
+const id2 = "5394";
+export async function getStaticProps() {
+  //datos de los campos personalizados de la ciudad
+  const madrid = await fetch(
+    `https://quickgold.es/wp-json/acf/v3/pages/${idPaginaWp}`
+  );
+  const ciudad = await madrid.json();
+  //fin datos de los campos personalizados de la ciudad
+  //datos para divisas y metales
+  const data = await fetch(
+    `https://quickgold.es/archivos-cache/Fixing${nombreCiudad}.txt`
+  );
+  const datos = await data.json();
+  const dataReverse = [...datos?.result?.Tarifas?.Divisas_Compra].reverse();
+  const dataReverseVenta = [...datos?.result?.Tarifas?.Divisas_Venta].reverse();
+  //fin datos para divisas y metales
+  //datos de los campos personalizados de tiendas
+  const res1 = await fetch(`https://quickgold.es/wp-json/acf/v3/pages/${id1}`);
+  const tienda1 = await res1.json();
+
+  const res2 = await fetch(`https://quickgold.es/wp-json/acf/v3/pages/${id2}`);
+  const tienda2 = await res2.json();
+  //fin datos de los campos personalizados de tiendas
+
+  //datos de google para tiendas
+  //quintana
+  const tienda_1 = tienda1.acf?.tienda;
+  const google1 = await fetch(
+    `https://quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_1}.txt`
+  );
+  const tienda1Google = await google1.json();
+  //delicias
+  const tienda_2 = tienda2.acf?.tienda;
+  const google2 = await fetch(
+    `https://quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_2}.txt`
+  );
+  const tienda2Google = await google2.json();
+
+  return {
+    props: {
+      ciudad,
+      dataReverse,
+      dataReverseVenta,
+      tienda1,
+      tienda2,
+      tienda1Google,
+      tienda2Google,
+    },
+    revalidate: 1,
+  };
+}
