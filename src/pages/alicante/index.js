@@ -81,7 +81,6 @@ const index = ({
 
 export default index;
 const idPaginaWp = "4975";
-const nombreCiudad = "alicante";
 //variables id de tiendas de la api de wordpress
 const id1 = "5371";
 const id2 = "5394";
@@ -91,6 +90,7 @@ export async function getStaticProps() {
     `https://quickgold.es/wp-json/acf/v3/pages/${idPaginaWp}`
   );
   const ciudad = await madrid.json();
+  const nombreCiudad = ciudad.acf.ciudad_oro;
   //fin datos de los campos personalizados de la ciudad
   //datos para divisas y metales
   const data = await fetch(
