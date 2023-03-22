@@ -1,13 +1,13 @@
 import Head from "next/head";
 import Layout from "@/componentes/Layout/Layout";
-import SeccionDos from "@/componentes/SeccionDos/SeccionDos";
+import SeccionTres from "@/componentes/SeccionTres/SeccionTres";
 import SeccionUno from "@/componentes/SeccionUno/SeccionUno";
+import SeccionDos from "@/componentes/SeccionDos/SeccionDos";
 import React from "react";
-
+import useSWR from "swr";
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
 const index = ({
   ciudad,
-  dataReverse,
-  dataReverseVenta,
   tienda1,
   tienda2,
   tienda3,
@@ -31,6 +31,11 @@ const index = ({
   tienda10Google,
   tienda11Google,
 }) => {
+  const nombreCiudad = ciudad.acf.ciudad_oro;
+  const { data } = useSWR(
+    `https://quickgold.es/archivos-cache/Fixing${nombreCiudad}.txt`,
+    fetcher
+  );
   const arrayTiendas = [
     {
       id: 1,
@@ -224,11 +229,11 @@ const index = ({
     <>
       <Head>
         <title>
-          El mejor cambio de divisas de {ciudad.acf.ciudad_landing} | Quickgold
+          Reserva tu lingote de oro en {ciudad.acf.ciudad_landing} | Quickgold
         </title>
         <meta
           name="description"
-          content={`La mejor tasa de cambio por tu divisa en ${ciudad.acf.ciudad_landing} Tenemos más de 30 monedas diferentes al momento y sin comisiones`}
+          content={`Conoce el precio por gramo de oro de ${ciudad.acf.ciudad_landing}. Reserva tu lingote de oro con el mejor servicio garantizado`}
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="../../../assets/icon.png" />
@@ -238,13 +243,8 @@ const index = ({
           nombreCiudad={ciudad.acf.ciudad_landing}
           telefono={ciudad.acf.telefono}
         />
-        <SeccionDos
-          dataReverse={dataReverse}
-          dataReverseVenta={dataReverseVenta}
-          ciudad={ciudad}
-          comprar={ciudad.acf.vende_divisa}
-          arrayTiendas={arrayTiendas}
-        />
+        <SeccionDos nombreCiudad={ciudad.acf.ciudad_landing} />
+        <SeccionTres data={data} ciudad={ciudad} arrayTiendas={arrayTiendas} />
       </Layout>
     </>
   );
@@ -252,7 +252,6 @@ const index = ({
 
 export default index;
 const idPaginaWp = "468";
-const nombreCiudad = "madrid";
 //variables id de tiendas de la api de wordpress
 const id1 = "11108";
 const id2 = "6888";
@@ -272,21 +271,6 @@ export async function getStaticProps() {
   );
   const ciudad = await madrid.json();
   //fin datos de los campos personalizados de la ciudad
-  //datos para divisas y metales
-  const data = await fetch(
-    `https://quickgold.es/archivos-cache/Fixing${nombreCiudad}.txt`
-  );
-  const datos = await data.json();
-  const dataReverse1 = [...datos?.result?.Tarifas?.Divisas_Compra].reverse();
-  const dataReverseVenta1 = [
-    ...datos?.result?.Tarifas?.Divisas_Venta,
-  ].reverse();
-  const dataReverse = dataReverse1.filter(
-    (currency) => currency.Name !== "RUB" && currency.Name !== "HRK"
-  );
-  const dataReverseVenta = dataReverseVenta1.filter(
-    (currency) => currency.Name !== "RUB" && currency.Name !== "HRK"
-  );
   //fin datos para divisas y metales
   //datos de los campos personalizados de tiendas
   const res1 = await fetch(`https://quickgold.es/wp-json/acf/v3/pages/${id1}`);
@@ -377,8 +361,6 @@ export async function getStaticProps() {
   return {
     props: {
       ciudad,
-      dataReverse,
-      dataReverseVenta,
       tienda1,
       tienda2,
       tienda3,

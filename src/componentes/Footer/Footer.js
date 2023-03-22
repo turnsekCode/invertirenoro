@@ -11,21 +11,30 @@ const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.contenedorFooter}>
         <div className={styles.logoFooter}>
-          <Image
-            priority
-            src={LogoQuickgold}
-            alt="Logo Quickgold"
-            width={163}
-            height={30}
-          />
+          <a href="https://quickgold.es/">
+            <Image
+              priority
+              src={LogoQuickgold}
+              alt="Logo Quickgold"
+              width={163}
+              height={30}
+            />
+          </a>
         </div>
         <div className={styles.contenedorEnlaces}>
-          <Link title="política de privacidad" href={"/"}>
+          <Link
+            title="política de privacidad"
+            href={"https://quickgold.es/politica-de-privacidad/"}
+          >
             <p>
               <LockIcon /> política de privacidad
             </p>
           </Link>
-          <Link title="política de calidad" href={"/"}>
+          <Link
+            target="_blank"
+            title="política de calidad"
+            href={"https://quickgold.es/doc/politica-calidad-quickgold.pdf"}
+          >
             <p>
               <CheckCircleIcon />
               política de calidad

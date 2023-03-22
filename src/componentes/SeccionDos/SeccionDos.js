@@ -1,23 +1,18 @@
 import React from "react";
-import Conversor from "../ConversorDivisa/Conversor";
-import ListadoTiendas from "../ListadoTiendas/ListadoTiendas";
 import styles from "./seccionDos.module.css";
 
-const SeccionDos = ({
-  dataReverse,
-  dataReverseVenta,
-  ciudad,
-  comprar,
-  arrayTiendas,
-}) => {
+const SeccionDos = ({ nombreCiudad }) => {
   return (
     <div className={styles.contenedorSeccionDos}>
-      <Conversor
-        dataReverse={dataReverse}
-        dataReverseVenta={dataReverseVenta}
-        comprar={comprar}
-      />
-      <ListadoTiendas ciudad={ciudad} arrayTiendas={arrayTiendas} />
+      <h2>¿Cómo invertir en oro en {nombreCiudad}?</h2>
+      <p>
+        En Quickgold puedes comprar oro fácilmente en forma de lingotes. Elige
+        el gramaje que quieras de nuestro catálogo y resérvalo al momento. Elige
+        un valor seguro de inversión en el mejor momento. Además, obtendrás
+        asesoramiento y consejo de nuestro equipo y, si lo deseas, seguimiento
+        de la cotización de forma personalizada para que llegado el momento,
+        seas avisado/a y obtengas el máximo beneficio de la inversión realizada.
+      </p>
     </div>
   );
 };
