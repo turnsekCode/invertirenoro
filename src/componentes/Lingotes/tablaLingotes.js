@@ -147,7 +147,9 @@ const TablaLingotes = ({ data }) => {
               alt=""
             />
             <p className={styles.nombreLingote}>{lingote.nombreLingote}</p>
-            <p className={styles.precioLingote}>{lingote.precioLingote}€</p>
+            <p className={styles.precioLingote}>
+              {!data ? "Cargando..." : `${lingote.precioLingote}€`}
+            </p>
             <div className={styles.detallesLingote}>
               <p>Oro fino 999,9</p>
               <p>
