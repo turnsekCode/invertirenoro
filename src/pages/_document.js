@@ -3,7 +3,7 @@ import Script from "next/script";
 
 export default function Document() {
   return (
-    <Html lang="en">
+    <Html lang="es">
       <Script
         id="Cookiebot"
         src="https://consent.cookiebot.com/uc.js"
@@ -17,7 +17,6 @@ export default function Document() {
         type="text/javascript"
       ></Script>
       <Head />
-
       <body>
         <Main />
         <NextScript />
