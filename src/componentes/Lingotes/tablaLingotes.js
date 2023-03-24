@@ -13,7 +13,7 @@ import lingote250 from "../../../public/assets/lingote250.png";
 import lingote500 from "../../../public/assets/lingote500.png";
 import lingote1000 from "../../../public/assets/lingote1000.png";
 
-const TablaLingotes = ({ data }) => {
+const TablaLingotes = ({ data, loading }) => {
   const precio2_5 = (
     data?.result?.Tarifas?.Lingotes[4].Productos[0].Precio / 1000
   ).toLocaleString();
@@ -148,7 +148,7 @@ const TablaLingotes = ({ data }) => {
             />
             <p className={styles.nombreLingote}>{lingote.nombreLingote}</p>
             <p className={styles.precioLingote}>
-              {!data ? "Cargando..." : `${lingote.precioLingote}€`}
+              {!loading ? "Cargando..." : `${lingote.precioLingote}€`}
             </p>
             <div className={styles.detallesLingote}>
               <p>Oro fino 999,9</p>

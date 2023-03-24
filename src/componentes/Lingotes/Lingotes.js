@@ -1,10 +1,9 @@
 import Image from "next/image";
-import React, { useState } from "react";
 import styles from "./Lingotes.module.css";
 import logoLingote from "../../../public/assets/logoLingote.png";
 import TablaLingotes from "./tablaLingotes";
 
-const Conversor = ({ data }) => {
+const Conversor = ({ data, loading }) => {
   return (
     <div className={styles.contenedorConversorBanderas}>
       <div className={styles.contenedorConversor}>
@@ -15,7 +14,7 @@ const Conversor = ({ data }) => {
             <p>Da el paso e invierte en el oro</p>
           </div>
         </div>
-        <TablaLingotes data={data} />
+        <TablaLingotes data={data} loading={loading} />
       </div>
     </div>
   );
