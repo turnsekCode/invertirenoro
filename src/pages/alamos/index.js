@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useState, useEffect } from "react";
 import Layout from "@/componentes/Layout/Layout";
 import SeccionTresTienda from "@/componentes/SeccionTresTienda/SeccionTresTienda";
 import SeccionUno from "@/componentes/SeccionUno/SeccionUno";
@@ -6,15 +7,21 @@ import SeccionDos from "@/componentes/SeccionDos/SeccionDos";
 import BannerPromoUno from "../../componentes/BannerPromoUno/BannerPromoUno";
 import BannerPromoDos from "../../componentes/BannerPromoDos/BannerPromoDos";
 import React from "react";
-import useSWR from "swr";
 import Script from "next/script";
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
 const index = ({ ciudad, tiendaGoogle, general }) => {
   const nombreCiudad = ciudad.acf.ciudad_oro;
-  const { data } = useSWR(
-    `https://quickgold.es/archivos-cache/Fixing${nombreCiudad}.txt`,
-    fetcher
-  );
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(null);
+  useEffect(() => {
+    fetch(`https://quickgold.es/archivos-cache/Fixing${nombreCiudad}.txt`, {
+      cache: "no-cache",
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        setData(response);
+        setLoading(true);
+      });
+  }, []);
   return (
     <>
       <Head>
@@ -47,6 +54,7 @@ const index = ({ ciudad, tiendaGoogle, general }) => {
         <SeccionDos nombreCiudad={ciudad.acf.ciudad_landing} />
         <SeccionTresTienda
           data={data}
+          loading={loading}
           ciudad={ciudad}
           tiendaGoogle={tiendaGoogle}
         />
