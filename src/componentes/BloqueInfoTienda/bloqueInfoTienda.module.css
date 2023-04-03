@@ -110,6 +110,7 @@
 .bloqueIzq{
     display: flex;
     flex-direction: column;
+    width: 65%;
 }
 .bloqueIzqTitulo, .tituloHorario{
     font-weight: 900;
@@ -294,6 +295,7 @@
     .bloqueIzq {
         display: flex;
         flex-direction: column;
+        width: 55%;
     }
 
     .bloqueIzqTitulo,

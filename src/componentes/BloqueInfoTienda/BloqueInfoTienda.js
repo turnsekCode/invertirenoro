@@ -63,7 +63,7 @@ const BloqueInfoTienda = ({ ciudad, tiendaGoogle }) => {
           </div>
         </div>
         <div className={styles.verResenas}>
-          <a href={tienda.escribir_resenas} target="_blank">
+          <a href={ciudad?.acf?.escribir_resenas_landings} target="_blank">
             Déjanos tu opinion
           </a>
         </div>

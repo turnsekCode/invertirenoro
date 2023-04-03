@@ -5,6 +5,7 @@ import SeccionUno from "@/componentes/SeccionUno/SeccionUno";
 import SeccionDos from "@/componentes/SeccionDos/SeccionDos";
 import BannerPromoUno from "../../componentes/BannerPromoUno/BannerPromoUno";
 import BannerPromoDos from "../../componentes/BannerPromoDos/BannerPromoDos";
+import BannerPromoGeneral from "@/componentes/BannerGeneral/BannerPromoGeneral";
 import React from "react";
 import { useState, useEffect } from "react";
 const index = ({
@@ -253,9 +254,26 @@ const index = ({
           nombreCiudad={ciudad.acf.ciudad_landing}
           telefono={ciudad.acf.telefono}
         />
-        {ciudad.acf.foto_1 !== "" ? <BannerPromoUno ciudad={ciudad} /> : ""}
-        {general.acf.foto_2 !== "" && ciudad.acf.foto_1 === "" ? (
-          <BannerPromoDos general={general} />
+        {ciudad?.acf?.promo_activa_invertiroro ? (
+          <BannerPromoUno
+            /*banner para cada tienda o ciudad personalizado (prioridad uno)*/ ciudad={
+              ciudad
+            }
+          />
+        ) : ciudad.acf.promo_activa_invertiroro == false &&
+          general?.acf?.promo_activa_invertiroro ? (
+          <BannerPromoDos
+            /*banner para cada ciudad de las landings solo invertiroro (prioridad tres)*/ general={
+              general
+            }
+          />
+        ) : general.acf.promo_activa_invertiroro == false &&
+          general?.acf?.promo_general_activa ? (
+          <BannerPromoGeneral
+            /*banner general para todas las landings (prioridad dos)*/ general={
+              general
+            }
+          />
         ) : (
           ""
         )}

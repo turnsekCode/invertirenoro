@@ -4,7 +4,16 @@ import styles from "./bannerPromoUno.module.css";
 const BannerPromoUno = ({ ciudad }) => {
   return (
     <div className={styles.contenedorBannerUno}>
-      <img src={ciudad?.acf?.foto_1} alt="Banner uno" />
+      <img
+        className={styles.bannerDesktop}
+        src={ciudad?.acf?.imagen_cambiardivisa_desktop}
+        alt="Banner uno"
+      />
+      <img
+        className={styles.bannerMobil}
+        src={ciudad?.acf?.imagen_cambiardivisa_mobil}
+        alt="Banner uno mobil"
+      />
     </div>
   );
 };
