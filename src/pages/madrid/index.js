@@ -2,10 +2,13 @@ import Head from "next/head";
 import Layout from "@/componentes/Layout/Layout";
 import SeccionDos from "@/componentes/SeccionDos/SeccionDos";
 import SeccionUno from "@/componentes/SeccionUno/SeccionUno";
-import React from "react";
+import BannerPromoUno from "../../componentes/BannerPromoUno/BannerPromoUno";
+import BannerPromoDos from "../../componentes/BannerPromoDos/BannerPromoDos";
+import BannerPromoGeneral from "@/componentes/BannerGeneral/BannerPromoGeneral";
 
 const index = ({
   ciudad,
+  general,
   dataReverse,
   dataReverseVenta,
   tienda1,
@@ -238,6 +241,30 @@ const index = ({
           nombreCiudad={ciudad.acf.ciudad_landing}
           telefono={ciudad.acf.telefono}
         />
+        {ciudad?.acf?.promo_activa_cambiardivisa ? (
+          <BannerPromoUno
+            /*banner para cada tienda o ciudad personalizado (prioridad uno)*/ ciudad={
+              ciudad
+            }
+          />
+        ) : ciudad.acf.promo_activa_cambiardivisa == false &&
+          general?.acf?.promo_activa_cambiardivisa ? (
+          <BannerPromoDos
+            /*banner para cada ciudad de las landings solo cambiardivisas (prioridad tres)*/ general={
+              general
+            }
+          />
+        ) : general.acf.promo_activa_cambiardivisa == false &&
+          general?.acf?.promo_general_activa ? (
+          <BannerPromoGeneral
+            /*banner general para todas las landings (prioridad dos)*/ general={
+              general
+            }
+          />
+        ) : (
+          ""
+        )}
+
         <SeccionDos
           dataReverse={dataReverse}
           dataReverseVenta={dataReverseVenta}
@@ -252,6 +279,7 @@ const index = ({
 
 export default index;
 const idPaginaWp = "468";
+const apiGeneral = "13848";
 //variables id de tiendas de la api de wordpress
 const id1 = "11108";
 const id2 = "6888";
@@ -272,6 +300,10 @@ export async function getStaticProps() {
   const ciudad = await madrid.json();
   const nombreCiudad = ciudad.acf.ciudad_oro;
   //fin datos de los campos personalizados de la ciudad
+  const res = await fetch(
+    `https://quickgold.es/wp-json/acf/v3/pages/${apiGeneral}`
+  );
+  const general = await res.json();
   //datos para divisas y metales
   const data = await fetch(
     `https://quickgold.es/archivos-cache/Fixing${nombreCiudad}.txt`
@@ -285,7 +317,10 @@ export async function getStaticProps() {
     (currency) => currency.Name !== "RUB" && currency.Name !== "HRK"
   );
   const dataReverseVenta = dataReverseVenta1.filter(
-    (currency) => currency.Name !== "RUB" && currency.Name !== "HRK"
+    (currency) =>
+      currency.Name !== "RUB" &&
+      currency.Name !== "HRK" &&
+      currency.Name !== "DKK"
   );
   //fin datos para divisas y metales
   //datos de los campos personalizados de tiendas
@@ -328,7 +363,7 @@ export async function getStaticProps() {
   const tienda_8 = tienda8.acf?.tienda;
   const tienda_9 = tienda9.acf?.tienda;
   const tienda_10 = tienda10.acf?.tienda;
-  const tienda_11 = tienda10.acf?.tienda;
+  const tienda_11 = tienda11.acf?.tienda;
   const google1 = await fetch(
     `https://quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_1}.txt`
   );
@@ -377,6 +412,7 @@ export async function getStaticProps() {
   return {
     props: {
       ciudad,
+      general,
       dataReverse,
       dataReverseVenta,
       tienda1,

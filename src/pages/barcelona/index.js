@@ -5,7 +5,6 @@ import SeccionUno from "@/componentes/SeccionUno/SeccionUno";
 import BannerPromoUno from "../../componentes/BannerPromoUno/BannerPromoUno";
 import BannerPromoDos from "../../componentes/BannerPromoDos/BannerPromoDos";
 import BannerPromoGeneral from "@/componentes/BannerGeneral/BannerPromoGeneral";
-import React from "react";
 
 const index = ({
   ciudad,
@@ -14,8 +13,26 @@ const index = ({
   dataReverseVenta,
   tienda1,
   tienda2,
+  tienda3,
+  tienda4,
+  tienda5,
+  tienda6,
+  tienda7,
+  tienda8,
+  tienda9,
+  tienda10,
+  tienda11,
   tienda1Google,
   tienda2Google,
+  tienda3Google,
+  tienda4Google,
+  tienda5Google,
+  tienda6Google,
+  tienda7Google,
+  tienda8Google,
+  tienda9Google,
+  tienda10Google,
+  tienda11Google,
 }) => {
   const arrayTiendas = [
     {
@@ -52,6 +69,23 @@ const index = ({
       estrellas: tienda2Google?.result?.rating,
       resenas: tienda2Google?.result?.user_ratings_total,
     },
+    {
+      id: 3,
+      nombreTienda: tienda3?.acf?.nombre_tienda,
+      idTienda: tienda3?.acf?.tienda,
+      telefono: ciudad?.acf?.telefono,
+      mobil: tienda3?.acf?.mobile,
+      enlacemobil: tienda3?.acf?.mobile,
+      direccion: tienda3Google?.result?.formatted_address,
+      mapa: tienda3?.acf?.mapa_landing,
+      enlace_resenas: tienda3?.acf?.enlace_resenas,
+      escribir_resenas: tienda3?.acf?.escribir_resenas_landings,
+      foto1: tienda3?.acf?.foto_1,
+      foto2: tienda3?.acf?.foto_2,
+      foto3: tienda3?.acf?.foto_3,
+      estrellas: tienda3Google?.result?.rating,
+      resenas: tienda3Google?.result?.user_ratings_total,
+    },
   ];
   return (
     <>
@@ -77,7 +111,7 @@ const index = ({
               ciudad
             }
           />
-        ) : ciudad?.acf?.promo_activa_cambiardivisa == false &&
+        ) : ciudad.acf.promo_activa_cambiardivisa == false &&
           general?.acf?.promo_activa_cambiardivisa ? (
           <BannerPromoDos
             /*banner para cada ciudad de las landings solo cambiardivisas (prioridad tres)*/ general={
@@ -94,6 +128,7 @@ const index = ({
         ) : (
           ""
         )}
+
         <SeccionDos
           dataReverse={dataReverse}
           dataReverseVenta={dataReverseVenta}
@@ -107,11 +142,12 @@ const index = ({
 };
 
 export default index;
-const idPaginaWp = "4975";
+const idPaginaWp = "4122";
 const apiGeneral = "13848";
 //variables id de tiendas de la api de wordpress
-const id1 = "5371";
-const id2 = "5394";
+const id1 = "5404";
+const id2 = "6531";
+const id3 = "7994";
 export async function getStaticProps() {
   //datos de los campos personalizados de la ciudad
   const madrid = await fetch(
@@ -119,11 +155,11 @@ export async function getStaticProps() {
   );
   const ciudad = await madrid.json();
   const nombreCiudad = ciudad.acf.ciudad_oro;
+  //fin datos de los campos personalizados de la ciudad
   const res = await fetch(
     `https://quickgold.es/wp-json/acf/v3/pages/${apiGeneral}`
   );
   const general = await res.json();
-  //fin datos de los campos personalizados de la ciudad
   //datos para divisas y metales
   const data = await fetch(
     `https://quickgold.es/archivos-cache/Fixing${nombreCiudad}.txt`
@@ -146,24 +182,28 @@ export async function getStaticProps() {
   //datos de los campos personalizados de tiendas
   const res1 = await fetch(`https://quickgold.es/wp-json/acf/v3/pages/${id1}`);
   const tienda1 = await res1.json();
-
   const res2 = await fetch(`https://quickgold.es/wp-json/acf/v3/pages/${id2}`);
   const tienda2 = await res2.json();
+  const res3 = await fetch(`https://quickgold.es/wp-json/acf/v3/pages/${id3}`);
+  const tienda3 = await res3.json();
   //fin datos de los campos personalizados de tiendas
 
   //datos de google para tiendas
-  //quintana
   const tienda_1 = tienda1.acf?.tienda;
+  const tienda_2 = tienda2.acf?.tienda;
+  const tienda_3 = tienda3.acf?.tienda;
   const google1 = await fetch(
     `https://quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_1}.txt`
   );
   const tienda1Google = await google1.json();
-  //delicias
-  const tienda_2 = tienda2.acf?.tienda;
   const google2 = await fetch(
     `https://quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_2}.txt`
   );
   const tienda2Google = await google2.json();
+  const google3 = await fetch(
+    `https://quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_3}.txt`
+  );
+  const tienda3Google = await google3.json();
 
   return {
     props: {
@@ -173,8 +213,10 @@ export async function getStaticProps() {
       dataReverseVenta,
       tienda1,
       tienda2,
+      tienda3,
       tienda1Google,
       tienda2Google,
+      tienda3Google,
     },
     revalidate: 1,
   };
