@@ -141,7 +141,8 @@ export async function getStaticProps() {
     (currency) =>
       currency.Name !== "RUB" &&
       currency.Name !== "HRK" &&
-      currency.Name !== "DKK"
+      currency.Name !== "DKK" &&
+      currency.Name !== "USD"
   );
   //fin datos para divisas y metales
   //datos de los campos personalizados de tiendas
