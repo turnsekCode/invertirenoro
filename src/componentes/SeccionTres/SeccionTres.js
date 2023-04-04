@@ -6,7 +6,7 @@ import styles from "./seccionDos.module.css";
 const SeccionTres = ({ ciudad, arrayTiendas, data, loading }) => {
   return (
     <div className={styles.contenedorSeccionDos}>
-      <Lingotes data={data} loading={loading} />
+      <Lingotes data={data} loading={loading} ciudad={ciudad} />
       <ListadoTiendas ciudad={ciudad} arrayTiendas={arrayTiendas} />
     </div>
   );
