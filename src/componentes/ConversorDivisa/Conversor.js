@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./conversor.module.css";
 import logoDivisa from "../../../public/assets/logodivisa.png";
 import Vender from "../ConversorDivisa/Vender";
@@ -20,6 +20,23 @@ const Conversor = ({ dataReverse, dataReverseVenta, comprar, ciudad }) => {
     setSelectDivisa(false);
   };
   const [activeId, setActiveId] = useState("");
+  useEffect(() => {
+    fetch(
+      "https://docs.google.com/spreadsheets/d/e/2PACX-1vTMm1jsqMJYy06TXURw9EVyFqalRHk_m0vTJmoGjBd2ss0YIG0mi8oifYw2CvMsl5R4K0rHrJ5CsI2x/pub?gid=0&single=true&output=csv",
+      {
+        cache: "no-cache",
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setValorGoogle(data);
+        //setLoading(true);
+      });
+  }, []);
+  //console.log(ciudad);
+  const [valorGoogle, setValorGoogle] = useState("");
+  const [usdGoogleActivo, setUsdGoogleActivo] = useState(false);
+  const replace = valorGoogle.toString().replace(",", ".");
   return (
     <div className={styles.contenedorConversorBanderas}>
       <div className={styles.contenedorConversor}>
@@ -71,6 +88,8 @@ const Conversor = ({ dataReverse, dataReverseVenta, comprar, ciudad }) => {
             selectDivisa={selectDivisa}
             setActiveId={setActiveId}
             ciudad={ciudad}
+            replace={replace}
+            setUsdGoogleActivo={setUsdGoogleActivo}
           />
         ) : (
           <Comprar
@@ -97,6 +116,47 @@ const Conversor = ({ dataReverse, dataReverseVenta, comprar, ciudad }) => {
             También puedes seleccionar desde aquí la divisa para la calculadora
           </p>
           <div className={styles.contenedorBanderaColumna}>
+            <div
+              id="USD"
+              onClick={(e) => {
+                captureCodigo(e);
+                MonedaSeleccionada();
+                setUsdGoogleActivo(true);
+              }}
+              className={
+                usdGoogleActivo
+                  ? `${styles.contenedorBanderaGoogle} ${styles.banderaActiva}`
+                  : `${styles.contenedorBanderaGoogle}`
+              }
+              data-acronimo="USD"
+              data-precio={replace * 1000}
+            >
+              <Image
+                data-acronimo="USD"
+                data-precio={replace * 1000}
+                onClick={(e) => {
+                  captureCodigo(e);
+                  MonedaSeleccionada();
+                  setUsdGoogleActivo(false);
+                }}
+                src={`/assets/USD.png`}
+                alt="USD"
+                width={36}
+                height={27}
+              />
+              <div
+                data-acronimo="USD"
+                data-precio={replace * 1000}
+                className={styles.contenedorDatosGoogle}
+              >
+                <p data-acronimo="USD" data-precio={replace * 1000}>
+                  USD - dolares usa
+                </p>
+                <p data-acronimo="USD" data-precio={replace * 1000}>
+                  {replace}€
+                </p>
+              </div>
+            </div>
             {dataReverseVenta?.map((data, i) => (
               <div
                 id={data?.Productos[0].Acronimo}
@@ -107,6 +167,7 @@ const Conversor = ({ dataReverse, dataReverseVenta, comprar, ciudad }) => {
                 onClick={(e) => {
                   captureCodigo(e);
                   MonedaSeleccionada();
+                  setUsdGoogleActivo(false);
                 }}
               >
                 <div
@@ -120,6 +181,7 @@ const Conversor = ({ dataReverse, dataReverseVenta, comprar, ciudad }) => {
                   onClick={(e) => {
                     captureCodigo(e);
                     MonedaSeleccionada();
+                    setUsdGoogleActivo(false);
                   }}
                 >
                   <div
@@ -129,6 +191,7 @@ const Conversor = ({ dataReverse, dataReverseVenta, comprar, ciudad }) => {
                     onClick={(e) => {
                       captureCodigo(e);
                       MonedaSeleccionada();
+                      setUsdGoogleActivo(false);
                     }}
                   >
                     <Image
@@ -137,6 +200,7 @@ const Conversor = ({ dataReverse, dataReverseVenta, comprar, ciudad }) => {
                       onClick={(e) => {
                         captureCodigo(e);
                         MonedaSeleccionada();
+                        setUsdGoogleActivo(false);
                       }}
                       src={`/assets/${data?.Productos[0].Acronimo}.png`}
                       alt={data?.Productos[0].Acronimo}
@@ -151,6 +215,7 @@ const Conversor = ({ dataReverse, dataReverseVenta, comprar, ciudad }) => {
                     onClick={(e) => {
                       captureCodigo(e);
                       MonedaSeleccionada();
+                      setUsdGoogleActivo(false);
                     }}
                   >
                     <p
@@ -160,6 +225,7 @@ const Conversor = ({ dataReverse, dataReverseVenta, comprar, ciudad }) => {
                       onClick={(e) => {
                         captureCodigo(e);
                         MonedaSeleccionada();
+                        setUsdGoogleActivo(false);
                       }}
                     >
                       {data?.Productos[0].Acronimo} -
@@ -169,6 +235,7 @@ const Conversor = ({ dataReverse, dataReverseVenta, comprar, ciudad }) => {
                         onClick={(e) => {
                           captureCodigo(e);
                           MonedaSeleccionada();
+                          setUsdGoogleActivo(false);
                         }}
                       >
                         {data?.Productos[0].Nombre}
@@ -181,6 +248,7 @@ const Conversor = ({ dataReverse, dataReverseVenta, comprar, ciudad }) => {
                       onClick={(e) => {
                         captureCodigo(e);
                         MonedaSeleccionada();
+                        setUsdGoogleActivo(false);
                       }}
                     >
                       {(data?.Productos[0].Precio / 1000).toFixed(4)}€

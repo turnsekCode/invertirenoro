@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./conversor.module.css";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import PowerInputIcon from "@mui/icons-material/PowerInput";
 import ImportExportIcon from "@mui/icons-material/ImportExport";
 import Image from "next/image";
 //import { useFetchData } from "../../utilities/DataTiendas";
-
+/*El dia que y no haya dolar de cotizacion reemplazar donde el data-acronimo "USD" por este codigo {dataReverseVenta[1].Productos[0].Acronimo}
+y volver habilitar el usd en los index y comentar el div que pinta el precio del dolar de cotizacion*/
 const Comprar = ({
   dataReverseVenta,
   valorMoneda,
@@ -16,12 +17,15 @@ const Comprar = ({
   selectDivisa,
   setActiveId,
   ciudad,
+  replace,
+  setUsdGoogleActivo,
 }) => {
   const precioLibra = dataReverseVenta[0]?.Productos[0].Precio / 1000;
   const precioDolar = dataReverseVenta[1]?.Productos[0].Precio / 1000;
   const [switched, setSwitched] = useState(null);
   const [select, setSelect] = useState(null);
   const [valorInput, setValorInput] = useState("");
+  const [valorGoogle, setValorGoogle] = useState("");
   const precioDividido = valorMoneda / 1000;
   const precioDividido2 = 1 / precioDividido;
   const valorFinal = valorInput * precioDividido;
@@ -30,6 +34,7 @@ const Comprar = ({
     setAcronimo(e.target.dataset.acronimo);
     setValorMoneda(e.target.dataset.precio);
     setActiveId(e.target.dataset.acronimo);
+    setUsdGoogleActivo(false);
   };
   const MonedaSeleccionada = () => {
     setSelectDivisa(false);
@@ -55,25 +60,28 @@ const Comprar = ({
             className={styles.dolar}
             onClick={(e) => {
               captureHabitual(e);
+              setUsdGoogleActivo(true);
             }}
-            data-acronimo={dataReverseVenta[1].Productos[0].Acronimo}
-            data-precio={dataReverseVenta[1].Productos[0].Precio}
+            data-acronimo="USD"
+            data-precio={replace * 1000}
           >
             <div
               className={styles.imgMoneda}
               onClick={(e) => {
                 captureHabitual(e);
+                setUsdGoogleActivo(true);
               }}
-              data-acronimo={dataReverseVenta[1].Productos[0].Acronimo}
-              data-precio={dataReverseVenta[1].Productos[0].Precio}
+              data-acronimo="USD"
+              data-precio={replace * 1000}
             >
               <Image
                 src="/assets/banderaUSA.png"
                 onClick={(e) => {
                   captureHabitual(e);
+                  setUsdGoogleActivo(true);
                 }}
-                data-acronimo={dataReverseVenta[1].Productos[0].Acronimo}
-                data-precio={dataReverseVenta[1].Productos[0].Precio}
+                data-acronimo="USD"
+                data-precio={replace * 1000}
                 width={40}
                 height={30}
                 alt="Bandera USA"
@@ -81,9 +89,10 @@ const Comprar = ({
               <span
                 onClick={(e) => {
                   captureHabitual(e);
+                  setUsdGoogleActivo(true);
                 }}
-                data-acronimo={dataReverseVenta[1].Productos[0].Acronimo}
-                data-precio={dataReverseVenta[1].Productos[0].Precio}
+                data-acronimo="USD"
+                data-precio={replace * 1000}
               >
                 USD
               </span>
@@ -92,27 +101,30 @@ const Comprar = ({
               <p
                 onClick={(e) => {
                   captureHabitual(e);
+                  setUsdGoogleActivo(true);
                 }}
-                data-acronimo={dataReverseVenta[1].Productos[0].Acronimo}
-                data-precio={dataReverseVenta[1].Productos[0].Precio}
+                data-acronimo="USD"
+                data-precio={replace * 1000}
               >
                 Dólar USA
               </p>
               <p
                 onClick={(e) => {
                   captureHabitual(e);
+                  setUsdGoogleActivo(true);
                 }}
-                data-acronimo={dataReverseVenta[1].Productos[0].Acronimo}
-                data-precio={dataReverseVenta[1].Productos[0].Precio}
+                data-acronimo="USD"
+                data-precio={replace * 1000}
               >
                 <span
                   onClick={(e) => {
                     captureHabitual(e);
+                    setUsdGoogleActivo(true);
                   }}
-                  data-acronimo={dataReverseVenta[1].Productos[0].Acronimo}
-                  data-precio={dataReverseVenta[1].Productos[0].Precio}
+                  data-acronimo="USD"
+                  data-precio={replace * 1000}
                 >
-                  {precioDolar.toFixed(4)} €
+                  {replace} €
                 </span>
               </p>
             </div>
@@ -121,6 +133,7 @@ const Comprar = ({
             className={styles.libra}
             onClick={(e) => {
               captureHabitual(e);
+              setUsdGoogleActivo(false);
             }}
             data-acronimo={dataReverseVenta[0].Productos[0].Acronimo}
             data-precio={dataReverseVenta[0].Productos[0].Precio}
@@ -129,6 +142,7 @@ const Comprar = ({
               className={styles.imgMoneda}
               onClick={(e) => {
                 captureHabitual(e);
+                setUsdGoogleActivo(false);
               }}
               data-acronimo={dataReverseVenta[0].Productos[0].Acronimo}
               data-precio={dataReverseVenta[0].Productos[0].Precio}
@@ -137,6 +151,7 @@ const Comprar = ({
                 src="/assets/banderaGBP.png"
                 onClick={(e) => {
                   captureHabitual(e);
+                  setUsdGoogleActivo(false);
                 }}
                 data-acronimo={dataReverseVenta[0].Productos[0].Acronimo}
                 data-precio={dataReverseVenta[0].Productos[0].Precio}
@@ -147,6 +162,7 @@ const Comprar = ({
               <span
                 onClick={(e) => {
                   captureHabitual(e);
+                  setUsdGoogleActivo(false);
                 }}
                 data-acronimo={dataReverseVenta[0].Productos[0].Acronimo}
                 data-precio={dataReverseVenta[0].Productos[0].Precio}
@@ -158,6 +174,7 @@ const Comprar = ({
               <p
                 onClick={(e) => {
                   captureHabitual(e);
+                  setUsdGoogleActivo(false);
                 }}
                 data-acronimo={dataReverseVenta[0].Productos[0].Acronimo}
                 data-precio={dataReverseVenta[0].Productos[0].Precio}
@@ -167,6 +184,7 @@ const Comprar = ({
               <p
                 onClick={(e) => {
                   captureHabitual(e);
+                  setUsdGoogleActivo(false);
                 }}
                 data-acronimo={dataReverseVenta[0].Productos[0].Acronimo}
                 data-precio={dataReverseVenta[0].Productos[0].Precio}
@@ -174,6 +192,7 @@ const Comprar = ({
                 <span
                   onClick={(e) => {
                     captureHabitual(e);
+                    setUsdGoogleActivo(false);
                   }}
                   data-acronimo={dataReverseVenta[0].Productos[0].Acronimo}
                   data-precio={dataReverseVenta[0].Productos[0].Precio}
@@ -210,6 +229,39 @@ const Comprar = ({
                   : `${styles.select_monedas}`
               }
             >
+              <div
+                data-acronimo="USD"
+                data-precio={replace * 1000}
+                className={styles.contenedorDolarGoogle}
+                onClick={(e) => {
+                  captureCodigo(e);
+                  MonedaSeleccionada();
+                  setUsdGoogleActivo(true);
+                }}
+              >
+                <div className={styles.bandera}>
+                  <Image
+                    width={35}
+                    height={23}
+                    src={`/assets/USD.png`}
+                    data-acronimo="USD"
+                    data-precio={replace * 1000}
+                    alt="USD"
+                  />
+                </div>
+                <div
+                  className={styles.nombreDolarGoogle}
+                  data-acronimo="USD"
+                  data-precio={replace * 1000}
+                >
+                  <p data-acronimo="USD" data-precio={replace * 1000}>
+                    USD
+                  </p>
+                  <p data-acronimo="USD" data-precio={replace * 1000}>
+                    DOLARES USA
+                  </p>
+                </div>
+              </div>
               {dataReverseVenta?.map((data, i) => (
                 <div
                   key={i}

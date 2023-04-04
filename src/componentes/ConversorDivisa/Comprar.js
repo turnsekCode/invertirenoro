@@ -40,7 +40,6 @@ const Comprar = ({
     setSelectDivisa(false);
     setActiveId(e.target.dataset.acronimo);
   };
-  console.log(ciudad);
   return (
     <div className={styles.bloqueDer}>
       <div className={styles.bloqueDivHabituales}>

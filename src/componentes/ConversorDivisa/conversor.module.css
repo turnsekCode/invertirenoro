@@ -1,6 +1,6 @@
 .contenedorConversor{
     width: 100%;
-    height: 691px;
+    height: auto;
     background: #0692D0;
     border-radius: 8px;
     padding: 20px;
@@ -339,14 +339,13 @@
     background: #E83C82;
     box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.1);
     border-radius: 2px;
-    align-items: center;
     text-align: center;
-    padding: 13px 15px;
+    padding: 13px 10px;
     font-weight: 700;
     font-size: 14px;
     line-height: 14px;
     color: #FFFFFF;
-    width: 280px;
+    width: 285px;
     margin-top: 30px;
     display: block;
 }
@@ -428,6 +427,59 @@
     padding: 0 10px;
 }
 
+.contenedorDolarGoogle{
+    display: flex;
+    padding: 10px;
+    gap: 20px;
+}
+.contenedorDolarGoogle:hover{
+    background-color: #E83C82;
+}
+.contenedorDolarGoogle:hover p {
+    background-color: #E83C82;
+    color: #fff;
+}
+.contenedorDolarGoogle:hover p:nth-child(2) {
+    background-color: #E83C82;
+    color: #fff;
+}
+.nombreDolarGoogle{
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 13px;
+    color: #213E58;
+}
+.nombreDolarGoogle p:nth-child(2){
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 13px;
+    color: #213E58;
+}
+.contenedorBanderaGoogle{
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+    padding: 4px;
+}
+.contenedorBanderaGoogle img{
+    filter: drop-shadow(0px 8px 8px rgba(0, 0, 0, 0.1));
+    border-radius: 4px;
+}
+.contenedorDatosGoogle p{
+    color: #213E58;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 16px;
+}
+.contenedorDatosGoogle p:nth-child(2) {
+    color: #213E58;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+}
+.contenedorBanderaGoogle:hover {
+    background-color: #c1c3c5;
+}
 @media (min-width: 1061px) {
 .contenedorConversor {
         width: 505px;
