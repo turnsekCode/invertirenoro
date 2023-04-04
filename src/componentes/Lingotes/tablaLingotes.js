@@ -13,7 +13,7 @@ import lingote250 from "../../../public/assets/lingote250.png";
 import lingote500 from "../../../public/assets/lingote500.png";
 import lingote1000 from "../../../public/assets/lingote1000.png";
 
-const TablaLingotes = ({ data, loading }) => {
+const TablaLingotes = ({ data, loading, ciudad }) => {
   const precio2_5 = (
     data?.result?.Tarifas?.Lingotes[4].Productos[0].Precio / 1000
   ).toLocaleString();
@@ -52,7 +52,7 @@ const TablaLingotes = ({ data, loading }) => {
       nombreLingote: "Lingote de 2.5gr",
       precioLingote: precio2_5,
       medidaBlister: "17,82 x 10,82 x 1,349mm",
-      telefono: "900 373 629",
+      telefono: ciudad?.acf?.telefono,
     },
     {
       id: 2,
@@ -60,7 +60,7 @@ const TablaLingotes = ({ data, loading }) => {
       nombreLingote: "Lingote de 5gr",
       precioLingote: precio5,
       medidaBlister: "14,95 x 7,95 x 0,437mm",
-      telefono: "900 373 629",
+      telefono: ciudad?.acf?.telefono,
     },
     {
       id: 3,
@@ -68,7 +68,7 @@ const TablaLingotes = ({ data, loading }) => {
       nombreLingote: "Lingote de 10gr",
       precioLingote: precio10,
       medidaBlister: "27,82 x 13,82 x 1,358mm",
-      telefono: "900 373 629",
+      telefono: ciudad?.acf?.telefono,
     },
     {
       id: 4,
@@ -76,7 +76,7 @@ const TablaLingotes = ({ data, loading }) => {
       nombreLingote: "Lingote de 20gr",
       precioLingote: precio20,
       medidaBlister: "31,82 x 15,82 x 2,070mm",
-      telefono: "900 373 629",
+      telefono: ciudad?.acf?.telefono,
     },
     {
       id: 5,
@@ -84,7 +84,7 @@ const TablaLingotes = ({ data, loading }) => {
       nombreLingote: "Lingote de 1oz",
       precioLingote: precio1Oz,
       medidaBlister: "31,82 x 15,82 x 3,219mm",
-      telefono: "900 373 629",
+      telefono: ciudad?.acf?.telefono,
     },
     {
       id: 6,
@@ -92,7 +92,7 @@ const TablaLingotes = ({ data, loading }) => {
       nombreLingote: "Lingote de 50gr",
       precioLingote: precio50,
       medidaBlister: "41,82 x 23,82 x 2,610mm",
-      telefono: "900 373 629",
+      telefono: ciudad?.acf?.telefono,
     },
     {
       id: 7,
@@ -100,7 +100,7 @@ const TablaLingotes = ({ data, loading }) => {
       nombreLingote: "Lingote de 100gr",
       precioLingote: precio100,
       medidaBlister: "41,82 x 23,82 x 5,220mm",
-      telefono: "900 373 629",
+      telefono: ciudad?.acf?.telefono,
     },
     {
       id: 8,
@@ -108,7 +108,7 @@ const TablaLingotes = ({ data, loading }) => {
       nombreLingote: "Lingote de 250gr",
       precioLingote: precio250,
       medidaBlister: "sin blister",
-      telefono: "900 373 629",
+      telefono: ciudad?.acf?.telefono,
     },
     {
       id: 9,
@@ -116,7 +116,7 @@ const TablaLingotes = ({ data, loading }) => {
       nombreLingote: "Lingote de 500gr",
       precioLingote: precio500,
       medidaBlister: "sin blister",
-      telefono: "900 373 629",
+      telefono: ciudad?.acf?.telefono,
     },
     {
       id: 10,
@@ -124,7 +124,7 @@ const TablaLingotes = ({ data, loading }) => {
       nombreLingote: "Lingote de 1000gr",
       precioLingote: precio1000,
       medidaBlister: "sin blister",
-      telefono: "900 373 629",
+      telefono: ciudad?.acf?.telefono,
     },
   ];
   return (

@@ -46,20 +46,20 @@ const index = ({ ciudad, tiendaGoogle, general }) => {
           nombreCiudad={ciudad.acf.ciudad_landing}
           telefono={ciudad.acf.telefono}
         />
-        {ciudad?.acf?.promo_activa_cambiardivisa ? (
+        {ciudad?.acf?.promo_activa_invertirenoro ? (
           <BannerPromoUno
             /*banner para cada tienda o ciudad personalizado (prioridad uno)*/ ciudad={
               ciudad
             }
           />
-        ) : ciudad.acf.promo_activa_cambiardivisa == false &&
-          general?.acf?.promo_activa_cambiardivisa ? (
+        ) : ciudad.acf.promo_activa_invertirenoro == false &&
+          general?.acf?.promo_activa_invertirenoro ? (
           <BannerPromoDos
             /*banner para cada ciudad de las landings solo cambiardivisas (prioridad tres)*/ general={
               general
             }
           />
-        ) : general.acf.promo_activa_cambiardivisa == false &&
+        ) : general.acf.promo_activa_invertirenoro == false &&
           general?.acf?.promo_general_activa ? (
           <BannerPromoGeneral
             /*banner general para todas las landings (prioridad dos)*/ general={

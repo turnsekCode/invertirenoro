@@ -6,12 +6,12 @@ const BannerPromoUno = ({ ciudad }) => {
     <div className={styles.contenedorBannerUno}>
       <img
         className={styles.bannerDesktop}
-        src={ciudad?.acf?.imagen_cambiardivisa_desktop}
+        src={ciudad?.acf?.imagen_invertirenoro_desktop}
         alt="Banner uno"
       />
       <img
         className={styles.bannerMobil}
-        src={ciudad?.acf?.imagen_cambiardivisa_mobil}
+        src={ciudad?.acf?.imagen_invertirenoro_mobil}
         alt="Banner uno mobil"
       />
     </div>

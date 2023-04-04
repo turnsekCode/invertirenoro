@@ -22,13 +22,14 @@
 .botonLamar{
     background: #E83C82;
     border-radius: 2px;
-    padding: 13px 15px;
+    padding: 13px 10px;
     font-weight: 700;
     font-size: 14px;
     line-height: 14px;
     color: #FFFFFF;
-    width: 280px;
+    width: 290px;
     height: 40px;
+    text-align: center;
 }
 
 @media (min-width: 1061px) {

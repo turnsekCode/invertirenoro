@@ -6,12 +6,12 @@ const BannerPromoDos = ({ general }) => {
     <div className={styles.contenedorBannerUno}>
       <img
         className={styles.bannerDesktop}
-        src={general?.acf?.imagen_cambiardivisa_desktop}
+        src={general?.acf?.imagen_invertirenoro_desktop}
         alt="Banner dos"
       />
       <img
         className={styles.bannerMobil}
-        src={general?.acf?.imagen_cambiardivisa_mobil}
+        src={general?.acf?.imagen_invertirenoro_mobil}
         alt="Banner udos mobil"
       />
     </div>

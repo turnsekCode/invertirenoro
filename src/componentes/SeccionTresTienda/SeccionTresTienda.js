@@ -6,7 +6,7 @@ import styles from "../SeccionTres/seccionDos.module.css";
 const SeccionTresTienda = ({ ciudad, data, tiendaGoogle, loading }) => {
   return (
     <div className={styles.contenedorSeccionDos}>
-      <Lingotes data={data} loading={loading} />
+      <Lingotes data={data} loading={loading} ciudad={ciudad} />
       <BloqueInfoTienda ciudad={ciudad} tiendaGoogle={tiendaGoogle} />
     </div>
   );

@@ -3,7 +3,7 @@ import styles from "./Lingotes.module.css";
 import logoLingote from "../../../public/assets/logoLingote.png";
 import TablaLingotes from "./tablaLingotes";
 
-const Conversor = ({ data, loading }) => {
+const Conversor = ({ data, loading, ciudad }) => {
   return (
     <div className={styles.contenedorConversorBanderas}>
       <div className={styles.contenedorConversor}>
@@ -14,7 +14,7 @@ const Conversor = ({ data, loading }) => {
             <p>Da el paso e invierte en el oro</p>
           </div>
         </div>
-        <TablaLingotes data={data} loading={loading} />
+        <TablaLingotes data={data} loading={loading} ciudad={ciudad} />
       </div>
     </div>
   );
