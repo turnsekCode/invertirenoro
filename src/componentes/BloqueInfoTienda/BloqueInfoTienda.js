@@ -74,7 +74,10 @@ const BloqueInfoTienda = ({ ciudad, tiendaGoogle }) => {
           <p className={styles.direccion}>
             {tiendaGoogle?.result?.formatted_address}
           </p>
-          <a className={styles.botonLlamarTelefono} href="">
+          <a
+            className={styles.botonLlamarTelefono}
+            href={`tel:${ciudad?.acf?.telefono}`}
+          >
             <PhoneInTalkIcon />
             {ciudad?.acf?.telefono}
           </a>
