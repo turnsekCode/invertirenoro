@@ -13,7 +13,9 @@ const index = ({
   general,
   dataReverse,
   dataReverseVenta,
+  dataReverseVentaDolar,
 }) => {
+  console.log(ciudad);
   return (
     <>
       <Head>
@@ -67,6 +69,7 @@ const index = ({
           ciudad={ciudad}
           tiendaGoogle={tiendaGoogle}
           comprar={ciudad.acf.vende_divisa}
+          dataReverseVentaDolar={dataReverseVentaDolar}
         />
       </Layout>
     </>
@@ -115,6 +118,12 @@ export async function getStaticProps() {
       currency.Name !== "DKK" &&
       currency.Name !== "USD"
   );
+  const dataReverseVentaDolar = dataReverseVenta1.filter(
+    (currency) =>
+      currency.Name !== "RUB" &&
+      currency.Name !== "HRK" &&
+      currency.Name !== "DKK"
+  );
   //fin datos para divisas y metales
 
   return {
@@ -124,6 +133,7 @@ export async function getStaticProps() {
       general,
       dataReverse,
       dataReverseVenta,
+      dataReverseVentaDolar,
     },
     revalidate: 1,
   };

@@ -11,7 +11,7 @@ const BannerPromoGeneral = ({ general }) => {
       />
       <img
         className={styles.bannerMobil}
-        src={general?.acf?.imagen_cambiardivisa_mobil}
+        src={general?.acf?.imagen_general_mobil}
         alt="Banner general mobil"
       />
     </div>
