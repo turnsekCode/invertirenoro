@@ -16,6 +16,7 @@ const SeccionDos = ({
         dataReverse={dataReverse}
         dataReverseVenta={dataReverseVenta}
         comprar={comprar}
+        ciudad={ciudad}
       />
       <ListadoTiendas ciudad={ciudad} arrayTiendas={arrayTiendas} />
     </div>

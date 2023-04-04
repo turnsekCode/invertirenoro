@@ -15,6 +15,7 @@ const Comprar = ({
   setSelectDivisa,
   selectDivisa,
   setActiveId,
+  ciudad,
 }) => {
   const precioLibra = dataReverseVenta[0]?.Productos[0].Precio / 1000;
   const precioDolar = dataReverseVenta[1]?.Productos[0].Precio / 1000;
@@ -357,8 +358,11 @@ const Comprar = ({
           )}
         </div>
       </div>
-      <a className={styles.botonLlamarTienda} href="tel:900 373 629">
-        LLAMA GRATIS AL 900 373 629
+      <a
+        className={styles.botonLlamarTienda}
+        href={`tel:${ciudad?.acf?.telefono}`}
+      >
+        LLAMA GRATIS AL {ciudad?.acf?.telefono}
       </a>
     </div>
   );

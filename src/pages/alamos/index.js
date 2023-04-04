@@ -34,8 +34,8 @@ const index = ({
 
       <Layout ciudad={ciudad}>
         <SeccionUno
-          nombreCiudad={ciudad.acf.ciudad_landing}
-          telefono={ciudad.acf.telefono}
+          nombreCiudad={ciudad?.acf?.ciudad_landing}
+          telefono={ciudad?.acf?.telefono}
         />
         {ciudad?.acf?.promo_activa_cambiardivisa ? (
           <BannerPromoUno

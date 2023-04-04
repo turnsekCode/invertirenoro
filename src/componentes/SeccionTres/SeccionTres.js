@@ -16,6 +16,7 @@ const SeccionTres = ({
         dataReverse={dataReverse}
         dataReverseVenta={dataReverseVenta}
         comprar={comprar}
+        ciudad={ciudad}
       />
       <BloqueInfoTienda ciudad={ciudad} tiendaGoogle={tiendaGoogle} />
     </div>

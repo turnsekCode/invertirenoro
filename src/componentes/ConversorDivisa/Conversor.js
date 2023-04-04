@@ -5,7 +5,7 @@ import logoDivisa from "../../../public/assets/logodivisa.png";
 import Vender from "../ConversorDivisa/Vender";
 import Comprar from "../ConversorDivisa/Comprar";
 
-const Conversor = ({ dataReverse, dataReverseVenta, comprar }) => {
+const Conversor = ({ dataReverse, dataReverseVenta, comprar, ciudad }) => {
   const [switched, setSwitched] = useState(null);
   const [valorMoneda, setValorMoneda] = useState("0");
   const [DataAcronimo, setAcronimo] = useState("");
@@ -70,6 +70,7 @@ const Conversor = ({ dataReverse, dataReverseVenta, comprar }) => {
             setSelectDivisa={setSelectDivisa}
             selectDivisa={selectDivisa}
             setActiveId={setActiveId}
+            ciudad={ciudad}
           />
         ) : (
           <Comprar
@@ -81,6 +82,7 @@ const Conversor = ({ dataReverse, dataReverseVenta, comprar }) => {
             setSelectDivisa={setSelectDivisa}
             selectDivisa={selectDivisa}
             setActiveId={setActiveId}
+            ciudad={ciudad}
           />
         )}
         <p className={styles.textoInferiorConversor}>
