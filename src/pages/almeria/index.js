@@ -15,6 +15,7 @@ const index = ({
   tienda2,
   tienda1Google,
   tienda2Google,
+  dataReverseVentaDolar,
 }) => {
   const arrayTiendas = [
     {
@@ -100,6 +101,7 @@ const index = ({
           ciudad={ciudad}
           comprar={ciudad.acf.vende_divisa}
           arrayTiendas={arrayTiendas}
+          dataReverseVentaDolar={dataReverseVentaDolar}
         />
       </Layout>
     </>
@@ -144,6 +146,12 @@ export async function getStaticProps() {
       currency.Name !== "DKK" &&
       currency.Name !== "USD"
   );
+  const dataReverseVentaDolar = dataReverseVenta1.filter(
+    (currency) =>
+      currency.Name !== "RUB" &&
+      currency.Name !== "HRK" &&
+      currency.Name !== "DKK"
+  );
   //fin datos para divisas y metales
   //datos de los campos personalizados de tiendas
   const res1 = await fetch(`https://quickgold.es/wp-json/acf/v3/pages/${id1}`);
@@ -174,6 +182,7 @@ export async function getStaticProps() {
       tienda2,
       tienda1Google,
       tienda2Google,
+      dataReverseVentaDolar,
     },
     revalidate: 1,
   };

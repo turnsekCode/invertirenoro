@@ -5,7 +5,13 @@ import logoDivisa from "../../../public/assets/logodivisa.png";
 import Vender from "../ConversorDivisa/Vender";
 import Comprar from "../ConversorDivisa/Comprar";
 
-const Conversor = ({ dataReverse, dataReverseVenta, comprar, ciudad }) => {
+const Conversor = ({
+  dataReverse,
+  dataReverseVenta,
+  comprar,
+  ciudad,
+  dataReverseVentaDolar,
+}) => {
   const [switched, setSwitched] = useState(null);
   const [valorMoneda, setValorMoneda] = useState("0");
   const [DataAcronimo, setAcronimo] = useState("");
@@ -37,6 +43,7 @@ const Conversor = ({ dataReverse, dataReverseVenta, comprar, ciudad }) => {
   const [valorGoogle, setValorGoogle] = useState("");
   const [usdGoogleActivo, setUsdGoogleActivo] = useState(false);
   const replace = valorGoogle.toString().replace(",", ".");
+  const precioDolar = dataReverseVentaDolar[1].Productos[0].Precio / 1000;
   return (
     <div className={styles.contenedorConversorBanderas}>
       <div className={styles.contenedorConversor}>
@@ -90,6 +97,7 @@ const Conversor = ({ dataReverse, dataReverseVenta, comprar, ciudad }) => {
             ciudad={ciudad}
             replace={replace}
             setUsdGoogleActivo={setUsdGoogleActivo}
+            dataReverseVentaDolar={dataReverseVentaDolar}
           />
         ) : (
           <Comprar
@@ -116,47 +124,97 @@ const Conversor = ({ dataReverse, dataReverseVenta, comprar, ciudad }) => {
             También puedes seleccionar desde aquí la divisa para la calculadora
           </p>
           <div className={styles.contenedorBanderaColumna}>
-            <div
-              id="USD"
-              onClick={(e) => {
-                captureCodigo(e);
-                MonedaSeleccionada();
-                setUsdGoogleActivo(true);
-              }}
-              className={
-                usdGoogleActivo
-                  ? `${styles.contenedorBanderaGoogle} ${styles.banderaActiva}`
-                  : `${styles.contenedorBanderaGoogle}`
-              }
-              data-acronimo="USD"
-              data-precio={replace * 1000}
-            >
-              <Image
-                data-acronimo="USD"
-                data-precio={replace * 1000}
+            {ciudad.acf.ciudad_oro === "madrid" ? (
+              <div
+                id="USD"
                 onClick={(e) => {
                   captureCodigo(e);
                   MonedaSeleccionada();
-                  setUsdGoogleActivo(false);
+                  setUsdGoogleActivo(true);
                 }}
-                src={`/assets/USD.png`}
-                alt="USD"
-                width={36}
-                height={27}
-              />
-              <div
+                className={
+                  usdGoogleActivo
+                    ? `${styles.contenedorBanderaGoogle} ${styles.banderaActiva}`
+                    : `${styles.contenedorBanderaGoogle}`
+                }
                 data-acronimo="USD"
                 data-precio={replace * 1000}
-                className={styles.contenedorDatosGoogle}
               >
-                <p data-acronimo="USD" data-precio={replace * 1000}>
-                  USD - dolares usa
-                </p>
-                <p data-acronimo="USD" data-precio={replace * 1000}>
-                  {replace}€
-                </p>
+                <Image
+                  data-acronimo="USD"
+                  data-precio={replace * 1000}
+                  onClick={(e) => {
+                    captureCodigo(e);
+                    MonedaSeleccionada();
+                    setUsdGoogleActivo(false);
+                  }}
+                  src={`/assets/USD.png`}
+                  alt="USD"
+                  width={36}
+                  height={27}
+                />
+                <div
+                  data-acronimo="USD"
+                  data-precio={replace * 1000}
+                  className={styles.contenedorDatosGoogle}
+                >
+                  <p data-acronimo="USD" data-precio={replace * 1000}>
+                    USD - dolares usa
+                  </p>
+                  <p data-acronimo="USD" data-precio={replace * 1000}>
+                    {replace}€
+                  </p>
+                </div>
               </div>
-            </div>
+            ) : (
+              <div
+                id="USD"
+                onClick={(e) => {
+                  captureCodigo(e);
+                  MonedaSeleccionada();
+                  setUsdGoogleActivo(true);
+                }}
+                className={
+                  usdGoogleActivo
+                    ? `${styles.contenedorBanderaGoogle} ${styles.banderaActiva}`
+                    : `${styles.contenedorBanderaGoogle}`
+                }
+                data-acronimo="USD"
+                data-precio={dataReverseVentaDolar[1].Productos[0].Precio}
+              >
+                <Image
+                  data-acronimo="USD"
+                  data-precio={dataReverseVentaDolar[1].Productos[0].Precio}
+                  onClick={(e) => {
+                    captureCodigo(e);
+                    MonedaSeleccionada();
+                    setUsdGoogleActivo(false);
+                  }}
+                  src={`/assets/USD.png`}
+                  alt="USD"
+                  width={36}
+                  height={27}
+                />
+                <div
+                  data-acronimo="USD"
+                  data-precio={dataReverseVentaDolar[1].Productos[0].Precio}
+                  className={styles.contenedorDatosGoogle}
+                >
+                  <p
+                    data-acronimo="USD"
+                    data-precio={dataReverseVentaDolar[1].Productos[0].Precio}
+                  >
+                    USD - dolares usa
+                  </p>
+                  <p
+                    data-acronimo="USD"
+                    data-precio={dataReverseVentaDolar[1].Productos[0].Precio}
+                  >
+                    {precioDolar.toFixed(4)}€
+                  </p>
+                </div>
+              </div>
+            )}
             {dataReverseVenta?.map((data, i) => (
               <div
                 id={data?.Productos[0].Acronimo}

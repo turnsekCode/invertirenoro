@@ -33,6 +33,7 @@ const index = ({
   tienda9Google,
   tienda10Google,
   tienda11Google,
+  dataReverseVentaDolar,
 }) => {
   const arrayTiendas = [
     {
@@ -169,6 +170,7 @@ const index = ({
           ciudad={ciudad}
           comprar={ciudad.acf.vende_divisa}
           arrayTiendas={arrayTiendas}
+          dataReverseVentaDolar={dataReverseVentaDolar}
         />
       </Layout>
     </>
@@ -214,6 +216,12 @@ export async function getStaticProps() {
       currency.Name !== "HRK" &&
       currency.Name !== "DKK" &&
       currency.Name !== "USD"
+  );
+  const dataReverseVentaDolar = dataReverseVenta1.filter(
+    (currency) =>
+      currency.Name !== "RUB" &&
+      currency.Name !== "HRK" &&
+      currency.Name !== "DKK"
   );
   //fin datos para divisas y metales
   //datos de los campos personalizados de tiendas
@@ -271,6 +279,7 @@ export async function getStaticProps() {
       tienda3Google,
       tienda4Google,
       tienda5Google,
+      dataReverseVentaDolar,
     },
     revalidate: 1,
   };

@@ -9,6 +9,7 @@ const SeccionDos = ({
   ciudad,
   comprar,
   arrayTiendas,
+  dataReverseVentaDolar,
 }) => {
   return (
     <div className={styles.contenedorSeccionDos}>
@@ -17,6 +18,7 @@ const SeccionDos = ({
         dataReverseVenta={dataReverseVenta}
         comprar={comprar}
         ciudad={ciudad}
+        dataReverseVentaDolar={dataReverseVentaDolar}
       />
       <ListadoTiendas ciudad={ciudad} arrayTiendas={arrayTiendas} />
     </div>

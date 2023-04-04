@@ -19,9 +19,10 @@ const Comprar = ({
   ciudad,
   replace,
   setUsdGoogleActivo,
+  dataReverseVentaDolar,
 }) => {
   const precioLibra = dataReverseVenta[0]?.Productos[0].Precio / 1000;
-  const precioDolar = dataReverseVenta[1]?.Productos[0].Precio / 1000;
+  const precioDolar = dataReverseVentaDolar[1]?.Productos[0].Precio / 1000;
   const [switched, setSwitched] = useState(null);
   const [select, setSelect] = useState(null);
   const [valorInput, setValorInput] = useState("");
@@ -45,6 +46,7 @@ const Comprar = ({
     setSelectDivisa(false);
     setActiveId(e.target.dataset.acronimo);
   };
+  console.log(ciudad.acf.ciudad_oro);
   return (
     <div className={styles.bloqueDer}>
       <div className={styles.bloqueDivHabituales}>
@@ -56,17 +58,9 @@ const Comprar = ({
         </div>
 
         <div className={styles.divisasHabituales}>
-          <div
-            className={styles.dolar}
-            onClick={(e) => {
-              captureHabitual(e);
-              setUsdGoogleActivo(true);
-            }}
-            data-acronimo="USD"
-            data-precio={replace * 1000}
-          >
+          {ciudad.acf.ciudad_oro === "madrid" ? (
             <div
-              className={styles.imgMoneda}
+              className={styles.dolar}
               onClick={(e) => {
                 captureHabitual(e);
                 setUsdGoogleActivo(true);
@@ -74,19 +68,8 @@ const Comprar = ({
               data-acronimo="USD"
               data-precio={replace * 1000}
             >
-              <Image
-                src="/assets/banderaUSA.png"
-                onClick={(e) => {
-                  captureHabitual(e);
-                  setUsdGoogleActivo(true);
-                }}
-                data-acronimo="USD"
-                data-precio={replace * 1000}
-                width={40}
-                height={30}
-                alt="Bandera USA"
-              />
-              <span
+              <div
+                className={styles.imgMoneda}
                 onClick={(e) => {
                   captureHabitual(e);
                   setUsdGoogleActivo(true);
@@ -94,28 +77,18 @@ const Comprar = ({
                 data-acronimo="USD"
                 data-precio={replace * 1000}
               >
-                USD
-              </span>
-            </div>
-            <div className={styles.nombreMoneda}>
-              <p
-                onClick={(e) => {
-                  captureHabitual(e);
-                  setUsdGoogleActivo(true);
-                }}
-                data-acronimo="USD"
-                data-precio={replace * 1000}
-              >
-                Dólar USA
-              </p>
-              <p
-                onClick={(e) => {
-                  captureHabitual(e);
-                  setUsdGoogleActivo(true);
-                }}
-                data-acronimo="USD"
-                data-precio={replace * 1000}
-              >
+                <Image
+                  src="/assets/banderaUSA.png"
+                  onClick={(e) => {
+                    captureHabitual(e);
+                    setUsdGoogleActivo(true);
+                  }}
+                  data-acronimo="USD"
+                  data-precio={replace * 1000}
+                  width={40}
+                  height={30}
+                  alt="Bandera USA"
+                />
                 <span
                   onClick={(e) => {
                     captureHabitual(e);
@@ -124,11 +97,118 @@ const Comprar = ({
                   data-acronimo="USD"
                   data-precio={replace * 1000}
                 >
-                  {replace} €
+                  USD
                 </span>
-              </p>
+              </div>
+              <div className={styles.nombreMoneda}>
+                <p
+                  onClick={(e) => {
+                    captureHabitual(e);
+                    setUsdGoogleActivo(true);
+                  }}
+                  data-acronimo="USD"
+                  data-precio={replace * 1000}
+                >
+                  Dólar USA
+                </p>
+                <p
+                  onClick={(e) => {
+                    captureHabitual(e);
+                    setUsdGoogleActivo(true);
+                  }}
+                  data-acronimo="USD"
+                  data-precio={replace * 1000}
+                >
+                  <span
+                    onClick={(e) => {
+                      captureHabitual(e);
+                      setUsdGoogleActivo(true);
+                    }}
+                    data-acronimo="USD"
+                    data-precio={replace * 1000}
+                  >
+                    {replace} €
+                  </span>
+                </p>
+              </div>
             </div>
-          </div>
+          ) : (
+            <div
+              className={styles.dolar}
+              onClick={(e) => {
+                captureHabitual(e);
+                setUsdGoogleActivo(true);
+              }}
+              data-acronimo={dataReverseVentaDolar[1].Productos[0].Acronimo}
+              data-precio={dataReverseVentaDolar[1].Productos[0].Precio}
+            >
+              <div
+                className={styles.imgMoneda}
+                onClick={(e) => {
+                  captureHabitual(e);
+                  setUsdGoogleActivo(true);
+                }}
+                data-acronimo={dataReverseVentaDolar[1].Productos[0].Acronimo}
+                data-precio={dataReverseVentaDolar[1].Productos[0].Precio}
+              >
+                <Image
+                  src="/assets/banderaUSA.png"
+                  onClick={(e) => {
+                    captureHabitual(e);
+                    setUsdGoogleActivo(true);
+                  }}
+                  data-acronimo={dataReverseVentaDolar[1].Productos[0].Acronimo}
+                  data-precio={dataReverseVentaDolar[1].Productos[0].Precio}
+                  width={40}
+                  height={30}
+                  alt="Bandera USA"
+                />
+                <span
+                  onClick={(e) => {
+                    captureHabitual(e);
+                    setUsdGoogleActivo(true);
+                  }}
+                  data-acronimo={dataReverseVentaDolar[1].Productos[0].Acronimo}
+                  data-precio={dataReverseVentaDolar[1].Productos[0].Precio}
+                >
+                  USD
+                </span>
+              </div>
+              <div className={styles.nombreMoneda}>
+                <p
+                  onClick={(e) => {
+                    captureHabitual(e);
+                    setUsdGoogleActivo(true);
+                  }}
+                  data-acronimo={dataReverseVentaDolar[1].Productos[0].Acronimo}
+                  data-precio={dataReverseVentaDolar[1].Productos[0].Precio}
+                >
+                  Dólar USA
+                </p>
+                <p
+                  onClick={(e) => {
+                    captureHabitual(e);
+                    setUsdGoogleActivo(true);
+                  }}
+                  data-acronimo={dataReverseVentaDolar[1].Productos[0].Acronimo}
+                  data-precio={dataReverseVentaDolar[1].Productos[0].Precio}
+                >
+                  <span
+                    onClick={(e) => {
+                      captureHabitual(e);
+                      setUsdGoogleActivo(true);
+                    }}
+                    data-acronimo={
+                      dataReverseVentaDolar[1].Productos[0].Acronimo
+                    }
+                    data-precio={dataReverseVentaDolar[1].Productos[0].Precio}
+                  >
+                    {precioDolar.toFixed(4)} €
+                  </span>
+                </p>
+              </div>
+            </div>
+          )}
           <div
             className={styles.libra}
             onClick={(e) => {
@@ -229,39 +309,81 @@ const Comprar = ({
                   : `${styles.select_monedas}`
               }
             >
-              <div
-                data-acronimo="USD"
-                data-precio={replace * 1000}
-                className={styles.contenedorDolarGoogle}
-                onClick={(e) => {
-                  captureCodigo(e);
-                  MonedaSeleccionada();
-                  setUsdGoogleActivo(true);
-                }}
-              >
-                <div className={styles.bandera}>
-                  <Image
-                    width={35}
-                    height={23}
-                    src={`/assets/USD.png`}
-                    data-acronimo="USD"
-                    data-precio={replace * 1000}
-                    alt="USD"
-                  />
-                </div>
+              {ciudad.acf.ciudad_oro === "madrid" ? (
                 <div
-                  className={styles.nombreDolarGoogle}
                   data-acronimo="USD"
                   data-precio={replace * 1000}
+                  className={styles.contenedorDolarGoogle}
+                  onClick={(e) => {
+                    captureCodigo(e);
+                    MonedaSeleccionada();
+                    setUsdGoogleActivo(true);
+                  }}
                 >
-                  <p data-acronimo="USD" data-precio={replace * 1000}>
-                    USD
-                  </p>
-                  <p data-acronimo="USD" data-precio={replace * 1000}>
-                    DOLARES USA
-                  </p>
+                  <div className={styles.bandera}>
+                    <Image
+                      width={35}
+                      height={23}
+                      src={`/assets/USD.png`}
+                      data-acronimo="USD"
+                      data-precio={replace * 1000}
+                      alt="USD"
+                    />
+                  </div>
+                  <div
+                    className={styles.nombreDolarGoogle}
+                    data-acronimo="USD"
+                    data-precio={replace * 1000}
+                  >
+                    <p data-acronimo="USD" data-precio={replace * 1000}>
+                      USD
+                    </p>
+                    <p data-acronimo="USD" data-precio={replace * 1000}>
+                      DOLARES USA
+                    </p>
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div
+                  data-acronimo="USD"
+                  data-precio={dataReverseVentaDolar[1].Productos[0].Precio}
+                  className={styles.contenedorDolarGoogle}
+                  onClick={(e) => {
+                    captureCodigo(e);
+                    MonedaSeleccionada();
+                    setUsdGoogleActivo(true);
+                  }}
+                >
+                  <div className={styles.bandera}>
+                    <Image
+                      width={35}
+                      height={23}
+                      src={`/assets/USD.png`}
+                      data-acronimo="USD"
+                      data-precio={dataReverseVentaDolar[1].Productos[0].Precio}
+                      alt="USD"
+                    />
+                  </div>
+                  <div
+                    className={styles.nombreDolarGoogle}
+                    data-acronimo="USD"
+                    data-precio={dataReverseVentaDolar[1].Productos[0].Precio}
+                  >
+                    <p
+                      data-acronimo="USD"
+                      data-precio={dataReverseVentaDolar[1].Productos[0].Precio}
+                    >
+                      USD
+                    </p>
+                    <p
+                      data-acronimo="USD"
+                      data-precio={dataReverseVentaDolar[1].Productos[0].Precio}
+                    >
+                      DOLARES USA
+                    </p>
+                  </div>
+                </div>
+              )}
               {dataReverseVenta?.map((data, i) => (
                 <div
                   key={i}
