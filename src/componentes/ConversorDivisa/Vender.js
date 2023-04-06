@@ -20,11 +20,12 @@ const Comprar = ({
   replace,
   setUsdGoogleActivo,
   dataReverseVentaDolar,
+  select,
+  setSelect,
 }) => {
   const precioLibra = dataReverseVenta[0]?.Productos[0].Precio / 1000;
   const precioDolar = dataReverseVentaDolar[1]?.Productos[0].Precio / 1000;
   const [switched, setSwitched] = useState(null);
-  const [select, setSelect] = useState(null);
   const [valorInput, setValorInput] = useState("");
   const [valorGoogle, setValorGoogle] = useState("");
   const precioDividido = valorMoneda / 1000;
@@ -46,7 +47,6 @@ const Comprar = ({
     setSelectDivisa(false);
     setActiveId(e.target.dataset.acronimo);
   };
-  console.log(ciudad.acf.ciudad_oro);
   return (
     <div className={styles.bloqueDer}>
       <div className={styles.bloqueDivHabituales}>
@@ -64,6 +64,7 @@ const Comprar = ({
               onClick={(e) => {
                 captureHabitual(e);
                 setUsdGoogleActivo(true);
+                setSelect(false);
               }}
               data-acronimo="USD"
               data-precio={replace * 1000}
@@ -73,6 +74,7 @@ const Comprar = ({
                 onClick={(e) => {
                   captureHabitual(e);
                   setUsdGoogleActivo(true);
+                  setSelect(false);
                 }}
                 data-acronimo="USD"
                 data-precio={replace * 1000}
@@ -82,6 +84,7 @@ const Comprar = ({
                   onClick={(e) => {
                     captureHabitual(e);
                     setUsdGoogleActivo(true);
+                    setSelect(false);
                   }}
                   data-acronimo="USD"
                   data-precio={replace * 1000}
@@ -93,6 +96,7 @@ const Comprar = ({
                   onClick={(e) => {
                     captureHabitual(e);
                     setUsdGoogleActivo(true);
+                    setSelect(false);
                   }}
                   data-acronimo="USD"
                   data-precio={replace * 1000}
@@ -105,6 +109,7 @@ const Comprar = ({
                   onClick={(e) => {
                     captureHabitual(e);
                     setUsdGoogleActivo(true);
+                    setSelect(false);
                   }}
                   data-acronimo="USD"
                   data-precio={replace * 1000}
@@ -115,6 +120,7 @@ const Comprar = ({
                   onClick={(e) => {
                     captureHabitual(e);
                     setUsdGoogleActivo(true);
+                    setSelect(false);
                   }}
                   data-acronimo="USD"
                   data-precio={replace * 1000}
@@ -123,6 +129,7 @@ const Comprar = ({
                     onClick={(e) => {
                       captureHabitual(e);
                       setUsdGoogleActivo(true);
+                      setSelect(false);
                     }}
                     data-acronimo="USD"
                     data-precio={replace * 1000}
@@ -138,6 +145,7 @@ const Comprar = ({
               onClick={(e) => {
                 captureHabitual(e);
                 setUsdGoogleActivo(true);
+                setSelect(false);
               }}
               data-acronimo={dataReverseVentaDolar[1].Productos[0].Acronimo}
               data-precio={dataReverseVentaDolar[1].Productos[0].Precio}
@@ -147,6 +155,7 @@ const Comprar = ({
                 onClick={(e) => {
                   captureHabitual(e);
                   setUsdGoogleActivo(true);
+                  setSelect(false);
                 }}
                 data-acronimo={dataReverseVentaDolar[1].Productos[0].Acronimo}
                 data-precio={dataReverseVentaDolar[1].Productos[0].Precio}
@@ -156,6 +165,7 @@ const Comprar = ({
                   onClick={(e) => {
                     captureHabitual(e);
                     setUsdGoogleActivo(true);
+                    setSelect(false);
                   }}
                   data-acronimo={dataReverseVentaDolar[1].Productos[0].Acronimo}
                   data-precio={dataReverseVentaDolar[1].Productos[0].Precio}
@@ -167,6 +177,7 @@ const Comprar = ({
                   onClick={(e) => {
                     captureHabitual(e);
                     setUsdGoogleActivo(true);
+                    setSelect(false);
                   }}
                   data-acronimo={dataReverseVentaDolar[1].Productos[0].Acronimo}
                   data-precio={dataReverseVentaDolar[1].Productos[0].Precio}
@@ -179,6 +190,7 @@ const Comprar = ({
                   onClick={(e) => {
                     captureHabitual(e);
                     setUsdGoogleActivo(true);
+                    setSelect(false);
                   }}
                   data-acronimo={dataReverseVentaDolar[1].Productos[0].Acronimo}
                   data-precio={dataReverseVentaDolar[1].Productos[0].Precio}
@@ -189,6 +201,7 @@ const Comprar = ({
                   onClick={(e) => {
                     captureHabitual(e);
                     setUsdGoogleActivo(true);
+                    setSelect(false);
                   }}
                   data-acronimo={dataReverseVentaDolar[1].Productos[0].Acronimo}
                   data-precio={dataReverseVentaDolar[1].Productos[0].Precio}
@@ -197,6 +210,7 @@ const Comprar = ({
                     onClick={(e) => {
                       captureHabitual(e);
                       setUsdGoogleActivo(true);
+                      setSelect(false);
                     }}
                     data-acronimo={
                       dataReverseVentaDolar[1].Productos[0].Acronimo
@@ -214,6 +228,7 @@ const Comprar = ({
             onClick={(e) => {
               captureHabitual(e);
               setUsdGoogleActivo(false);
+              setSelect(false);
             }}
             data-acronimo={dataReverseVenta[0].Productos[0].Acronimo}
             data-precio={dataReverseVenta[0].Productos[0].Precio}
@@ -223,6 +238,7 @@ const Comprar = ({
               onClick={(e) => {
                 captureHabitual(e);
                 setUsdGoogleActivo(false);
+                setSelect(false);
               }}
               data-acronimo={dataReverseVenta[0].Productos[0].Acronimo}
               data-precio={dataReverseVenta[0].Productos[0].Precio}
@@ -232,6 +248,7 @@ const Comprar = ({
                 onClick={(e) => {
                   captureHabitual(e);
                   setUsdGoogleActivo(false);
+                  setSelect(false);
                 }}
                 data-acronimo={dataReverseVenta[0].Productos[0].Acronimo}
                 data-precio={dataReverseVenta[0].Productos[0].Precio}
@@ -243,6 +260,7 @@ const Comprar = ({
                 onClick={(e) => {
                   captureHabitual(e);
                   setUsdGoogleActivo(false);
+                  setSelect(false);
                 }}
                 data-acronimo={dataReverseVenta[0].Productos[0].Acronimo}
                 data-precio={dataReverseVenta[0].Productos[0].Precio}
@@ -255,6 +273,7 @@ const Comprar = ({
                 onClick={(e) => {
                   captureHabitual(e);
                   setUsdGoogleActivo(false);
+                  setSelect(false);
                 }}
                 data-acronimo={dataReverseVenta[0].Productos[0].Acronimo}
                 data-precio={dataReverseVenta[0].Productos[0].Precio}
@@ -265,6 +284,7 @@ const Comprar = ({
                 onClick={(e) => {
                   captureHabitual(e);
                   setUsdGoogleActivo(false);
+                  setSelect(false);
                 }}
                 data-acronimo={dataReverseVenta[0].Productos[0].Acronimo}
                 data-precio={dataReverseVenta[0].Productos[0].Precio}
@@ -273,6 +293,7 @@ const Comprar = ({
                   onClick={(e) => {
                     captureHabitual(e);
                     setUsdGoogleActivo(false);
+                    setSelect(false);
                   }}
                   data-acronimo={dataReverseVenta[0].Productos[0].Acronimo}
                   data-precio={dataReverseVenta[0].Productos[0].Precio}

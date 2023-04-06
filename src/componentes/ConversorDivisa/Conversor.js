@@ -16,6 +16,7 @@ const Conversor = ({
   const [valorMoneda, setValorMoneda] = useState("0");
   const [DataAcronimo, setAcronimo] = useState("");
   const [selectDivisa, setSelectDivisa] = useState(true);
+  const [select, setSelect] = useState(null);
   const captureCodigo = (e) => {
     setAcronimo(e.target.dataset.acronimo);
     //setDataNombre(e.target.dataset.nombre);
@@ -59,6 +60,7 @@ const Conversor = ({
             onClick={() => {
               setSwitched(false);
               setSelectDivisa(true);
+              setSelect(false);
             }}
             className={
               switched
@@ -78,6 +80,7 @@ const Conversor = ({
               onClick={() => {
                 setSwitched(true);
                 setSelectDivisa(true);
+                setSelect(false);
               }}
             >
               TENGO EUROS
@@ -92,6 +95,8 @@ const Conversor = ({
             valorMoneda={valorMoneda}
             DataAcronimo={DataAcronimo}
             setSelectDivisa={setSelectDivisa}
+            setSelect={setSelect}
+            select={select}
             selectDivisa={selectDivisa}
             setActiveId={setActiveId}
             ciudad={ciudad}
@@ -110,6 +115,8 @@ const Conversor = ({
             selectDivisa={selectDivisa}
             setActiveId={setActiveId}
             ciudad={ciudad}
+            setSelect={setSelect}
+            select={select}
           />
         )}
         <p className={styles.textoInferiorConversor}>
@@ -131,6 +138,7 @@ const Conversor = ({
                   captureCodigo(e);
                   MonedaSeleccionada();
                   setUsdGoogleActivo(true);
+                  setSelect(false);
                 }}
                 className={
                   usdGoogleActivo
@@ -173,6 +181,7 @@ const Conversor = ({
                   captureCodigo(e);
                   MonedaSeleccionada();
                   setUsdGoogleActivo(true);
+                  setSelect(false);
                 }}
                 className={
                   usdGoogleActivo
@@ -226,6 +235,7 @@ const Conversor = ({
                   captureCodigo(e);
                   MonedaSeleccionada();
                   setUsdGoogleActivo(false);
+                  setSelect(false);
                 }}
               >
                 <div
@@ -335,6 +345,7 @@ const Conversor = ({
                 onClick={(e) => {
                   captureCodigo(e);
                   MonedaSeleccionada();
+                  setSelect(false);
                 }}
               >
                 <div

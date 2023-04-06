@@ -137,20 +137,16 @@ export async function getStaticProps() {
     ...datos?.result?.Tarifas?.Divisas_Venta,
   ].reverse();
   const dataReverse = dataReverse1.filter(
-    (currency) => currency.Name !== "RUB" && currency.Name !== "HRK"
-  );
-  const dataReverseVenta = dataReverseVenta1.filter(
-    (currency) =>
-      currency.Name !== "RUB" &&
-      currency.Name !== "HRK" &&
-      currency.Name !== "DKK" &&
-      currency.Name !== "USD"
-  );
-  const dataReverseVentaDolar = dataReverseVenta1.filter(
     (currency) =>
       currency.Name !== "RUB" &&
       currency.Name !== "HRK" &&
       currency.Name !== "DKK"
+  );
+  const dataReverseVenta = dataReverseVenta1.filter(
+    (currency) => currency.Name !== "HRK" && currency.Name !== "USD"
+  );
+  const dataReverseVentaDolar = dataReverseVenta1.filter(
+    (currency) => currency.Name !== "HRK"
   );
   //fin datos para divisas y metales
   //datos de los campos personalizados de tiendas

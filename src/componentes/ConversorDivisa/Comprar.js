@@ -16,12 +16,13 @@ const Comprar = ({
   selectDivisa,
   setActiveId,
   ciudad,
+  select,
+  setSelect,
 }) => {
   const precioLibra = dataReverse[0]?.Productos[0].Precio / 1000;
   const precioDolar = dataReverse[1]?.Productos[0].Precio / 1000;
   const [valorInput, setValorInput] = useState("");
   const [switched, setSwitched] = useState(null);
-  const [select, setSelect] = useState(null);
   const precioDividido = valorMoneda / 1000;
   const precioDividido2 = 1 / precioDividido;
   const valorFinal = valorInput * precioDividido;
@@ -55,6 +56,7 @@ const Comprar = ({
             className={styles.dolar}
             onClick={(e) => {
               captureHabitual(e);
+              setSelect(false);
             }}
             data-acronimo={dataReverse[1].Productos[0].Acronimo}
             data-precio={dataReverse[1].Productos[0].Precio}
@@ -63,6 +65,7 @@ const Comprar = ({
               className={styles.imgMoneda}
               onClick={(e) => {
                 captureHabitual(e);
+                setSelect(false);
               }}
               data-acronimo={dataReverse[1].Productos[0].Acronimo}
               data-precio={dataReverse[1].Productos[0].Precio}
@@ -71,6 +74,7 @@ const Comprar = ({
                 src="/assets/banderaUSA.png"
                 onClick={(e) => {
                   captureHabitual(e);
+                  setSelect(false);
                 }}
                 data-acronimo={dataReverse[1].Productos[0].Acronimo}
                 data-precio={dataReverse[1].Productos[0].Precio}
@@ -81,6 +85,7 @@ const Comprar = ({
               <span
                 onClick={(e) => {
                   captureHabitual(e);
+                  setSelect(false);
                 }}
                 data-acronimo={dataReverse[1].Productos[0].Acronimo}
                 data-precio={dataReverse[1].Productos[0].Precio}
@@ -92,6 +97,7 @@ const Comprar = ({
               <p
                 onClick={(e) => {
                   captureHabitual(e);
+                  setSelect(false);
                 }}
                 data-acronimo={dataReverse[1].Productos[0].Acronimo}
                 data-precio={dataReverse[1].Productos[0].Precio}
@@ -101,6 +107,7 @@ const Comprar = ({
               <p
                 onClick={(e) => {
                   captureHabitual(e);
+                  setSelect(false);
                 }}
                 data-acronimo={dataReverse[1].Productos[0].Acronimo}
                 data-precio={dataReverse[1].Productos[0].Precio}
@@ -108,6 +115,7 @@ const Comprar = ({
                 <span
                   onClick={(e) => {
                     captureHabitual(e);
+                    setSelect(false);
                   }}
                   data-acronimo={dataReverse[1].Productos[0].Acronimo}
                   data-precio={dataReverse[1].Productos[0].Precio}
@@ -121,6 +129,7 @@ const Comprar = ({
             className={styles.libra}
             onClick={(e) => {
               captureHabitual(e);
+              setSelect(false);
             }}
             data-acronimo={dataReverse[0].Productos[0].Acronimo}
             data-precio={dataReverse[0].Productos[0].Precio}
@@ -129,6 +138,7 @@ const Comprar = ({
               className={styles.imgMoneda}
               onClick={(e) => {
                 captureHabitual(e);
+                setSelect(false);
               }}
               data-acronimo={dataReverse[0].Productos[0].Acronimo}
               data-precio={dataReverse[0].Productos[0].Precio}
@@ -137,6 +147,7 @@ const Comprar = ({
                 src="/assets/banderaGBP.png"
                 onClick={(e) => {
                   captureHabitual(e);
+                  setSelect(false);
                 }}
                 data-acronimo={dataReverse[0].Productos[0].Acronimo}
                 data-precio={dataReverse[0].Productos[0].Precio}
@@ -147,6 +158,7 @@ const Comprar = ({
               <span
                 onClick={(e) => {
                   captureHabitual(e);
+                  setSelect(false);
                 }}
                 data-acronimo={dataReverse[0].Productos[0].Acronimo}
                 data-precio={dataReverse[0].Productos[0].Precio}
@@ -158,6 +170,7 @@ const Comprar = ({
               <p
                 onClick={(e) => {
                   captureHabitual(e);
+                  setSelect(false);
                 }}
                 data-acronimo={dataReverse[0].Productos[0].Acronimo}
                 data-precio={dataReverse[0].Productos[0].Precio}
@@ -167,6 +180,7 @@ const Comprar = ({
               <p
                 onClick={(e) => {
                   captureHabitual(e);
+                  setSelect(false);
                 }}
                 data-acronimo={dataReverse[0].Productos[0].Acronimo}
                 data-precio={dataReverse[0].Productos[0].Precio}
@@ -174,6 +188,7 @@ const Comprar = ({
                 <span
                   onClick={(e) => {
                     captureHabitual(e);
+                    setSelect(false);
                   }}
                   data-acronimo={dataReverse[0].Productos[0].Acronimo}
                   data-precio={dataReverse[0].Productos[0].Precio}
