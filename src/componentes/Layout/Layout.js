@@ -1,6 +1,7 @@
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import styles from "./layout.module.css";
+import BotonLlamarFijo from "../BotonLlamarFijo/BotonLlamarFijo";
 
 export default function Layout({ children, ciudad }) {
   return (
@@ -9,6 +10,7 @@ export default function Layout({ children, ciudad }) {
         <Header nombreCiudad={ciudad?.acf.ciudad_landing} />
         {children}
         <Footer />
+        <BotonLlamarFijo ciudad={ciudad} />
       </main>
     </>
   );
