@@ -12,6 +12,13 @@ const SeccionDos = ({ nombreCiudad }) => {
         asesoramiento y consejo de nuestro equipo y, si lo deseas, seguimiento
         de la cotización de forma personalizada para que llegado el momento,
         seas avisado/a y obtengas el máximo beneficio de la inversión realizada.
+        <strong>
+          <br />
+          <br />
+          {nombreCiudad === "Santa Cruz de Tenerife"
+            ? "Los precios reflejados en esta página no incluyen gastos de envío, seguro y transporte a las islas canarias."
+            : ""}
+        </strong>
       </p>
     </div>
   );
