@@ -4,10 +4,8 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import PowerInputIcon from "@mui/icons-material/PowerInput";
 import ImportExportIcon from "@mui/icons-material/ImportExport";
 import Image from "next/image";
-//import { useFetchData } from "../../utilities/DataTiendas";
 
 const Comprar = ({
-  dataReverse,
   valorMoneda,
   DataAcronimo,
   setAcronimo,
@@ -19,8 +17,20 @@ const Comprar = ({
   select,
   setSelect,
 }) => {
-  const precioLibra = dataReverse[0]?.Productos[0].Precio / 1000;
-  const precioDolar = dataReverse[1]?.Productos[0].Precio / 1000;
+  const nombreCiudad = ciudad.acf.ciudad_oro;
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(null);
+  useEffect(() => {
+    fetch(`https://quickgold.es/archivos-cache/Fixing${nombreCiudad}.txt`, {
+      cache: "no-cache",
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        setData(response?.result?.Tarifas?.Divisas_Compra.reverse());
+        setLoading(true);
+      });
+  }, []);
+
   const [valorInput, setValorInput] = useState("");
   const [switched, setSwitched] = useState(null);
   const precioDividido = valorMoneda / 1000;
@@ -41,6 +51,7 @@ const Comprar = ({
     setSelectDivisa(false);
     setActiveId(e.target.dataset.acronimo);
   };
+
   return (
     <div className={styles.bloqueDer}>
       <div className={styles.bloqueDivHabituales}>
@@ -50,7 +61,6 @@ const Comprar = ({
           </h6>
           <p className={styles.tituloDivisaHabitual}>Divisas más habituales</p>
         </div>
-
         <div className={styles.divisasHabituales}>
           <div
             className={styles.dolar}
@@ -58,8 +68,8 @@ const Comprar = ({
               captureHabitual(e);
               setSelect(false);
             }}
-            data-acronimo={dataReverse[1].Productos[0].Acronimo}
-            data-precio={dataReverse[1].Productos[0].Precio}
+            data-acronimo={data[1]?.Productos[0].Acronimo}
+            data-precio={data[1]?.Productos[0].Precio}
           >
             <div
               className={styles.imgMoneda}
@@ -67,8 +77,8 @@ const Comprar = ({
                 captureHabitual(e);
                 setSelect(false);
               }}
-              data-acronimo={dataReverse[1].Productos[0].Acronimo}
-              data-precio={dataReverse[1].Productos[0].Precio}
+              data-acronimo={data[1]?.Productos[0].Acronimo}
+              data-precio={data[1]?.Productos[0].Precio}
             >
               <Image
                 src="/assets/banderaUSA.png"
@@ -76,8 +86,8 @@ const Comprar = ({
                   captureHabitual(e);
                   setSelect(false);
                 }}
-                data-acronimo={dataReverse[1].Productos[0].Acronimo}
-                data-precio={dataReverse[1].Productos[0].Precio}
+                data-acronimo={data[1]?.Productos[0].Acronimo}
+                data-precio={data[1]?.Productos[0].Precio}
                 width={40}
                 height={30}
                 alt="Bandera USA"
@@ -87,8 +97,8 @@ const Comprar = ({
                   captureHabitual(e);
                   setSelect(false);
                 }}
-                data-acronimo={dataReverse[1].Productos[0].Acronimo}
-                data-precio={dataReverse[1].Productos[0].Precio}
+                data-acronimo={data[1]?.Productos[0].Acronimo}
+                data-precio={data[1]?.Productos[0].Precio}
               >
                 USD
               </span>
@@ -99,8 +109,8 @@ const Comprar = ({
                   captureHabitual(e);
                   setSelect(false);
                 }}
-                data-acronimo={dataReverse[1].Productos[0].Acronimo}
-                data-precio={dataReverse[1].Productos[0].Precio}
+                data-acronimo={data[1]?.Productos[0].Acronimo}
+                data-precio={data[1]?.Productos[0].Precio}
               >
                 Dólar USA
               </p>
@@ -109,18 +119,21 @@ const Comprar = ({
                   captureHabitual(e);
                   setSelect(false);
                 }}
-                data-acronimo={dataReverse[1].Productos[0].Acronimo}
-                data-precio={dataReverse[1].Productos[0].Precio}
+                data-acronimo={data[1]?.Productos[0].Acronimo}
+                data-precio={data[1]?.Productos[0].Precio}
               >
                 <span
                   onClick={(e) => {
                     captureHabitual(e);
                     setSelect(false);
                   }}
-                  data-acronimo={dataReverse[1].Productos[0].Acronimo}
-                  data-precio={dataReverse[1].Productos[0].Precio}
+                  data-acronimo={data[1]?.Productos[0].Acronimo}
+                  data-precio={data[1]?.Productos[0].Precio}
                 >
-                  {precioDolar.toFixed(4)} €
+                  {loading
+                    ? (data[1].Productos[0].Precio / 1000).toFixed(4)
+                    : "Cargando..."}{" "}
+                  €
                 </span>
               </p>
             </div>
@@ -131,8 +144,8 @@ const Comprar = ({
               captureHabitual(e);
               setSelect(false);
             }}
-            data-acronimo={dataReverse[0].Productos[0].Acronimo}
-            data-precio={dataReverse[0].Productos[0].Precio}
+            data-acronimo={data[0]?.Productos[0].Acronimo}
+            data-precio={data[0]?.Productos[0].Precio}
           >
             <div
               className={styles.imgMoneda}
@@ -140,8 +153,8 @@ const Comprar = ({
                 captureHabitual(e);
                 setSelect(false);
               }}
-              data-acronimo={dataReverse[0].Productos[0].Acronimo}
-              data-precio={dataReverse[0].Productos[0].Precio}
+              data-acronimo={data[0]?.Productos[0].Acronimo}
+              data-precio={data[0]?.Productos[0].Precio}
             >
               <Image
                 src="/assets/banderaGBP.png"
@@ -149,8 +162,8 @@ const Comprar = ({
                   captureHabitual(e);
                   setSelect(false);
                 }}
-                data-acronimo={dataReverse[0].Productos[0].Acronimo}
-                data-precio={dataReverse[0].Productos[0].Precio}
+                data-acronimo={data[0]?.Productos[0].Acronimo}
+                data-precio={data[0]?.Productos[0].Precio}
                 width={40}
                 height={30}
                 alt="Bandera GBP"
@@ -160,8 +173,8 @@ const Comprar = ({
                   captureHabitual(e);
                   setSelect(false);
                 }}
-                data-acronimo={dataReverse[0].Productos[0].Acronimo}
-                data-precio={dataReverse[0].Productos[0].Precio}
+                data-acronimo={data[0]?.Productos[0].Acronimo}
+                data-precio={data[0]?.Productos[0].Precio}
               >
                 GBP
               </span>
@@ -172,8 +185,8 @@ const Comprar = ({
                   captureHabitual(e);
                   setSelect(false);
                 }}
-                data-acronimo={dataReverse[0].Productos[0].Acronimo}
-                data-precio={dataReverse[0].Productos[0].Precio}
+                data-acronimo={data[0]?.Productos[0].Acronimo}
+                data-precio={data[0]?.Productos[0].Precio}
               >
                 Libra Esterlina
               </p>
@@ -182,18 +195,21 @@ const Comprar = ({
                   captureHabitual(e);
                   setSelect(false);
                 }}
-                data-acronimo={dataReverse[0].Productos[0].Acronimo}
-                data-precio={dataReverse[0].Productos[0].Precio}
+                data-acronimo={data[0]?.Productos[0].Acronimo}
+                data-precio={data[0]?.Productos[0].Precio}
               >
                 <span
                   onClick={(e) => {
                     captureHabitual(e);
                     setSelect(false);
                   }}
-                  data-acronimo={dataReverse[0].Productos[0].Acronimo}
-                  data-precio={dataReverse[0].Productos[0].Precio}
+                  data-acronimo={data[0]?.Productos[0].Acronimo}
+                  data-precio={data[0]?.Productos[0].Precio}
                 >
-                  {precioLibra.toFixed(4)} €
+                  {loading
+                    ? (data[0].Productos[0].Precio / 1000).toFixed(4)
+                    : "Cargando..."}{" "}
+                  €
                 </span>
               </p>
             </div>
@@ -225,44 +241,55 @@ const Comprar = ({
                   : `${styles.select_monedas}`
               }
             >
-              {dataReverse?.map((data, i) => (
-                <div
-                  key={i}
-                  className={styles.contenedor_list}
-                  data-acronimo={data?.Productos[0].Acronimo}
-                  data-precio={data?.Productos[0].Precio}
-                  onClick={(e) => {
-                    captureCodigo(e);
-                    MonedaSeleccionada();
-                  }}
-                >
-                  <div className={styles.bandera}>
-                    <Image
-                      width={35}
-                      height={23}
-                      src={`/assets/${data?.Productos[0].Acronimo}.png`}
+              {data
+                .filter(
+                  (currency) =>
+                    currency.Name !== "HRK" &&
+                    currency.Name !== "DKK" &&
+                    currency.Name !== "RUB"
+                )
+                .map((data, i) =>
+                  select ? (
+                    <div
+                      key={i}
+                      className={styles.contenedor_list}
                       data-acronimo={data?.Productos[0].Acronimo}
                       data-precio={data?.Productos[0].Precio}
-                      alt={data?.Productos[0].Acronimo}
-                    />
-                  </div>
-                  <div className={styles.moneda}>
-                    <p
-                      data-acronimo={data?.Productos[0].Acronimo}
-                      data-precio={data?.Productos[0].Precio}
+                      onClick={(e) => {
+                        captureCodigo(e);
+                        MonedaSeleccionada();
+                      }}
                     >
-                      {data?.Productos[0].Acronimo}
-                    </p>
-                    <span
-                      className={styles.nombre}
-                      data-acronimo={data?.Productos[0].Acronimo}
-                      data-precio={data?.Productos[0].Precio}
-                    >
-                      {data?.Productos[0].Nombre}
-                    </span>
-                  </div>
-                </div>
-              ))}
+                      <div className={styles.bandera}>
+                        <Image
+                          width={35}
+                          height={23}
+                          src={`/assets/${data?.Productos[0].Acronimo}.png`}
+                          data-acronimo={data?.Productos[0].Acronimo}
+                          data-precio={data?.Productos[0].Precio}
+                          alt={data?.Productos[0].Acronimo}
+                        />
+                      </div>
+                      <div className={styles.moneda}>
+                        <p
+                          data-acronimo={data?.Productos[0].Acronimo}
+                          data-precio={data?.Productos[0].Precio}
+                        >
+                          {data?.Productos[0].Acronimo}
+                        </p>
+                        <span
+                          className={styles.nombre}
+                          data-acronimo={data?.Productos[0].Acronimo}
+                          data-precio={data?.Productos[0].Precio}
+                        >
+                          {data?.Productos[0].Nombre}
+                        </span>
+                      </div>
+                    </div>
+                  ) : (
+                    ""
+                  )
+                )}
             </div>
           </div>
         </div>
@@ -279,11 +306,7 @@ const Comprar = ({
                   placeholder="0.00"
                   inputMode="numeric"
                   readOnly
-                  //id="input-izquierdo"
-                  //ref={refInput1}
-                  //onChange={calcularCambio}
                   value={valorFinal2.toFixed(2)}
-                  //onChange={(event) => setValorInput(event.target.value)}
                 />
               ) : (
                 <input
@@ -292,11 +315,6 @@ const Comprar = ({
                   placeholder="0.00"
                   inputMode="numeric"
                   className={styles.inputInferior}
-                  //readOnly
-                  //id="input-izquierdo"
-                  //ref={refInput1}
-                  //onChange={calcularCambio}
-                  //value={valorFinal.toFixed(2)}
                   onChange={(event) => setValorInput(event.target.value)}
                 />
               )}
@@ -337,10 +355,6 @@ const Comprar = ({
                   placeholder="Cantidad"
                   inputMode="numeric"
                   className={styles.inputInferior}
-                  //id="input-derecho"
-                  //ref={refInput2}
-                  //onChange={calcularCambio}
-                  //value={valorFinal.toFixed(2)}
                   onChange={(event) => setValorInput(event.target.value)}
                 />
               ) : (
@@ -349,13 +363,9 @@ const Comprar = ({
                   pattern="[0-9]*"
                   placeholder="Cantidad"
                   inputMode="numeric"
-                  //id="input-derecho"
-                  //ref={refInput2}
-                  //onChange={calcularCambio}
                   value={valorFinal.toFixed(2)}
                   readOnly
                   style={{ border: "none" }}
-                  //onChange={(event) => setValorInput(event.target.value)}
                 />
               )}
               <span>EUR</span>

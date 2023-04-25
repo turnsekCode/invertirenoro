@@ -7,14 +7,7 @@ import BannerPromoGeneral from "@/componentes/BannerGeneral/BannerPromoGeneral";
 import React from "react";
 import Script from "next/script";
 import SeccionTres from "@/componentes/SeccionTres/SeccionTres";
-const index = ({
-  ciudad,
-  tiendaGoogle,
-  general,
-  dataReverse,
-  dataReverseVenta,
-  dataReverseVentaDolar,
-}) => {
+const index = ({ ciudad, tiendaGoogle, general }) => {
   console.log(ciudad);
   return (
     <>
@@ -64,12 +57,9 @@ const index = ({
         )}
 
         <SeccionTres
-          dataReverse={dataReverse}
-          dataReverseVenta={dataReverseVenta}
           ciudad={ciudad}
           tiendaGoogle={tiendaGoogle}
           comprar={ciudad.acf.vende_divisa}
-          dataReverseVentaDolar={dataReverseVentaDolar}
         />
       </Layout>
     </>
@@ -98,38 +88,12 @@ export async function getStaticProps() {
     `https://quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda}.txt`
   );
   const tiendaGoogle = await google.json();
-  //datos para divisas y metales
-  const nombreCiudad = ciudad?.acf?.ciudad_oro;
-  const data = await fetch(
-    `https://quickgold.es/archivos-cache/Fixing${nombreCiudad}.txt`
-  );
-  const datos = await data.json();
-  const dataReverse1 = [...datos?.result?.Tarifas?.Divisas_Compra].reverse();
-  const dataReverseVenta1 = [
-    ...datos?.result?.Tarifas?.Divisas_Venta,
-  ].reverse();
-  const dataReverse = dataReverse1.filter(
-    (currency) =>
-      currency.Name !== "RUB" &&
-      currency.Name !== "HRK" &&
-      currency.Name !== "DKK"
-  );
-  const dataReverseVenta = dataReverseVenta1.filter(
-    (currency) => currency.Name !== "HRK" && currency.Name !== "USD"
-  );
-  const dataReverseVentaDolar = dataReverseVenta1.filter(
-    (currency) => currency.Name !== "HRK"
-  );
-  //fin datos para divisas y metales
 
   return {
     props: {
       ciudad,
       tiendaGoogle,
       general,
-      dataReverse,
-      dataReverseVenta,
-      dataReverseVentaDolar,
     },
     revalidate: 1,
   };

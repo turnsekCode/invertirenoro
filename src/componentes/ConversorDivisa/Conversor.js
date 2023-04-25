@@ -5,13 +5,7 @@ import logoDivisa from "../../../public/assets/logodivisa.png";
 import Vender from "../ConversorDivisa/Vender";
 import Comprar from "../ConversorDivisa/Comprar";
 
-const Conversor = ({
-  dataReverse,
-  dataReverseVenta,
-  comprar,
-  ciudad,
-  dataReverseVentaDolar,
-}) => {
+const Conversor = ({ dataReverse, dataReverseVenta, comprar, ciudad }) => {
   const [switched, setSwitched] = useState(null);
   const [valorMoneda, setValorMoneda] = useState("0");
   const [DataAcronimo, setAcronimo] = useState("");
@@ -40,11 +34,25 @@ const Conversor = ({
         //setLoading(true);
       });
   }, []);
-  //console.log(ciudad);
+
+  const nombreCiudad = ciudad.acf.ciudad_oro;
   const [valorGoogle, setValorGoogle] = useState("");
   const [usdGoogleActivo, setUsdGoogleActivo] = useState(false);
   const replace = valorGoogle.toString().replace(",", ".");
-  const precioDolar = dataReverseVentaDolar[1].Productos[0].Precio / 1000;
+  const [data, setData] = useState([]);
+  const [dataVenta, setDataVenta] = useState([]);
+  //const [loading, setLoading] = useState(null);
+  useEffect(() => {
+    fetch(`https://quickgold.es/archivos-cache/Fixing${nombreCiudad}.txt`, {
+      cache: "no-cache",
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        setData(response?.result?.Tarifas?.Divisas_Compra.reverse());
+        setDataVenta(response?.result?.Tarifas?.Divisas_Venta.reverse());
+        //setLoading(true);
+      });
+  }, []);
   return (
     <div className={styles.contenedorConversorBanderas}>
       <div className={styles.contenedorConversor}>
@@ -102,7 +110,6 @@ const Conversor = ({
             ciudad={ciudad}
             replace={replace}
             setUsdGoogleActivo={setUsdGoogleActivo}
-            dataReverseVentaDolar={dataReverseVentaDolar}
           />
         ) : (
           <Comprar
@@ -154,7 +161,7 @@ const Conversor = ({
                   onClick={(e) => {
                     captureCodigo(e);
                     MonedaSeleccionada();
-                    setUsdGoogleActivo(false);
+                    //setUsdGoogleActivo(false);
                   }}
                   src={`/assets/USD.png`}
                   alt="USD"
@@ -176,6 +183,8 @@ const Conversor = ({
               </div>
             ) : (
               <div
+                data-acronimo="USD"
+                data-precio={dataVenta[1]?.Productos[0].Precio}
                 id="USD"
                 onClick={(e) => {
                   captureCodigo(e);
@@ -188,12 +197,10 @@ const Conversor = ({
                     ? `${styles.contenedorBanderaGoogle} ${styles.banderaActiva}`
                     : `${styles.contenedorBanderaGoogle}`
                 }
-                data-acronimo="USD"
-                data-precio={dataReverseVentaDolar[1].Productos[0].Precio}
               >
                 <Image
                   data-acronimo="USD"
-                  data-precio={dataReverseVentaDolar[1].Productos[0].Precio}
+                  data-precio={dataVenta[1]?.Productos[0].Precio}
                   onClick={(e) => {
                     captureCodigo(e);
                     MonedaSeleccionada();
@@ -206,54 +213,48 @@ const Conversor = ({
                 />
                 <div
                   data-acronimo="USD"
-                  data-precio={dataReverseVentaDolar[1].Productos[0].Precio}
+                  data-precio={dataVenta[1]?.Productos[0].Precio}
                   className={styles.contenedorDatosGoogle}
                 >
                   <p
                     data-acronimo="USD"
-                    data-precio={dataReverseVentaDolar[1].Productos[0].Precio}
+                    data-precio={dataVenta[1]?.Productos[0].Precio}
                   >
                     USD - dolares usa
                   </p>
                   <p
                     data-acronimo="USD"
-                    data-precio={dataReverseVentaDolar[1].Productos[0].Precio}
+                    data-precio={dataVenta[1]?.Productos[0].Precio}
                   >
-                    {precioDolar.toFixed(4)}€
+                    {(dataVenta[1]?.Productos[0].Precio / 1000).toFixed(4)}€
                   </p>
                 </div>
               </div>
             )}
-            {dataReverseVenta?.map((data, i) => (
-              <div
-                id={data?.Productos[0].Acronimo}
-                key={i}
-                className={`${styles.contenedorBandera} ${styles.data?.Productos[0].Acronimo}`}
-                data-acronimo={data?.Productos[0].Acronimo}
-                data-precio={data?.Productos[0].Precio}
-                onClick={(e) => {
-                  captureCodigo(e);
-                  MonedaSeleccionada();
-                  setUsdGoogleActivo(false);
-                  setSelect(false);
-                }}
-              >
+            {dataVenta
+              ?.filter(
+                (currency) => currency.Name !== "HRK" && currency.Name !== "USD"
+              )
+              .map((data, i) => (
                 <div
-                  className={
-                    activeId === data?.Productos[0].Acronimo
-                      ? `${styles.contenedorBloquesBanderas} ${styles.banderaActiva}`
-                      : `${styles.contenedorBloquesBanderas}`
-                  }
+                  id={data?.Productos[0].Acronimo}
+                  key={i}
+                  className={`${styles.contenedorBandera} ${styles.data?.Productos[0].Acronimo}`}
                   data-acronimo={data?.Productos[0].Acronimo}
                   data-precio={data?.Productos[0].Precio}
                   onClick={(e) => {
                     captureCodigo(e);
                     MonedaSeleccionada();
                     setUsdGoogleActivo(false);
+                    setSelect(false);
                   }}
                 >
                   <div
-                    className={styles.banderas}
+                    className={
+                      activeId === data?.Productos[0].Acronimo
+                        ? `${styles.contenedorBloquesBanderas} ${styles.banderaActiva}`
+                        : `${styles.contenedorBloquesBanderas}`
+                    }
                     data-acronimo={data?.Productos[0].Acronimo}
                     data-precio={data?.Productos[0].Precio}
                     onClick={(e) => {
@@ -262,32 +263,8 @@ const Conversor = ({
                       setUsdGoogleActivo(false);
                     }}
                   >
-                    <Image
-                      data-acronimo={data?.Productos[0].Acronimo}
-                      data-precio={data?.Productos[0].Precio}
-                      onClick={(e) => {
-                        captureCodigo(e);
-                        MonedaSeleccionada();
-                        setUsdGoogleActivo(false);
-                      }}
-                      src={`/assets/${data?.Productos[0].Acronimo}.png`}
-                      alt={data?.Productos[0].Acronimo}
-                      width={36}
-                      height={27}
-                    />
-                  </div>
-                  <div
-                    className={styles.contenedorData}
-                    data-acronimo={data?.Productos[0].Acronimo}
-                    data-precio={data?.Productos[0].Precio}
-                    onClick={(e) => {
-                      captureCodigo(e);
-                      MonedaSeleccionada();
-                      setUsdGoogleActivo(false);
-                    }}
-                  >
-                    <p
-                      className={styles.nombreMoneda}
+                    <div
+                      className={styles.banderas}
                       data-acronimo={data?.Productos[0].Acronimo}
                       data-precio={data?.Productos[0].Precio}
                       onClick={(e) => {
@@ -296,8 +273,32 @@ const Conversor = ({
                         setUsdGoogleActivo(false);
                       }}
                     >
-                      {data?.Productos[0].Acronimo} -
-                      <span
+                      <Image
+                        data-acronimo={data?.Productos[0].Acronimo}
+                        data-precio={data?.Productos[0].Precio}
+                        onClick={(e) => {
+                          captureCodigo(e);
+                          MonedaSeleccionada();
+                          setUsdGoogleActivo(false);
+                        }}
+                        src={`/assets/${data?.Productos[0].Acronimo}.png`}
+                        alt={data?.Productos[0].Acronimo}
+                        width={36}
+                        height={27}
+                      />
+                    </div>
+                    <div
+                      className={styles.contenedorData}
+                      data-acronimo={data?.Productos[0].Acronimo}
+                      data-precio={data?.Productos[0].Precio}
+                      onClick={(e) => {
+                        captureCodigo(e);
+                        MonedaSeleccionada();
+                        setUsdGoogleActivo(false);
+                      }}
+                    >
+                      <p
+                        className={styles.nombreMoneda}
                         data-acronimo={data?.Productos[0].Acronimo}
                         data-precio={data?.Productos[0].Precio}
                         onClick={(e) => {
@@ -306,25 +307,35 @@ const Conversor = ({
                           setUsdGoogleActivo(false);
                         }}
                       >
-                        {data?.Productos[0].Nombre}
-                      </span>
-                    </p>
-                    <p
-                      className={styles.precioMoneda}
-                      data-acronimo={data?.Productos[0].Acronimo}
-                      data-precio={data?.Productos[0].Precio}
-                      onClick={(e) => {
-                        captureCodigo(e);
-                        MonedaSeleccionada();
-                        setUsdGoogleActivo(false);
-                      }}
-                    >
-                      {(data?.Productos[0].Precio / 1000).toFixed(4)}€
-                    </p>
+                        {data?.Productos[0].Acronimo} -
+                        <span
+                          data-acronimo={data?.Productos[0].Acronimo}
+                          data-precio={data?.Productos[0].Precio}
+                          onClick={(e) => {
+                            captureCodigo(e);
+                            MonedaSeleccionada();
+                            setUsdGoogleActivo(false);
+                          }}
+                        >
+                          {data?.Productos[0].Nombre}
+                        </span>
+                      </p>
+                      <p
+                        className={styles.precioMoneda}
+                        data-acronimo={data?.Productos[0].Acronimo}
+                        data-precio={data?.Productos[0].Precio}
+                        onClick={(e) => {
+                          captureCodigo(e);
+                          MonedaSeleccionada();
+                          setUsdGoogleActivo(false);
+                        }}
+                      >
+                        {(data?.Productos[0].Precio / 1000).toFixed(4)}€
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       ) : (
@@ -335,34 +346,32 @@ const Conversor = ({
             También puedes seleccionar desde aquí la divisa para la calculadora
           </p>
           <div className={styles.contenedorBanderaColumna}>
-            {dataReverse?.map((data, i) => (
-              <div
-                id={data?.Productos[0].Acronimo}
-                key={i}
-                className={`${styles.contenedorBandera} ${styles.data?.Productos[0].Acronimo}`}
-                data-acronimo={data?.Productos[0].Acronimo}
-                data-precio={data?.Productos[0].Precio}
-                onClick={(e) => {
-                  captureCodigo(e);
-                  MonedaSeleccionada();
-                  setSelect(false);
-                }}
-              >
+            {data
+              ?.filter(
+                (currency) =>
+                  currency.Name !== "HRK" &&
+                  currency.Name !== "DKK" &&
+                  currency.Name !== "RUB"
+              )
+              .map((data, i) => (
                 <div
-                  className={
-                    activeId === data?.Productos[0].Acronimo
-                      ? `${styles.contenedorBloquesBanderas} ${styles.banderaActiva}`
-                      : `${styles.contenedorBloquesBanderas}`
-                  }
+                  id={data?.Productos[0].Acronimo}
+                  key={i}
+                  className={`${styles.contenedorBandera} ${styles.data?.Productos[0].Acronimo}`}
                   data-acronimo={data?.Productos[0].Acronimo}
                   data-precio={data?.Productos[0].Precio}
                   onClick={(e) => {
                     captureCodigo(e);
                     MonedaSeleccionada();
+                    setSelect(false);
                   }}
                 >
                   <div
-                    className={styles.banderas}
+                    className={
+                      activeId === data?.Productos[0].Acronimo
+                        ? `${styles.contenedorBloquesBanderas} ${styles.banderaActiva}`
+                        : `${styles.contenedorBloquesBanderas}`
+                    }
                     data-acronimo={data?.Productos[0].Acronimo}
                     data-precio={data?.Productos[0].Precio}
                     onClick={(e) => {
@@ -370,30 +379,8 @@ const Conversor = ({
                       MonedaSeleccionada();
                     }}
                   >
-                    <Image
-                      data-acronimo={data?.Productos[0].Acronimo}
-                      data-precio={data?.Productos[0].Precio}
-                      onClick={(e) => {
-                        captureCodigo(e);
-                        MonedaSeleccionada();
-                      }}
-                      src={`/assets/${data?.Productos[0].Acronimo}.png`}
-                      alt={data?.Productos[0].Acronimo}
-                      width={36}
-                      height={27}
-                    />
-                  </div>
-                  <div
-                    className={styles.contenedorData}
-                    data-acronimo={data?.Productos[0].Acronimo}
-                    data-precio={data?.Productos[0].Precio}
-                    onClick={(e) => {
-                      captureCodigo(e);
-                      MonedaSeleccionada();
-                    }}
-                  >
-                    <p
-                      className={styles.nombreMoneda}
+                    <div
+                      className={styles.banderas}
                       data-acronimo={data?.Productos[0].Acronimo}
                       data-precio={data?.Productos[0].Precio}
                       onClick={(e) => {
@@ -401,8 +388,30 @@ const Conversor = ({
                         MonedaSeleccionada();
                       }}
                     >
-                      {data?.Productos[0].Acronimo} -
-                      <span
+                      <Image
+                        data-acronimo={data?.Productos[0].Acronimo}
+                        data-precio={data?.Productos[0].Precio}
+                        onClick={(e) => {
+                          captureCodigo(e);
+                          MonedaSeleccionada();
+                        }}
+                        src={`/assets/${data?.Productos[0].Acronimo}.png`}
+                        alt={data?.Productos[0].Acronimo}
+                        width={36}
+                        height={27}
+                      />
+                    </div>
+                    <div
+                      className={styles.contenedorData}
+                      data-acronimo={data?.Productos[0].Acronimo}
+                      data-precio={data?.Productos[0].Precio}
+                      onClick={(e) => {
+                        captureCodigo(e);
+                        MonedaSeleccionada();
+                      }}
+                    >
+                      <p
+                        className={styles.nombreMoneda}
                         data-acronimo={data?.Productos[0].Acronimo}
                         data-precio={data?.Productos[0].Precio}
                         onClick={(e) => {
@@ -410,24 +419,33 @@ const Conversor = ({
                           MonedaSeleccionada();
                         }}
                       >
-                        {data?.Productos[0].Nombre}
-                      </span>
-                    </p>
-                    <p
-                      className={styles.precioMoneda}
-                      data-acronimo={data?.Productos[0].Acronimo}
-                      data-precio={data?.Productos[0].Precio}
-                      onClick={(e) => {
-                        captureCodigo(e);
-                        MonedaSeleccionada();
-                      }}
-                    >
-                      {(data?.Productos[0].Precio / 1000).toFixed(4)}€
-                    </p>
+                        {data?.Productos[0].Acronimo} -
+                        <span
+                          data-acronimo={data?.Productos[0].Acronimo}
+                          data-precio={data?.Productos[0].Precio}
+                          onClick={(e) => {
+                            captureCodigo(e);
+                            MonedaSeleccionada();
+                          }}
+                        >
+                          {data?.Productos[0].Nombre}
+                        </span>
+                      </p>
+                      <p
+                        className={styles.precioMoneda}
+                        data-acronimo={data?.Productos[0].Acronimo}
+                        data-precio={data?.Productos[0].Precio}
+                        onClick={(e) => {
+                          captureCodigo(e);
+                          MonedaSeleccionada();
+                        }}
+                      >
+                        {(data?.Productos[0].Precio / 1000).toFixed(4)}€
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       )}

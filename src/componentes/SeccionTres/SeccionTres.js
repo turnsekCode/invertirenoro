@@ -5,11 +5,9 @@ import styles from "./seccionDos.module.css";
 
 const SeccionTres = ({
   ciudad,
-  dataReverse,
-  dataReverseVenta,
+
   tiendaGoogle,
   comprar,
-  dataReverseVentaDolar,
 }) => {
   return (
     <div className={styles.contenedorSeccionDos}>
@@ -18,7 +16,6 @@ const SeccionTres = ({
         dataReverseVenta={dataReverseVenta}
         comprar={comprar}
         ciudad={ciudad}
-        dataReverseVentaDolar={dataReverseVentaDolar}
       />
       <BloqueInfoTienda ciudad={ciudad} tiendaGoogle={tiendaGoogle} />
     </div>

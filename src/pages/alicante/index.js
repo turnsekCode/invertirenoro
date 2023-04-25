@@ -10,13 +10,11 @@ import React from "react";
 const index = ({
   ciudad,
   general,
-  dataReverse,
-  dataReverseVenta,
+
   tienda1,
   tienda2,
   tienda1Google,
   tienda2Google,
-  dataReverseVentaDolar,
 }) => {
   const arrayTiendas = [
     {
@@ -96,12 +94,9 @@ const index = ({
           ""
         )}
         <SeccionDos
-          dataReverse={dataReverse}
-          dataReverseVenta={dataReverseVenta}
           ciudad={ciudad}
           comprar={ciudad.acf.vende_divisa}
           arrayTiendas={arrayTiendas}
-          dataReverseVentaDolar={dataReverseVentaDolar}
         />
       </Layout>
     </>
@@ -120,34 +115,13 @@ export async function getStaticProps() {
     `https://quickgold.es/wp-json/acf/v3/pages/${idPaginaWp}`
   );
   const ciudad = await madrid.json();
-  const nombreCiudad = ciudad.acf.ciudad_oro;
+
   const res = await fetch(
     `https://quickgold.es/wp-json/acf/v3/pages/${apiGeneral}`
   );
   const general = await res.json();
   //fin datos de los campos personalizados de la ciudad
-  //datos para divisas y metales
-  const data = await fetch(
-    `https://quickgold.es/archivos-cache/Fixing${nombreCiudad}.txt`
-  );
-  const datos = await data.json();
-  const dataReverse1 = [...datos?.result?.Tarifas?.Divisas_Compra].reverse();
-  const dataReverseVenta1 = [
-    ...datos?.result?.Tarifas?.Divisas_Venta,
-  ].reverse();
-  const dataReverse = dataReverse1.filter(
-    (currency) =>
-      currency.Name !== "RUB" &&
-      currency.Name !== "HRK" &&
-      currency.Name !== "DKK"
-  );
-  const dataReverseVenta = dataReverseVenta1.filter(
-    (currency) => currency.Name !== "HRK" && currency.Name !== "USD"
-  );
-  const dataReverseVentaDolar = dataReverseVenta1.filter(
-    (currency) => currency.Name !== "HRK"
-  );
-  //fin datos para divisas y metales
+
   //datos de los campos personalizados de tiendas
   const res1 = await fetch(`https://quickgold.es/wp-json/acf/v3/pages/${id1}`);
   const tienda1 = await res1.json();
@@ -180,7 +154,6 @@ export async function getStaticProps() {
       tienda2,
       tienda1Google,
       tienda2Google,
-      dataReverseVentaDolar,
     },
     revalidate: 1,
   };
