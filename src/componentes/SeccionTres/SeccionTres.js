@@ -11,12 +11,7 @@ const SeccionTres = ({
 }) => {
   return (
     <div className={styles.contenedorSeccionDos}>
-      <Conversor
-        dataReverse={dataReverse}
-        dataReverseVenta={dataReverseVenta}
-        comprar={comprar}
-        ciudad={ciudad}
-      />
+      <Conversor comprar={comprar} ciudad={ciudad} />
       <BloqueInfoTienda ciudad={ciudad} tiendaGoogle={tiendaGoogle} />
     </div>
   );

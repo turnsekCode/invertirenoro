@@ -188,8 +188,7 @@ export async function getStaticProps() {
     props: {
       ciudad,
       general,
-      dataReverse,
-      dataReverseVenta,
+
       tienda1,
       tienda2,
       tienda3,

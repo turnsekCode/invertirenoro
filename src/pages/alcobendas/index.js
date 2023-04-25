@@ -8,7 +8,6 @@ import React from "react";
 import Script from "next/script";
 import SeccionTres from "@/componentes/SeccionTres/SeccionTres";
 const index = ({ ciudad, tiendaGoogle, general }) => {
-  console.log(ciudad);
   return (
     <>
       <Head>
