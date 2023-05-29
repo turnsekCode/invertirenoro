@@ -12,7 +12,7 @@ const index = ({ ciudad, tiendaGoogle, general }) => {
     <>
       <Head>
         <title>
-          El mejor cambio de divisas de {ciudad.acf.ciudad_landing} | Quickgold
+          El mejor cambioO de divisas de {ciudad.acf.ciudad_landing} | Quickgold
         </title>
         <meta
           name="description"
