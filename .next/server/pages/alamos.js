@@ -44,7 +44,7 @@ const index = ({ ciudad , tiendaGoogle , general  })=>{
                 children: [
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("title", {
                         children: [
-                            "El mejor cambio de divisas de ",
+                            "El mejor cambioO de divisas de ",
                             ciudad.acf.ciudad_landing,
                             " | Quickgold"
                         ]

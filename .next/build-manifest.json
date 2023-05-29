@@ -5,8 +5,8 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/EqHvokkQeRmPFDA3gu9n-/_buildManifest.js",
-    "static/EqHvokkQeRmPFDA3gu9n-/_ssgManifest.js"
+    "static/8DANhdNoEs3SP-Z9nGtIr/_buildManifest.js",
+    "static/8DANhdNoEs3SP-Z9nGtIr/_ssgManifest.js"
   ],
   "rootMainFiles": [],
   "pages": {
@@ -40,7 +40,7 @@
       "static/css/9fa8ca0b3f313dd6.css",
       "static/chunks/8060-c5956dd4e06e4f90.js",
       "static/css/d3deb77ba4fecf60.css",
-      "static/chunks/pages/alamos-3f29e8126b3f1dc9.js"
+      "static/chunks/pages/alamos-4f0fba6676b8f50f.js"
     ],
     "/albufera": [
       "static/chunks/webpack-10311436baca1d61.js",
