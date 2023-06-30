@@ -35,7 +35,7 @@ const Conversor = ({ comprar, ciudad }) => {
       });
   }, []);
 
-  const nombreCiudad = ciudad.acf.ciudad_oro;
+  const nombreCiudad = ciudad?.acf?.ciudad_oro;
   const [valorGoogle, setValorGoogle] = useState("");
   const [usdGoogleActivo, setUsdGoogleActivo] = useState(false);
   const replace = valorGoogle.toString().replace(",", ".");
@@ -136,7 +136,7 @@ const Conversor = ({ comprar, ciudad }) => {
             También puedes seleccionar desde aquí la divisa para la calculadora
           </p>
           <div className={styles.contenedorBanderaColumna}>
-            {ciudad.acf.ciudad_oro === "madrid" ? (
+            {/*ciudad.acf.ciudad_oro === "madrid" ? (
               <div
                 id="USD"
                 onClick={(e) => {
@@ -228,10 +228,10 @@ const Conversor = ({ comprar, ciudad }) => {
                   </p>
                 </div>
               </div>
-            )}
+                )*/}
             {dataVenta
               ?.filter(
-                (currency) => currency.Name !== "HRK" && currency.Name !== "USD"
+                (currency) => currency.Name !== "HRK" //&& currency.Name !== "USD"
               )
               .map((data, i) => (
                 <div

@@ -371,84 +371,7 @@ y volver habilitar el usd en los map y comentar el div que pinta el precio del d
                     /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
                         className: (conversor_module_default()).divisasHabituales,
                         children: [
-                            ciudad.acf.ciudad_oro === "madrid" ? /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                                className: (conversor_module_default()).dolar,
-                                onClick: (e)=>{
-                                    captureHabitual(e);
-                                    setSelect(false);
-                                    setUsdGoogleActivo(true);
-                                },
-                                "data-acronimo": data[1]?.Productos[0].Acronimo,
-                                "data-precio": replace * 1000,
-                                children: [
-                                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                                        className: (conversor_module_default()).imgMoneda,
-                                        onClick: (e)=>{
-                                            captureHabitual(e);
-                                            setSelect(false);
-                                        },
-                                        "data-acronimo": data[1]?.Productos[0].Acronimo,
-                                        "data-precio": replace * 1000,
-                                        children: [
-                                            /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
-                                                src: "/assets/banderaUSA.png",
-                                                onClick: (e)=>{
-                                                    captureHabitual(e);
-                                                    setSelect(false);
-                                                },
-                                                "data-acronimo": data[1]?.Productos[0].Acronimo,
-                                                "data-precio": replace * 1000,
-                                                width: 40,
-                                                height: 30,
-                                                alt: "Bandera USA"
-                                            }),
-                                            /*#__PURE__*/ jsx_runtime_.jsx("span", {
-                                                onClick: (e)=>{
-                                                    captureHabitual(e);
-                                                    setSelect(false);
-                                                },
-                                                "data-acronimo": data[1]?.Productos[0].Acronimo,
-                                                "data-precio": replace * 1000,
-                                                children: "USD"
-                                            })
-                                        ]
-                                    }),
-                                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                                        className: (conversor_module_default()).nombreMoneda,
-                                        children: [
-                                            /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                                                onClick: (e)=>{
-                                                    captureHabitual(e);
-                                                    setSelect(false);
-                                                },
-                                                "data-acronimo": data[1]?.Productos[0].Acronimo,
-                                                "data-precio": replace * 1000,
-                                                children: "D\xf3lar USA"
-                                            }),
-                                            /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                                                onClick: (e)=>{
-                                                    captureHabitual(e);
-                                                    setSelect(false);
-                                                },
-                                                "data-acronimo": data[1]?.Productos[0].Acronimo,
-                                                "data-precio": replace * 1000,
-                                                children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("span", {
-                                                    onClick: (e)=>{
-                                                        captureHabitual(e);
-                                                        setSelect(false);
-                                                    },
-                                                    "data-acronimo": data[1]?.Productos[0].Acronimo,
-                                                    "data-precio": replace * 1000,
-                                                    children: [
-                                                        loading ? replace : "Cargando...",
-                                                        " €"
-                                                    ]
-                                                })
-                                            })
-                                        ]
-                                    })
-                                ]
-                            }) : /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
                                 className: (conversor_module_default()).dolar,
                                 onClick: (e)=>{
                                     captureHabitual(e);
@@ -635,17 +558,17 @@ y volver habilitar el usd en los map y comentar el div que pinta el precio del d
                                         /*#__PURE__*/ jsx_runtime_.jsx((KeyboardArrowDown_default()), {})
                                     ]
                                 }),
-                                /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                                /*#__PURE__*/ jsx_runtime_.jsx("div", {
                                     className: select ? `${(conversor_module_default()).select_monedas} ${(conversor_module_default()).select_activo}` : `${(conversor_module_default()).select_monedas}`,
-                                    children: [
-                                        ciudad.acf.ciudad_oro === "madrid" ? /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                                            "data-acronimo": "USD",
-                                            "data-precio": replace * 1000,
-                                            className: (conversor_module_default()).contenedorDolarGoogle,
+                                    children: data?.filter((currency)=>currency.Name !== "HRK" //&& currency.Name !== "USD"
+                                    ).map((data, i)=>select ? /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                                            className: (conversor_module_default()).contenedor_list,
+                                            "data-acronimo": data?.Productos[0].Acronimo,
+                                            "data-precio": data?.Productos[0].Precio,
                                             onClick: (e)=>{
                                                 captureCodigo(e);
                                                 MonedaSeleccionada();
-                                                setUsdGoogleActivo(true);
+                                                setUsdGoogleActivo(false);
                                             },
                                             children: [
                                                 /*#__PURE__*/ jsx_runtime_.jsx("div", {
@@ -653,110 +576,30 @@ y volver habilitar el usd en los map y comentar el div que pinta el precio del d
                                                     children: /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
                                                         width: 35,
                                                         height: 23,
-                                                        src: `/assets/USD.png`,
-                                                        "data-acronimo": "USD",
-                                                        "data-precio": replace * 1000,
-                                                        alt: "USD"
+                                                        src: `/assets/${data?.Productos[0].Acronimo}.png`,
+                                                        "data-acronimo": data?.Productos[0].Acronimo,
+                                                        "data-precio": data?.Productos[0].Precio,
+                                                        alt: data?.Productos[0].Acronimo
                                                     })
                                                 }),
                                                 /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                                                    className: (conversor_module_default()).nombreDolarGoogle,
-                                                    "data-acronimo": "USD",
-                                                    "data-precio": replace * 1000,
+                                                    className: (conversor_module_default()).moneda,
                                                     children: [
                                                         /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                                                            "data-acronimo": "USD",
-                                                            "data-precio": replace * 1000,
-                                                            children: "USD"
-                                                        }),
-                                                        /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                                                            "data-acronimo": "USD",
-                                                            "data-precio": replace * 1000,
-                                                            children: "DOLARES USA"
-                                                        })
-                                                    ]
-                                                })
-                                            ]
-                                        }) : /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                                            "data-acronimo": "USD",
-                                            "data-precio": data[1]?.Productos[0].Precio,
-                                            className: (conversor_module_default()).contenedorDolarGoogle,
-                                            onClick: (e)=>{
-                                                captureCodigo(e);
-                                                MonedaSeleccionada();
-                                                setUsdGoogleActivo(true);
-                                            },
-                                            children: [
-                                                /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                                                    className: (conversor_module_default()).bandera,
-                                                    children: /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
-                                                        width: 35,
-                                                        height: 23,
-                                                        src: `/assets/USD.png`,
-                                                        "data-acronimo": "USD",
-                                                        "data-precio": data[1]?.Productos[0].Precio,
-                                                        alt: "USD"
-                                                    })
-                                                }),
-                                                /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                                                    className: (conversor_module_default()).nombreDolarGoogle,
-                                                    "data-acronimo": "USD",
-                                                    "data-precio": data[1]?.Productos[0].Precio,
-                                                    children: [
-                                                        /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                                                            "data-acronimo": "USD",
-                                                            "data-precio": data[1]?.Productos[0].Precio,
-                                                            children: "USD"
-                                                        }),
-                                                        /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                                                            "data-acronimo": "USD",
-                                                            "data-precio": data[1]?.Productos[0].Precio,
-                                                            children: "DOLARES USA"
-                                                        })
-                                                    ]
-                                                })
-                                            ]
-                                        }),
-                                        data?.filter((currency)=>currency.Name !== "HRK" && currency.Name !== "USD").map((data, i)=>select ? /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                                                className: (conversor_module_default()).contenedor_list,
-                                                "data-acronimo": data?.Productos[0].Acronimo,
-                                                "data-precio": data?.Productos[0].Precio,
-                                                onClick: (e)=>{
-                                                    captureCodigo(e);
-                                                    MonedaSeleccionada();
-                                                    setUsdGoogleActivo(false);
-                                                },
-                                                children: [
-                                                    /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                                                        className: (conversor_module_default()).bandera,
-                                                        children: /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
-                                                            width: 35,
-                                                            height: 23,
-                                                            src: `/assets/${data?.Productos[0].Acronimo}.png`,
                                                             "data-acronimo": data?.Productos[0].Acronimo,
                                                             "data-precio": data?.Productos[0].Precio,
-                                                            alt: data?.Productos[0].Acronimo
+                                                            children: data?.Productos[0].Acronimo
+                                                        }),
+                                                        /*#__PURE__*/ jsx_runtime_.jsx("span", {
+                                                            className: (conversor_module_default()).nombre,
+                                                            "data-acronimo": data?.Productos[0].Acronimo,
+                                                            "data-precio": data?.Productos[0].Precio,
+                                                            children: data?.Productos[0].Nombre
                                                         })
-                                                    }),
-                                                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                                                        className: (conversor_module_default()).moneda,
-                                                        children: [
-                                                            /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                                                                "data-acronimo": data?.Productos[0].Acronimo,
-                                                                "data-precio": data?.Productos[0].Precio,
-                                                                children: data?.Productos[0].Acronimo
-                                                            }),
-                                                            /*#__PURE__*/ jsx_runtime_.jsx("span", {
-                                                                className: (conversor_module_default()).nombre,
-                                                                "data-acronimo": data?.Productos[0].Acronimo,
-                                                                "data-precio": data?.Productos[0].Precio,
-                                                                children: data?.Productos[0].Nombre
-                                                            })
-                                                        ]
-                                                    })
-                                                ]
-                                            }, i) : "")
-                                    ]
+                                                    ]
+                                                })
+                                            ]
+                                        }, i) : "")
                                 })
                             ]
                         })
@@ -1307,7 +1150,7 @@ const Conversor = ({ comprar , ciudad  })=>{
         //setLoading(true);
         });
     }, []);
-    const nombreCiudad = ciudad.acf.ciudad_oro;
+    const nombreCiudad = ciudad?.acf?.ciudad_oro;
     const [valorGoogle, setValorGoogle] = (0,external_react_.useState)("");
     const [usdGoogleActivo, setUsdGoogleActivo] = (0,external_react_.useState)(false);
     const replace = valorGoogle.toString().replace(",", ".");
@@ -1420,125 +1263,40 @@ const Conversor = ({ comprar , ciudad  })=>{
                         className: (conversor_module_default()).textoBanderas,
                         children: "Tambi\xe9n puedes seleccionar desde aqu\xed la divisa para la calculadora"
                     }),
-                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                    /*#__PURE__*/ jsx_runtime_.jsx("div", {
                         className: (conversor_module_default()).contenedorBanderaColumna,
-                        children: [
-                            ciudad.acf.ciudad_oro === "madrid" ? /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                                id: "USD",
+                        children: dataVenta?.filter((currency)=>currency.Name !== "HRK" //&& currency.Name !== "USD"
+                        ).map((data, i)=>/*#__PURE__*/ jsx_runtime_.jsx("div", {
+                                id: data?.Productos[0].Acronimo,
+                                className: `${(conversor_module_default()).contenedorBandera} ${(conversor_module_default()).data?.Productos[0].Acronimo}`,
+                                "data-acronimo": data?.Productos[0].Acronimo,
+                                "data-precio": data?.Productos[0].Precio,
                                 onClick: (e)=>{
                                     captureCodigo(e);
                                     MonedaSeleccionada();
-                                    setUsdGoogleActivo(true);
+                                    setUsdGoogleActivo(false);
                                     setSelect(false);
                                 },
-                                className: usdGoogleActivo ? `${(conversor_module_default()).contenedorBanderaGoogle} ${(conversor_module_default()).banderaActiva}` : `${(conversor_module_default()).contenedorBanderaGoogle}`,
-                                "data-acronimo": "USD",
-                                "data-precio": replace * 1000,
-                                children: [
-                                    /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
-                                        "data-acronimo": "USD",
-                                        "data-precio": replace * 1000,
-                                        onClick: (e)=>{
-                                            captureCodigo(e);
-                                            MonedaSeleccionada();
-                                        //setUsdGoogleActivo(false);
-                                        },
-                                        src: `/assets/USD.png`,
-                                        alt: "USD",
-                                        width: 36,
-                                        height: 27
-                                    }),
-                                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                                        "data-acronimo": "USD",
-                                        "data-precio": replace * 1000,
-                                        className: (conversor_module_default()).contenedorDatosGoogle,
-                                        children: [
-                                            /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                                                "data-acronimo": "USD",
-                                                "data-precio": replace * 1000,
-                                                children: "USD - dolares usa"
-                                            }),
-                                            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
-                                                "data-acronimo": "USD",
-                                                "data-precio": replace * 1000,
-                                                children: [
-                                                    replace,
-                                                    "€"
-                                                ]
-                                            })
-                                        ]
-                                    })
-                                ]
-                            }) : /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                                "data-acronimo": "USD",
-                                "data-precio": dataVenta[1]?.Productos[0].Precio,
-                                id: "USD",
-                                onClick: (e)=>{
-                                    captureCodigo(e);
-                                    MonedaSeleccionada();
-                                    setUsdGoogleActivo(true);
-                                    setSelect(false);
-                                },
-                                className: usdGoogleActivo ? `${(conversor_module_default()).contenedorBanderaGoogle} ${(conversor_module_default()).banderaActiva}` : `${(conversor_module_default()).contenedorBanderaGoogle}`,
-                                children: [
-                                    /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
-                                        "data-acronimo": "USD",
-                                        "data-precio": dataVenta[1]?.Productos[0].Precio,
-                                        onClick: (e)=>{
-                                            captureCodigo(e);
-                                            MonedaSeleccionada();
-                                            setUsdGoogleActivo(false);
-                                        },
-                                        src: `/assets/USD.png`,
-                                        alt: "USD",
-                                        width: 36,
-                                        height: 27
-                                    }),
-                                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                                        "data-acronimo": "USD",
-                                        "data-precio": dataVenta[1]?.Productos[0].Precio,
-                                        className: (conversor_module_default()).contenedorDatosGoogle,
-                                        children: [
-                                            /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                                                "data-acronimo": "USD",
-                                                "data-precio": dataVenta[1]?.Productos[0].Precio,
-                                                children: "USD - dolares usa"
-                                            }),
-                                            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
-                                                "data-acronimo": "USD",
-                                                "data-precio": dataVenta[1]?.Productos[0].Precio,
-                                                children: [
-                                                    (dataVenta[1]?.Productos[0].Precio / 1000).toFixed(4),
-                                                    "€"
-                                                ]
-                                            })
-                                        ]
-                                    })
-                                ]
-                            }),
-                            dataVenta?.filter((currency)=>currency.Name !== "HRK" && currency.Name !== "USD").map((data, i)=>/*#__PURE__*/ jsx_runtime_.jsx("div", {
-                                    id: data?.Productos[0].Acronimo,
-                                    className: `${(conversor_module_default()).contenedorBandera} ${(conversor_module_default()).data?.Productos[0].Acronimo}`,
+                                children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                                    className: activeId === data?.Productos[0].Acronimo ? `${(conversor_module_default()).contenedorBloquesBanderas} ${(conversor_module_default()).banderaActiva}` : `${(conversor_module_default()).contenedorBloquesBanderas}`,
                                     "data-acronimo": data?.Productos[0].Acronimo,
                                     "data-precio": data?.Productos[0].Precio,
                                     onClick: (e)=>{
                                         captureCodigo(e);
                                         MonedaSeleccionada();
                                         setUsdGoogleActivo(false);
-                                        setSelect(false);
                                     },
-                                    children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                                        className: activeId === data?.Productos[0].Acronimo ? `${(conversor_module_default()).contenedorBloquesBanderas} ${(conversor_module_default()).banderaActiva}` : `${(conversor_module_default()).contenedorBloquesBanderas}`,
-                                        "data-acronimo": data?.Productos[0].Acronimo,
-                                        "data-precio": data?.Productos[0].Precio,
-                                        onClick: (e)=>{
-                                            captureCodigo(e);
-                                            MonedaSeleccionada();
-                                            setUsdGoogleActivo(false);
-                                        },
-                                        children: [
-                                            /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                                                className: (conversor_module_default()).banderas,
+                                    children: [
+                                        /*#__PURE__*/ jsx_runtime_.jsx("div", {
+                                            className: (conversor_module_default()).banderas,
+                                            "data-acronimo": data?.Productos[0].Acronimo,
+                                            "data-precio": data?.Productos[0].Precio,
+                                            onClick: (e)=>{
+                                                captureCodigo(e);
+                                                MonedaSeleccionada();
+                                                setUsdGoogleActivo(false);
+                                            },
+                                            children: /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
                                                 "data-acronimo": data?.Productos[0].Acronimo,
                                                 "data-precio": data?.Productos[0].Precio,
                                                 onClick: (e)=>{
@@ -1546,7 +1304,24 @@ const Conversor = ({ comprar , ciudad  })=>{
                                                     MonedaSeleccionada();
                                                     setUsdGoogleActivo(false);
                                                 },
-                                                children: /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
+                                                src: `/assets/${data?.Productos[0].Acronimo}.png`,
+                                                alt: data?.Productos[0].Acronimo,
+                                                width: 36,
+                                                height: 27
+                                            })
+                                        }),
+                                        /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                                            className: (conversor_module_default()).contenedorData,
+                                            "data-acronimo": data?.Productos[0].Acronimo,
+                                            "data-precio": data?.Productos[0].Precio,
+                                            onClick: (e)=>{
+                                                captureCodigo(e);
+                                                MonedaSeleccionada();
+                                                setUsdGoogleActivo(false);
+                                            },
+                                            children: [
+                                                /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
+                                                    className: (conversor_module_default()).nombreMoneda,
                                                     "data-acronimo": data?.Productos[0].Acronimo,
                                                     "data-precio": data?.Productos[0].Precio,
                                                     onClick: (e)=>{
@@ -1554,66 +1329,40 @@ const Conversor = ({ comprar , ciudad  })=>{
                                                         MonedaSeleccionada();
                                                         setUsdGoogleActivo(false);
                                                     },
-                                                    src: `/assets/${data?.Productos[0].Acronimo}.png`,
-                                                    alt: data?.Productos[0].Acronimo,
-                                                    width: 36,
-                                                    height: 27
+                                                    children: [
+                                                        data?.Productos[0].Acronimo,
+                                                        " -",
+                                                        /*#__PURE__*/ jsx_runtime_.jsx("span", {
+                                                            "data-acronimo": data?.Productos[0].Acronimo,
+                                                            "data-precio": data?.Productos[0].Precio,
+                                                            onClick: (e)=>{
+                                                                captureCodigo(e);
+                                                                MonedaSeleccionada();
+                                                                setUsdGoogleActivo(false);
+                                                            },
+                                                            children: data?.Productos[0].Nombre
+                                                        })
+                                                    ]
+                                                }),
+                                                /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
+                                                    className: (conversor_module_default()).precioMoneda,
+                                                    "data-acronimo": data?.Productos[0].Acronimo,
+                                                    "data-precio": data?.Productos[0].Precio,
+                                                    onClick: (e)=>{
+                                                        captureCodigo(e);
+                                                        MonedaSeleccionada();
+                                                        setUsdGoogleActivo(false);
+                                                    },
+                                                    children: [
+                                                        (data?.Productos[0].Precio / 1000).toFixed(4),
+                                                        "€"
+                                                    ]
                                                 })
-                                            }),
-                                            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                                                className: (conversor_module_default()).contenedorData,
-                                                "data-acronimo": data?.Productos[0].Acronimo,
-                                                "data-precio": data?.Productos[0].Precio,
-                                                onClick: (e)=>{
-                                                    captureCodigo(e);
-                                                    MonedaSeleccionada();
-                                                    setUsdGoogleActivo(false);
-                                                },
-                                                children: [
-                                                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
-                                                        className: (conversor_module_default()).nombreMoneda,
-                                                        "data-acronimo": data?.Productos[0].Acronimo,
-                                                        "data-precio": data?.Productos[0].Precio,
-                                                        onClick: (e)=>{
-                                                            captureCodigo(e);
-                                                            MonedaSeleccionada();
-                                                            setUsdGoogleActivo(false);
-                                                        },
-                                                        children: [
-                                                            data?.Productos[0].Acronimo,
-                                                            " -",
-                                                            /*#__PURE__*/ jsx_runtime_.jsx("span", {
-                                                                "data-acronimo": data?.Productos[0].Acronimo,
-                                                                "data-precio": data?.Productos[0].Precio,
-                                                                onClick: (e)=>{
-                                                                    captureCodigo(e);
-                                                                    MonedaSeleccionada();
-                                                                    setUsdGoogleActivo(false);
-                                                                },
-                                                                children: data?.Productos[0].Nombre
-                                                            })
-                                                        ]
-                                                    }),
-                                                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
-                                                        className: (conversor_module_default()).precioMoneda,
-                                                        "data-acronimo": data?.Productos[0].Acronimo,
-                                                        "data-precio": data?.Productos[0].Precio,
-                                                        onClick: (e)=>{
-                                                            captureCodigo(e);
-                                                            MonedaSeleccionada();
-                                                            setUsdGoogleActivo(false);
-                                                        },
-                                                        children: [
-                                                            (data?.Productos[0].Precio / 1000).toFixed(4),
-                                                            "€"
-                                                        ]
-                                                    })
-                                                ]
-                                            })
-                                        ]
-                                    })
-                                }, i))
-                        ]
+                                            ]
+                                        })
+                                    ]
+                                })
+                            }, i))
                     })
                 ]
             }) : /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {

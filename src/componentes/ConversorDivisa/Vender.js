@@ -65,7 +65,84 @@ const Vender = ({
           <p className={styles.tituloDivisaHabitual}>Divisas más habituales</p>
         </div>
         <div className={styles.divisasHabituales}>
-          {ciudad.acf.ciudad_oro === "madrid" ? (
+          <div
+            className={styles.dolar}
+            onClick={(e) => {
+              captureHabitual(e);
+              setSelect(false);
+              setUsdGoogleActivo(false);
+            }}
+            data-acronimo={data[1]?.Productos[0].Acronimo}
+            data-precio={data[1]?.Productos[0].Precio}
+          >
+            <div
+              className={styles.imgMoneda}
+              onClick={(e) => {
+                captureHabitual(e);
+                setSelect(false);
+              }}
+              data-acronimo={data[1]?.Productos[0].Acronimo}
+              data-precio={data[1]?.Productos[0].Precio}
+            >
+              <Image
+                src="/assets/banderaUSA.png"
+                onClick={(e) => {
+                  captureHabitual(e);
+                  setSelect(false);
+                }}
+                data-acronimo={data[1]?.Productos[0].Acronimo}
+                data-precio={data[1]?.Productos[0].Precio}
+                width={40}
+                height={30}
+                alt="Bandera USA"
+              />
+              <span
+                onClick={(e) => {
+                  captureHabitual(e);
+                  setSelect(false);
+                }}
+                data-acronimo={data[1]?.Productos[0].Acronimo}
+                data-precio={data[1]?.Productos[0].Precio}
+              >
+                USD
+              </span>
+            </div>
+            <div className={styles.nombreMoneda}>
+              <p
+                onClick={(e) => {
+                  captureHabitual(e);
+                  setSelect(false);
+                }}
+                data-acronimo={data[1]?.Productos[0].Acronimo}
+                data-precio={data[1]?.Productos[0].Precio}
+              >
+                Dólar USA
+              </p>
+              <p
+                onClick={(e) => {
+                  captureHabitual(e);
+                  setSelect(false);
+                }}
+                data-acronimo={data[1]?.Productos[0].Acronimo}
+                data-precio={data[1]?.Productos[0].Precio}
+              >
+                <span
+                  onClick={(e) => {
+                    captureHabitual(e);
+                    setSelect(false);
+                  }}
+                  data-acronimo={data[1]?.Productos[0].Acronimo}
+                  data-precio={data[1]?.Productos[0].Precio}
+                >
+                  {loading
+                    ? (data[1]?.Productos[0].Precio / 1000).toFixed(4)
+                    : "Cargando..."}{" "}
+                  €
+                </span>
+              </p>
+            </div>
+          </div>
+          {/*ciudad.acf.ciudad_oro === "madrid" ? (
             <div
               className={styles.dolar}
               onClick={(e) => {
@@ -218,7 +295,7 @@ const Vender = ({
                 </p>
               </div>
             </div>
-          )}
+          )*/}
           <div
             className={styles.libra}
             onClick={(e) => {
@@ -323,7 +400,7 @@ const Vender = ({
                   : `${styles.select_monedas}`
               }
             >
-              {ciudad.acf.ciudad_oro === "madrid" ? (
+              {/*ciudad.acf.ciudad_oro === "madrid" ? (
                 <div
                   data-acronimo="USD"
                   data-precio={replace * 1000}
@@ -397,11 +474,10 @@ const Vender = ({
                     </p>
                   </div>
                 </div>
-              )}
+              )*/}
               {data
                 ?.filter(
-                  (currency) =>
-                    currency.Name !== "HRK" && currency.Name !== "USD"
+                  (currency) => currency.Name !== "HRK" //&& currency.Name !== "USD"
                 )
                 .map((data, i) =>
                   select ? (
