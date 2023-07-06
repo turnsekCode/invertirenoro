@@ -16,34 +16,64 @@ import lingote1000 from "../../../public/assets/lingote1000.png";
 const TablaLingotes = ({ data, loading, ciudad }) => {
   const precio2_5 = (
     data?.result?.Tarifas?.Lingotes[4].Productos[0].Precio / 1000
-  ).toLocaleString();
+  ).toLocaleString("es", {
+    style: "currency",
+    currency: "EUR",
+  });
   const precio5 = (
     data?.result?.Tarifas?.Lingotes[5].Productos[0].Precio / 1000
-  ).toLocaleString();
+  ).toLocaleString("es", {
+    style: "currency",
+    currency: "EUR",
+  });
   const precio10 = (
     data?.result?.Tarifas?.Lingotes[10].Productos[0].Precio / 1000
-  ).toLocaleString();
+  ).toLocaleString("es", {
+    style: "currency",
+    currency: "EUR",
+  });
   const precio20 = (
     data?.result?.Tarifas?.Lingotes[11].Productos[0].Precio / 1000
-  ).toLocaleString();
+  ).toLocaleString("es", {
+    style: "currency",
+    currency: "EUR",
+  });
   const precio1Oz = (
     data?.result?.Tarifas?.Lingotes[12].Productos[0].Precio / 1000
-  ).toLocaleString();
+  ).toLocaleString("es", {
+    style: "currency",
+    currency: "EUR",
+  });
   const precio50 = (
     data?.result?.Tarifas?.Lingotes[13].Productos[0].Precio / 1000
-  ).toLocaleString();
+  ).toLocaleString("es", {
+    style: "currency",
+    currency: "EUR",
+  });
   const precio100 = (
     data?.result?.Tarifas?.Lingotes[14].Productos[0].Precio / 1000
-  ).toLocaleString();
+  ).toLocaleString("es", {
+    style: "currency",
+    currency: "EUR",
+  });
   const precio250 = (
     data?.result?.Tarifas?.Lingotes[15].Productos[0].Precio / 1000
-  ).toLocaleString();
+  ).toLocaleString("es", {
+    style: "currency",
+    currency: "EUR",
+  });
   const precio500 = (
     data?.result?.Tarifas?.Lingotes[0].Productos[0].Precio / 1000
-  ).toLocaleString();
+  ).toLocaleString("es", {
+    style: "currency",
+    currency: "EUR",
+  });
   const precio1000 = (
     data?.result?.Tarifas?.Lingotes[16].Productos[0].Precio / 1000
-  ).toLocaleString();
+  ).toLocaleString("es", {
+    style: "currency",
+    currency: "EUR",
+  });
 
   const arrayLingotes = [
     {
