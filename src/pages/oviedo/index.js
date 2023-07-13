@@ -59,7 +59,7 @@ const index = ({ ciudad, tiendaGoogle, general }) => {
         <SeccionTres
           ciudad={ciudad}
           tiendaGoogle={tiendaGoogle}
-          comprar={ciudad.acf.vende_divisa}
+          comprar={ciudad?.acf?.vende_divisa}
         />
       </Layout>
     </>
@@ -67,7 +67,7 @@ const index = ({ ciudad, tiendaGoogle, general }) => {
 };
 
 export default index;
-const idPaginaWp = "16391";
+const idPaginaWp = "16563";
 const apiGeneral = "13848";
 //variables id de tiendas de la api de wordpress
 

@@ -133,40 +133,40 @@ const ListadoTiendas = ({ ciudad , arrayTiendas  })=>{
             /*#__PURE__*/ (0,jsx_runtime_.jsxs)("h2", {
                 children: [
                     "Listado de tiendas en ",
-                    ciudad.acf.ciudad_landing
+                    ciudad?.acf?.ciudad_landing
                 ]
             }),
             /*#__PURE__*/ jsx_runtime_.jsx("div", {
                 children: arrayTiendas.map((tienda)=>{
-                    if (tienda.estrellas > 4.7) {
+                    if (tienda?.estrellas > 4.7) {
                         var img_valoracion = 69;
-                    } else if (tienda.estrellas < 4.8 && tienda.estrellas < 4.3) {
+                    } else if (tienda?.estrellas < 4.8 && tienda?.estrellas < 4.3) {
                         var img_valoracion = 62;
-                    } else if (tienda.estrellas < 4.4 && tienda.estrellas < 3.7) {
+                    } else if (tienda?.estrellas < 4.4 && tienda?.estrellas < 3.7) {
                         var img_valoracion = 55;
-                    } else if (tienda.estrellas < 3.8 && tienda.estrellas < 3.3) {
+                    } else if (tienda?.estrellas < 3.8 && tienda?.estrellas < 3.3) {
                         var img_valoracion = 48;
-                    } else if (tienda.estrellas < 3.4 && tienda.estrellas < 2.7) {
+                    } else if (tienda?.estrellas < 3.4 && tienda?.estrellas < 2.7) {
                         var img_valoracion = 41;
-                    } else if (tienda.estrellas < 2.8 && tienda.estrellas < 2.3) {
+                    } else if (tienda?.estrellas < 2.8 && tienda?.estrellas < 2.3) {
                         var img_valoracion = 34;
-                    } else if (tienda.estrellas < 2.4 && tienda.estrellas < 1.7) {
+                    } else if (tienda?.estrellas < 2.4 && tienda?.estrellas < 1.7) {
                         var img_valoracion = 27;
-                    } else if (tienda.estrellas < 1.8 && tienda.estrellas < 1.3) {
+                    } else if (tienda?.estrellas < 1.8 && tienda?.estrellas < 1.3) {
                         var img_valoracion = 20;
-                    } else if (tienda.estrellas < 1.4 && tienda.estrellas < 0.7) {
+                    } else if (tienda?.estrellas < 1.4 && tienda?.estrellas < 0.7) {
                         var img_valoracion = 13;
                     }
                     return /*#__PURE__*/ (0,jsx_runtime_.jsxs)(Accordion, {
-                        expanded: expanded === `panel${tienda.id}`,
-                        onChange: handleChange(`panel${tienda.id}`),
+                        expanded: expanded === `panel${tienda?.id}`,
+                        onChange: handleChange(`panel${tienda?.id}`),
                         children: [
                             /*#__PURE__*/ jsx_runtime_.jsx(AccordionSummary, {
                                 "aria-controls": "panel1d-content",
                                 id: "panel1d-header",
                                 children: /*#__PURE__*/ jsx_runtime_.jsx("p", {
                                     className: (listadoTienda_module_default()).nombreTienda,
-                                    children: tienda.nombreTienda
+                                    children: tienda?.nombreTienda
                                 })
                             }),
                             /*#__PURE__*/ (0,jsx_runtime_.jsxs)(AccordionDetails, {
@@ -200,13 +200,13 @@ const ListadoTiendas = ({ ciudad , arrayTiendas  })=>{
                                                                     }),
                                                                     /*#__PURE__*/ jsx_runtime_.jsx("span", {
                                                                         className: (listadoTienda_module_default()).valoracionResenas,
-                                                                        children: tienda.estrellas
+                                                                        children: tienda?.estrellas
                                                                     }),
                                                                     /*#__PURE__*/ jsx_runtime_.jsx("div", {
                                                                         className: (listadoTienda_module_default()).numero_reviews,
                                                                         children: /*#__PURE__*/ jsx_runtime_.jsx("span", {
                                                                             children: /*#__PURE__*/ jsx_runtime_.jsx("a", {
-                                                                                href: tienda.enlace_resenas,
+                                                                                href: tienda?.enlace_resenas,
                                                                                 target: "_blank",
                                                                                 children: "Ver rese\xf1as"
                                                                             })
@@ -217,7 +217,7 @@ const ListadoTiendas = ({ ciudad , arrayTiendas  })=>{
                                                             /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
                                                                 className: (listadoTienda_module_default()).resenasGoogle,
                                                                 children: [
-                                                                    tienda.resenas,
+                                                                    tienda?.resenas,
                                                                     " ",
                                                                     /*#__PURE__*/ jsx_runtime_.jsx("span", {
                                                                         children: "opiniones en Google"
@@ -231,7 +231,7 @@ const ListadoTiendas = ({ ciudad , arrayTiendas  })=>{
                                             /*#__PURE__*/ jsx_runtime_.jsx("div", {
                                                 className: (listadoTienda_module_default()).verResenas,
                                                 children: /*#__PURE__*/ jsx_runtime_.jsx("a", {
-                                                    href: tienda.escribir_resenas,
+                                                    href: tienda?.escribir_resenas,
                                                     target: "_blank",
                                                     children: "D\xe9janos tu opinion"
                                                 })
@@ -242,21 +242,21 @@ const ListadoTiendas = ({ ciudad , arrayTiendas  })=>{
                                         className: (listadoTienda_module_default()).direccion,
                                         children: [
                                             "Direcci\xf3n: ",
-                                            tienda.direccion
+                                            tienda?.direccion
                                         ]
                                     }),
                                     /*#__PURE__*/ (0,jsx_runtime_.jsxs)("a", {
-                                        href: `tel:${tienda.telefono}`,
+                                        href: `tel:${tienda?.telefono}`,
                                         className: (listadoTienda_module_default()).telefono,
                                         children: [
                                             "LLAMA GRATIS AL ",
-                                            tienda.telefono
+                                            tienda?.telefono
                                         ]
                                     }),
                                     /*#__PURE__*/ jsx_runtime_.jsx("div", {
                                         className: (listadoTienda_module_default()).mapa,
                                         children: /*#__PURE__*/ jsx_runtime_.jsx("iframe", {
-                                            src: tienda.mapa,
+                                            src: tienda?.mapa,
                                             width: "100%",
                                             height: "100%",
                                             allowFullScreen: "",
@@ -266,7 +266,7 @@ const ListadoTiendas = ({ ciudad , arrayTiendas  })=>{
                                 ]
                             })
                         ]
-                    }, tienda.id);
+                    }, tienda?.id);
                 })
             })
         ]

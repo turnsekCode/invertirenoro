@@ -54,39 +54,39 @@ const ListadoTiendas = ({ ciudad, arrayTiendas }) => {
 
   return (
     <div className={styles.contenedorListadoTiendas}>
-      <h2>Listado de tiendas en {ciudad.acf.ciudad_landing}</h2>
+      <h2>Listado de tiendas en {ciudad?.acf?.ciudad_landing}</h2>
       <div>
         {arrayTiendas.map((tienda) => {
-          if (tienda.estrellas > 4.7) {
+          if (tienda?.estrellas > 4.7) {
             var img_valoracion = 69;
-          } else if (tienda.estrellas < 4.8 && tienda.estrellas < 4.3) {
+          } else if (tienda?.estrellas < 4.8 && tienda?.estrellas < 4.3) {
             var img_valoracion = 62;
-          } else if (tienda.estrellas < 4.4 && tienda.estrellas < 3.7) {
+          } else if (tienda?.estrellas < 4.4 && tienda?.estrellas < 3.7) {
             var img_valoracion = 55;
-          } else if (tienda.estrellas < 3.8 && tienda.estrellas < 3.3) {
+          } else if (tienda?.estrellas < 3.8 && tienda?.estrellas < 3.3) {
             var img_valoracion = 48;
-          } else if (tienda.estrellas < 3.4 && tienda.estrellas < 2.7) {
+          } else if (tienda?.estrellas < 3.4 && tienda?.estrellas < 2.7) {
             var img_valoracion = 41;
-          } else if (tienda.estrellas < 2.8 && tienda.estrellas < 2.3) {
+          } else if (tienda?.estrellas < 2.8 && tienda?.estrellas < 2.3) {
             var img_valoracion = 34;
-          } else if (tienda.estrellas < 2.4 && tienda.estrellas < 1.7) {
+          } else if (tienda?.estrellas < 2.4 && tienda?.estrellas < 1.7) {
             var img_valoracion = 27;
-          } else if (tienda.estrellas < 1.8 && tienda.estrellas < 1.3) {
+          } else if (tienda?.estrellas < 1.8 && tienda?.estrellas < 1.3) {
             var img_valoracion = 20;
-          } else if (tienda.estrellas < 1.4 && tienda.estrellas < 0.7) {
+          } else if (tienda?.estrellas < 1.4 && tienda?.estrellas < 0.7) {
             var img_valoracion = 13;
           }
           return (
             <Accordion
-              expanded={expanded === `panel${tienda.id}`}
-              onChange={handleChange(`panel${tienda.id}`)}
-              key={tienda.id}
+              expanded={expanded === `panel${tienda?.id}`}
+              onChange={handleChange(`panel${tienda?.id}`)}
+              key={tienda?.id}
             >
               <AccordionSummary
                 aria-controls="panel1d-content"
                 id="panel1d-header"
               >
-                <p className={styles.nombreTienda}>{tienda.nombreTienda}</p>
+                <p className={styles.nombreTienda}>{tienda?.nombreTienda}</p>
               </AccordionSummary>
               <AccordionDetails>
                 <div className={styles.bloqueResenas}>
@@ -106,36 +106,36 @@ const ListadoTiendas = ({ ciudad, arrayTiendas }) => {
                           ></span>
                         </span>
                         <span className={styles.valoracionResenas}>
-                          {tienda.estrellas}
+                          {tienda?.estrellas}
                         </span>
                         <div className={styles.numero_reviews}>
                           <span>
-                            <a href={tienda.enlace_resenas} target="_blank">
+                            <a href={tienda?.enlace_resenas} target="_blank">
                               Ver reseñas
                             </a>
                           </span>
                         </div>
                       </div>
                       <div className={styles.resenasGoogle}>
-                        {tienda.resenas} <span>opiniones en Google</span>
+                        {tienda?.resenas} <span>opiniones en Google</span>
                       </div>
                     </div>
                   </div>
                   <div className={styles.verResenas}>
-                    <a href={tienda.escribir_resenas} target="_blank">
+                    <a href={tienda?.escribir_resenas} target="_blank">
                       Déjanos tu opinion
                     </a>
                   </div>
                 </div>
                 <p className={styles.direccion}>
-                  Dirección: {tienda.direccion}
+                  Dirección: {tienda?.direccion}
                 </p>
-                <a href={`tel:${tienda.telefono}`} className={styles.telefono}>
-                  LLAMA GRATIS AL {tienda.telefono}
+                <a href={`tel:${tienda?.telefono}`} className={styles.telefono}>
+                  LLAMA GRATIS AL {tienda?.telefono}
                 </a>
                 <div className={styles.mapa}>
                   <iframe
-                    src={tienda.mapa}
+                    src={tienda?.mapa}
                     width="100%"
                     height="100%"
                     allowFullScreen=""
