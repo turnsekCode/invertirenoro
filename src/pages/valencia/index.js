@@ -5,6 +5,7 @@ import SeccionUno from "@/componentes/SeccionUno/SeccionUno";
 import BannerPromoUno from "../../componentes/BannerPromoUno/BannerPromoUno";
 import BannerPromoDos from "../../componentes/BannerPromoDos/BannerPromoDos";
 import BannerPromoGeneral from "@/componentes/BannerGeneral/BannerPromoGeneral";
+import Script from "next/script";
 
 const index = ({
   ciudad,
@@ -132,7 +133,11 @@ const index = ({
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="../../../assets/icon.png" />
+        {ciudad?.acf?.nonscript_chat}
       </Head>
+      <Script id="livechat" strategy="afterInteractive">
+        {ciudad?.acf?.script_chat}
+      </Script>
       <Layout ciudad={ciudad}>
         <SeccionUno
           nombreCiudad={ciudad.acf.ciudad_landing}
