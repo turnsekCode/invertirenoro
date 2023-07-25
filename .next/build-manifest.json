@@ -5,8 +5,8 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/wc1qqQhGrC2ue0k-OrDCY/_buildManifest.js",
-    "static/wc1qqQhGrC2ue0k-OrDCY/_ssgManifest.js"
+    "static/z5jZ0CBShXAN0XsyPURwv/_buildManifest.js",
+    "static/z5jZ0CBShXAN0XsyPURwv/_ssgManifest.js"
   ],
   "rootMainFiles": [],
   "pages": {
@@ -197,7 +197,7 @@
       "static/css/ab8faff38952dab1.css",
       "static/chunks/8060-eee5b69fc073a035.js",
       "static/css/8cc1cfa9c43577cf.css",
-      "static/chunks/pages/barcelona-563096431e44b818.js"
+      "static/chunks/pages/barcelona-4310caf9dbfed766.js"
     ],
     "/benidorm": [
       "static/chunks/webpack-10311436baca1d61.js",
