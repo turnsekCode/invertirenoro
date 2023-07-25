@@ -966,7 +966,7 @@ const Comprar = ({ valorMoneda , DataAcronimo , setAcronimo , setValorMoneda , s
                                 }),
                                 /*#__PURE__*/ jsx_runtime_.jsx("div", {
                                     className: select ? `${(conversor_module_default()).select_monedas} ${(conversor_module_default()).select_activo}` : `${(conversor_module_default()).select_monedas}`,
-                                    children: data.filter((currency)=>currency.Name !== "HRK" && currency.Name !== "DKK" && currency.Name !== "RUB" && currency.Name !== "NOK").map((data, i)=>select ? /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                                    children: data.filter((currency)=>currency.Name !== "HRK" && currency.Name !== "DKK" && currency.Name !== "RUB" && currency.Name !== "NOK" && currency.Name !== "SEK").map((data, i)=>select ? /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
                                             className: (conversor_module_default()).contenedor_list,
                                             "data-acronimo": data?.Productos[0].Acronimo,
                                             "data-precio": data?.Productos[0].Precio,
@@ -1382,7 +1382,7 @@ const Conversor = ({ comprar , ciudad  })=>{
                     }),
                     /*#__PURE__*/ jsx_runtime_.jsx("div", {
                         className: (conversor_module_default()).contenedorBanderaColumna,
-                        children: data?.filter((currency)=>currency.Name !== "HRK" && currency.Name !== "DKK" && currency.Name !== "RUB" && currency.Name !== "NOK").map((data, i)=>/*#__PURE__*/ jsx_runtime_.jsx("div", {
+                        children: data?.filter((currency)=>currency.Name !== "HRK" && currency.Name !== "DKK" && currency.Name !== "RUB" && currency.Name !== "NOK" && currency.Name !== "SEK").map((data, i)=>/*#__PURE__*/ jsx_runtime_.jsx("div", {
                                 id: data?.Productos[0].Acronimo,
                                 className: `${(conversor_module_default()).contenedorBandera} ${(conversor_module_default()).data?.Productos[0].Acronimo}`,
                                 "data-acronimo": data?.Productos[0].Acronimo,

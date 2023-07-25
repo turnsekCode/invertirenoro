@@ -350,7 +350,8 @@ const Conversor = ({ comprar, ciudad }) => {
                   currency.Name !== "HRK" &&
                   currency.Name !== "DKK" &&
                   currency.Name !== "RUB" &&
-                  currency.Name !== "NOK"
+                  currency.Name !== "NOK" &&
+                  currency.Name !== "SEK"
               )
               .map((data, i) => (
                 <div
