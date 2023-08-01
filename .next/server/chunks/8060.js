@@ -1194,28 +1194,30 @@ const Conversor = ({ comprar , ciudad  })=>{
                             })
                         ]
                     }),
-                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                    /*#__PURE__*/ jsx_runtime_.jsx("div", {
                         className: (conversor_module_default()).contenedorBotones,
-                        children: [
-                            /*#__PURE__*/ jsx_runtime_.jsx("button", {
-                                onClick: ()=>{
-                                    setSwitched(false);
-                                    setSelectDivisa(true);
-                                    setSelect(false);
-                                },
-                                className: switched ? `${(conversor_module_default()).botonComprar}` : `${(conversor_module_default()).botonComprar} ${(conversor_module_default()).botonActivo}`,
-                                children: "QUIERO EUROS"
-                            }),
-                            comprar ? /*#__PURE__*/ jsx_runtime_.jsx("button", {
-                                className: switched ? `${(conversor_module_default()).botonVender} ${(conversor_module_default()).botonActivo}` : ` ${(conversor_module_default()).botonVender}`,
-                                onClick: ()=>{
-                                    setSwitched(true);
-                                    setSelectDivisa(true);
-                                    setSelect(false);
-                                },
-                                children: "TENGO EUROS"
-                            }) : null
-                        ]
+                        children: comprar ? /*#__PURE__*/ (0,jsx_runtime_.jsxs)(jsx_runtime_.Fragment, {
+                            children: [
+                                /*#__PURE__*/ jsx_runtime_.jsx("button", {
+                                    onClick: ()=>{
+                                        setSwitched(false);
+                                        setSelectDivisa(true);
+                                        setSelect(false);
+                                    },
+                                    className: switched ? `${(conversor_module_default()).botonComprar}` : `${(conversor_module_default()).botonComprar} ${(conversor_module_default()).botonActivo}`,
+                                    children: "QUIERO EUROS"
+                                }),
+                                /*#__PURE__*/ jsx_runtime_.jsx("button", {
+                                    className: switched ? `${(conversor_module_default()).botonVender} ${(conversor_module_default()).botonActivo}` : ` ${(conversor_module_default()).botonVender}`,
+                                    onClick: ()=>{
+                                        setSwitched(true);
+                                        setSelectDivisa(true);
+                                        setSelect(false);
+                                    },
+                                    children: "TENGO EUROS"
+                                })
+                            ]
+                        }) : null
                     }),
                     switched ? /*#__PURE__*/ jsx_runtime_.jsx(ConversorDivisa_Vender, {
                         setValorMoneda: setValorMoneda,

@@ -64,7 +64,7 @@ const Conversor = ({ comprar, ciudad }) => {
           </div>
         </div>
         <div className={styles.contenedorBotones}>
-          <button
+          {/*<button
             onClick={() => {
               setSwitched(false);
               setSelectDivisa(true);
@@ -77,22 +77,38 @@ const Conversor = ({ comprar, ciudad }) => {
             }
           >
             QUIERO EUROS
-          </button>
+          </button>*/}
           {comprar ? (
-            <button
-              className={
-                switched
-                  ? `${styles.botonVender} ${styles.botonActivo}`
-                  : ` ${styles.botonVender}`
-              }
-              onClick={() => {
-                setSwitched(true);
-                setSelectDivisa(true);
-                setSelect(false);
-              }}
-            >
-              TENGO EUROS
-            </button>
+            <>
+              <button
+                onClick={() => {
+                  setSwitched(false);
+                  setSelectDivisa(true);
+                  setSelect(false);
+                }}
+                className={
+                  switched
+                    ? `${styles.botonComprar}`
+                    : `${styles.botonComprar} ${styles.botonActivo}`
+                }
+              >
+                QUIERO EUROS
+              </button>
+              <button
+                className={
+                  switched
+                    ? `${styles.botonVender} ${styles.botonActivo}`
+                    : ` ${styles.botonVender}`
+                }
+                onClick={() => {
+                  setSwitched(true);
+                  setSelectDivisa(true);
+                  setSelect(false);
+                }}
+              >
+                TENGO EUROS
+              </button>
+            </>
           ) : null}
         </div>
         {switched ? (
