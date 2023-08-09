@@ -17,7 +17,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(968);
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _componentes_Layout_Layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(2932);
+/* harmony import */ var _componentes_Layout_Layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6075);
 /* harmony import */ var _componentes_SeccionUno_SeccionUno__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(3381);
 /* harmony import */ var _componentes_BannerPromoUno_BannerPromoUno__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(8332);
 /* harmony import */ var _componentes_BannerPromoDos_BannerPromoDos__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(4284);
@@ -45,13 +45,13 @@ const index = ({ ciudad , tiendaGoogle , general  })=>{
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("title", {
                         children: [
                             "El mejor cambio de divisas de ",
-                            ciudad.acf.ciudad_landing,
+                            ciudad?.acf?.ciudad_landing,
                             " | Quickgold"
                         ]
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
                         name: "description",
-                        content: `La mejor tasa de cambio por tu divisa en ${ciudad.acf.ciudad_landing} Tenemos más de 30 monedas diferentes al momento y sin comisiones`
+                        content: `La mejor tasa de cambio por tu divisa en ${ciudad?.acf?.ciudad_landing} Tenemos más de 30 monedas diferentes al momento y sin comisiones`
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
                         name: "viewport",
@@ -59,15 +59,15 @@ const index = ({ ciudad , tiendaGoogle , general  })=>{
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("link", {
                         rel: "icon",
-                        href: "../../../assets/icon.png"
+                        href: "/assets/icon.png"
                     }),
-                    ciudad.acf.nonscript_chat
+                    ciudad?.acf?.nonscript_chat
                 ]
             }),
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_script__WEBPACK_IMPORTED_MODULE_8___default()), {
                 id: "livechat",
                 strategy: "afterInteractive",
-                children: ciudad.acf.script_chat
+                children: ciudad?.acf?.script_chat
             }),
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_componentes_Layout_Layout__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
                 ciudad: ciudad,
@@ -78,15 +78,15 @@ const index = ({ ciudad , tiendaGoogle , general  })=>{
                     }),
                     ciudad?.acf?.promo_activa_cambiardivisa ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_componentes_BannerPromoUno_BannerPromoUno__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
                         /*banner para cada tienda o ciudad personalizado (prioridad uno)*/ ciudad: ciudad
-                    }) : ciudad.acf.promo_activa_cambiardivisa == false && general?.acf?.promo_activa_cambiardivisa ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_componentes_BannerPromoDos_BannerPromoDos__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
+                    }) : ciudad?.acf?.promo_activa_cambiardivisa == false && general?.acf?.promo_activa_cambiardivisa ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_componentes_BannerPromoDos_BannerPromoDos__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
                         /*banner para cada ciudad de las landings solo cambiardivisas (prioridad tres)*/ general: general
-                    }) : general.acf.promo_activa_cambiardivisa == false && general?.acf?.promo_general_activa ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_componentes_BannerGeneral_BannerPromoGeneral__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {
+                    }) : general?.acf?.promo_activa_cambiardivisa == false && general?.acf?.promo_general_activa ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_componentes_BannerGeneral_BannerPromoGeneral__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {
                         /*banner general para todas las landings (prioridad dos)*/ general: general
                     }) : "",
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_componentes_SeccionTres_SeccionTres__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, {
                         ciudad: ciudad,
                         tiendaGoogle: tiendaGoogle,
-                        comprar: ciudad.acf.vende_divisa
+                        comprar: ciudad?.acf?.vende_divisa
                     })
                 ]
             })
@@ -331,7 +331,7 @@ module.exports = require("react/jsx-runtime");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [9210,2636,5675,29,1664,4298,8060,5660], () => (__webpack_exec__(5506)));
+var __webpack_exports__ = __webpack_require__.X(0, [9210,2636,5675,29,1664,4298,1581,5660], () => (__webpack_exec__(5506)));
 module.exports = __webpack_exports__;
 
 })();

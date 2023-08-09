@@ -19,7 +19,7 @@ const index = ({ ciudad, tiendaGoogle, general }) => {
           content={`La mejor tasa de cambio por tu divisa en ${ciudad.acf.ciudad_landing} Tenemos más de 30 monedas diferentes al momento y sin comisiones`}
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="../../../assets/icon.png" />
+        <link rel="icon" href="/assets/icon.png" />
         {ciudad.acf.nonscript_chat}
       </Head>
       <Script id="livechat" strategy="afterInteractive">

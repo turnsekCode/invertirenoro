@@ -21,7 +21,7 @@ const index = ({ ciudad, tiendaGoogle, general }) => {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="noindex"></meta>
-        <link rel="icon" href="../../../assets/icon.png" />
+        <link rel="icon" href="/assets/icon.png" />
         {ciudad?.acf?.nonscript_chat}
       </Head>
       <Script id="livechat" strategy="afterInteractive">
