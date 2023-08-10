@@ -83,7 +83,10 @@ const BloqueInfoTienda = ({ ciudad, tiendaGoogle }) => {
           </a>
           <a
             className={styles.botonLlamarMobile}
-            href={`https://wa.me/${(ciudad?.acf?.mobile).replace(/\s+/g, "")}`}
+            href={`https://wa.me/+34${(ciudad?.acf?.mobile).replace(
+              /\s+/g,
+              ""
+            )}`}
           >
             <WhatsAppIcon />
             {ciudad?.acf?.mobile}

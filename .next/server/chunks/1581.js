@@ -1551,7 +1551,7 @@ const BotonesLlamar = ({ ciudad  })=>{
             /*#__PURE__*/ jsx_runtime_.jsx("a", {
                 className: (botonesLlamar_module_default()).botonWhatsapp,
                 target: "_blank",
-                href: `https://wa.me/${(ciudad?.acf?.mobile).replace(/\s+/g, "")}`,
+                href: `https://wa.me/+34${(ciudad?.acf?.mobile).replace(/\s+/g, "")}`,
                 children: "WHATSAPP"
             })
         ]

@@ -196,7 +196,7 @@ const BloqueInfoTienda = ({ ciudad , tiendaGoogle  })=>{
                             }),
                             /*#__PURE__*/ (0,jsx_runtime_.jsxs)("a", {
                                 className: (bloqueInfoTienda_module_default()).botonLlamarMobile,
-                                href: `https://wa.me/${(ciudad?.acf?.mobile).replace(/\s+/g, "")}`,
+                                href: `https://wa.me/+34${(ciudad?.acf?.mobile).replace(/\s+/g, "")}`,
                                 children: [
                                     /*#__PURE__*/ jsx_runtime_.jsx((WhatsApp_default()), {}),
                                     ciudad?.acf?.mobile
