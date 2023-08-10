@@ -23,9 +23,7 @@ const index = ({ ciudad, tiendaGoogle, general }) => {
         <link rel="icon" href="/assets/icon.png" />
         {ciudad?.acf?.nonscript_chat}
       </Head>
-      <Script id="livechat" strategy="afterInteractive">
-        {ciudad?.acf?.script_chat}
-      </Script>
+      <Script id="livechat">{ciudad?.acf?.script_chat}</Script>
 
       <Layout ciudad={ciudad}>
         <SeccionUno

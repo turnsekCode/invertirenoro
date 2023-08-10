@@ -66,7 +66,6 @@ const index = ({ ciudad , tiendaGoogle , general  })=>{
             }),
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_script__WEBPACK_IMPORTED_MODULE_8___default()), {
                 id: "livechat",
-                strategy: "afterInteractive",
                 children: ciudad?.acf?.script_chat
             }),
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_componentes_Layout_Layout__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
