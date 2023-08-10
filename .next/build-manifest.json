@@ -5,8 +5,8 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/X5cwAeT0Or1H7o-b9MSdZ/_buildManifest.js",
-    "static/X5cwAeT0Or1H7o-b9MSdZ/_ssgManifest.js"
+    "static/5XxXdrcC_ji9Cx7dboHv1/_buildManifest.js",
+    "static/5XxXdrcC_ji9Cx7dboHv1/_ssgManifest.js"
   ],
   "rootMainFiles": [],
   "pages": {
@@ -765,7 +765,7 @@
       "static/css/587bea9b929de108.css",
       "static/chunks/1581-60483e4884c35da5.js",
       "static/css/d3deb77ba4fecf60.css",
-      "static/chunks/pages/tirsodemolina-4cec80d4e6e8d7da.js"
+      "static/chunks/pages/tirsodemolina-3d1de77e4e263822.js"
     ],
     "/urzaiz": [
       "static/chunks/webpack-10311436baca1d61.js",
