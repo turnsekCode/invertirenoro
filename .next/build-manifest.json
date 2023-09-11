@@ -5,8 +5,8 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/U0UHfQ986jDe8DKcCrLb0/_buildManifest.js",
-    "static/U0UHfQ986jDe8DKcCrLb0/_ssgManifest.js"
+    "static/PMmE83dBl0iTBEb9INVe5/_buildManifest.js",
+    "static/PMmE83dBl0iTBEb9INVe5/_ssgManifest.js"
   ],
   "rootMainFiles": [],
   "pages": {
@@ -341,6 +341,17 @@
       "static/chunks/1581-64b5b116fa66866f.js",
       "static/css/d3deb77ba4fecf60.css",
       "static/chunks/pages/elclot-e7cc6beefc01c5c9.js"
+    ],
+    "/floridablanca": [
+      "static/chunks/webpack-10311436baca1d61.js",
+      "static/chunks/framework-3671d8951bf44e4e.js",
+      "static/chunks/main-5113a160e7884232.js",
+      "static/chunks/959-e2d6a077ca8484be.js",
+      "static/chunks/6872-fa2f68eef5ce162b.js",
+      "static/css/587bea9b929de108.css",
+      "static/chunks/1581-64b5b116fa66866f.js",
+      "static/css/d3deb77ba4fecf60.css",
+      "static/chunks/pages/floridablanca-e2f84d5c5ace9272.js"
     ],
     "/getafe": [
       "static/chunks/webpack-10311436baca1d61.js",
