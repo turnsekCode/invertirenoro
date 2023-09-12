@@ -62,9 +62,9 @@ const Vender = ({
           <h6>
             Conversor <span></span> de divisa
           </h6>
-          <p className={styles.tituloDivisaHabitual}>Divisas más habituales</p>
+          {/*<p className={styles.tituloDivisaHabitual}>Divisas más habituales</p>*/}
         </div>
-        <div className={styles.divisasHabituales}>
+        {/*<div className={styles.divisasHabituales}>
           <div
             className={styles.dolar}
             onClick={(e) => {
@@ -295,7 +295,7 @@ const Vender = ({
                 </p>
               </div>
             </div>
-          )*/}
+          )
           <div
             className={styles.libra}
             onClick={(e) => {
@@ -373,7 +373,7 @@ const Vender = ({
               </p>
             </div>
           </div>
-        </div>
+        </div>*/}
       </div>
       <div className={styles.contenedorInputSuperior}>
         <div className={styles.bloqueIzqInput}>

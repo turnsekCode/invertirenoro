@@ -95,7 +95,7 @@ const BloqueInfoTienda = ({ ciudad, tiendaGoogle }) => {
         <div className={styles.bloqueDer}>
           <p className={styles.tituloHorario}>Horario Habitual:</p>
           <ul className={styles.horario}>
-            {horario.map((dia, i) => (
+            {horario?.map((dia, i) => (
               <li key={i}>{dia}</li>
             ))}
           </ul>

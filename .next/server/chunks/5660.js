@@ -213,7 +213,7 @@ const BloqueInfoTienda = ({ ciudad , tiendaGoogle  })=>{
                             }),
                             /*#__PURE__*/ jsx_runtime_.jsx("ul", {
                                 className: (bloqueInfoTienda_module_default()).horario,
-                                children: horario.map((dia, i)=>/*#__PURE__*/ jsx_runtime_.jsx("li", {
+                                children: horario?.map((dia, i)=>/*#__PURE__*/ jsx_runtime_.jsx("li", {
                                         children: dia
                                     }, i))
                             })
