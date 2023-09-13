@@ -49,6 +49,23 @@ const index = ({ ciudad , general , tienda1 , tienda2 , tienda3 , tienda4 , tien
             foto3: tienda1?.acf?.foto_3,
             estrellas: tienda1Google?.result?.rating,
             resenas: tienda1Google?.result?.user_ratings_total
+        },
+        {
+            id: 2,
+            nombreTienda: tienda2?.acf?.nombre_tienda,
+            idTienda: tienda2?.acf?.tienda,
+            telefono: ciudad?.acf?.telefono,
+            mobil: tienda2?.acf?.mobile,
+            enlacemobil: tienda2?.acf?.mobile,
+            direccion: tienda2Google?.result?.formatted_address,
+            mapa: tienda2?.acf?.mapa_landing,
+            enlace_resenas: tienda2?.acf?.enlace_resenas,
+            escribir_resenas: tienda2?.acf?.escribir_resenas_landings,
+            foto1: tienda2?.acf?.foto_1,
+            foto2: tienda2?.acf?.foto_2,
+            foto3: tienda2?.acf?.foto_3,
+            estrellas: tienda2Google?.result?.rating,
+            resenas: tienda2Google?.result?.user_ratings_total
         }
     ];
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
@@ -58,13 +75,13 @@ const index = ({ ciudad , general , tienda1 , tienda2 , tienda3 , tienda4 , tien
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("title", {
                         children: [
                             "El mejor cambio de divisas de ",
-                            ciudad.acf.ciudad_landing,
+                            ciudad?.acf?.ciudad_landing,
                             " | Quickgold"
                         ]
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
                         name: "description",
-                        content: `La mejor tasa de cambio por tu divisa en ${ciudad.acf.ciudad_landing} Tenemos más de 30 monedas diferentes al momento y sin comisiones`
+                        content: `La mejor tasa de cambio por tu divisa en ${ciudad?.acf?.ciudad_landing} Tenemos más de 30 monedas diferentes al momento y sin comisiones`
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
                         name: "viewport",
@@ -80,14 +97,14 @@ const index = ({ ciudad , general , tienda1 , tienda2 , tienda3 , tienda4 , tien
                 ciudad: ciudad,
                 children: [
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_componentes_SeccionUno_SeccionUno__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
-                        nombreCiudad: ciudad.acf.ciudad_landing,
-                        telefono: ciudad.acf.telefono
+                        nombreCiudad: ciudad?.acf?.ciudad_landing,
+                        telefono: ciudad?.acf?.telefono
                     }),
                     ciudad?.acf?.promo_activa_cambiardivisa ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_componentes_BannerPromoUno_BannerPromoUno__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
                         /*banner para cada tienda o ciudad personalizado (prioridad uno)*/ ciudad: ciudad
-                    }) : ciudad.acf.promo_activa_cambiardivisa == false && general?.acf?.promo_activa_cambiardivisa ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_componentes_BannerPromoDos_BannerPromoDos__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {
+                    }) : ciudad?.acf?.promo_activa_cambiardivisa == false && general?.acf?.promo_activa_cambiardivisa ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_componentes_BannerPromoDos_BannerPromoDos__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {
                         /*banner para cada ciudad de las landings solo cambiardivisas (prioridad tres)*/ general: general
-                    }) : general.acf.promo_activa_cambiardivisa == false && general?.acf?.promo_general_activa ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_componentes_BannerGeneral_BannerPromoGeneral__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, {
+                    }) : general?.acf?.promo_activa_cambiardivisa == false && general?.acf?.promo_general_activa ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_componentes_BannerGeneral_BannerPromoGeneral__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, {
                         /*banner general para todas las landings (prioridad dos)*/ general: general
                     }) : "",
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_componentes_SeccionDos_SeccionDos__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
@@ -105,6 +122,7 @@ const idPaginaWp = "8960";
 const apiGeneral = "13848";
 //variables id de tiendas de la api de wordpress
 const id1 = "8973";
+const id2 = "17006";
 async function getStaticProps() {
     //datos de los campos personalizados de la ciudad
     const madrid = await fetch(`https://quickgold.es/wp-json/acf/v3/pages/${idPaginaWp}`);
@@ -115,17 +133,24 @@ async function getStaticProps() {
     //datos de los campos personalizados de tiendas
     const res1 = await fetch(`https://quickgold.es/wp-json/acf/v3/pages/${id1}`);
     const tienda1 = await res1.json();
+    const res2 = await fetch(`https://quickgold.es/wp-json/acf/v3/pages/${id2}`);
+    const tienda2 = await res2.json();
     //fin datos de los campos personalizados de tiendas
     //datos de google para tiendas
     const tienda_1 = tienda1.acf?.tienda;
+    const tienda_2 = tienda2.acf?.tienda;
     const google1 = await fetch(`https://quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_1}.txt`);
     const tienda1Google = await google1.json();
+    const google2 = await fetch(`https://quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_2}.txt`);
+    const tienda2Google = await google2.json();
     return {
         props: {
             ciudad,
             general,
             tienda1,
-            tienda1Google
+            tienda1Google,
+            tienda2,
+            tienda2Google
         },
         revalidate: 1
     };

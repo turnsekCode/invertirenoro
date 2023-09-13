@@ -5,8 +5,8 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/w297cp0cqo_tyEICZ1Dgl/_buildManifest.js",
-    "static/w297cp0cqo_tyEICZ1Dgl/_ssgManifest.js"
+    "static/NVfcQNdx24q8ugX9jVgaj/_buildManifest.js",
+    "static/NVfcQNdx24q8ugX9jVgaj/_ssgManifest.js"
   ],
   "rootMainFiles": [],
   "pages": {
@@ -532,7 +532,7 @@
       "static/css/f28219e1a7fc4d3e.css",
       "static/chunks/1581-35dee2c157182f30.js",
       "static/css/8cc1cfa9c43577cf.css",
-      "static/chunks/pages/murcia-71e48db74e12a5d3.js"
+      "static/chunks/pages/murcia-acd70cc3ebc82432.js"
     ],
     "/nervion": [
       "static/chunks/webpack-10311436baca1d61.js",
