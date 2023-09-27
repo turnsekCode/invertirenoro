@@ -25,7 +25,7 @@ const index = ({ ciudad, tiendaGoogle, general }) => {
       </Head>
       <Script id="livechat">{ciudad?.acf?.script_chat}</Script>
 
-      <Layout ciudad={ciudad}>
+      <Layout ciudad={ciudad} telefono={ciudad?.acf?.telefono}>
         <SeccionUno
           nombreCiudad={ciudad?.acf?.ciudad_landing}
           telefono={ciudad?.acf?.telefono}
@@ -58,6 +58,7 @@ const index = ({ ciudad, tiendaGoogle, general }) => {
           ciudad={ciudad}
           tiendaGoogle={tiendaGoogle}
           comprar={ciudad?.acf?.vende_divisa}
+          telefono={ciudad?.acf?.telefono}
         />
       </Layout>
     </>

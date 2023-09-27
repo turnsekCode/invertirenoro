@@ -37,7 +37,7 @@ const index = ({ ciudad , general , tienda1 , tienda2 , tienda3 , tienda4 , tien
             id: 1,
             nombreTienda: tienda1?.acf?.nombre_tienda,
             idTienda: tienda1?.acf?.tienda,
-            telefono: ciudad?.acf?.telefono,
+            telefono: tienda1?.acf?.telefono,
             mobil: tienda1?.acf?.mobile,
             enlacemobil: tienda1?.acf?.mobile,
             direccion: tienda1Google?.result?.formatted_address,
@@ -54,7 +54,7 @@ const index = ({ ciudad , general , tienda1 , tienda2 , tienda3 , tienda4 , tien
             id: 2,
             nombreTienda: tienda2?.acf?.nombre_tienda,
             idTienda: tienda2?.acf?.tienda,
-            telefono: ciudad?.acf?.telefono,
+            telefono: tienda2?.acf?.telefono,
             mobil: tienda2?.acf?.mobile,
             enlacemobil: tienda2?.acf?.mobile,
             direccion: tienda2Google?.result?.formatted_address,
@@ -71,7 +71,7 @@ const index = ({ ciudad , general , tienda1 , tienda2 , tienda3 , tienda4 , tien
             id: 3,
             nombreTienda: tienda3?.acf?.nombre_tienda,
             idTienda: tienda3?.acf?.tienda,
-            telefono: ciudad?.acf?.telefono,
+            telefono: tienda3?.acf?.telefono,
             mobil: tienda3?.acf?.mobile,
             enlacemobil: tienda3?.acf?.mobile,
             direccion: tienda3Google?.result?.formatted_address,
@@ -88,7 +88,7 @@ const index = ({ ciudad , general , tienda1 , tienda2 , tienda3 , tienda4 , tien
             id: 4,
             nombreTienda: tienda4?.acf?.nombre_tienda,
             idTienda: tienda4?.acf?.tienda,
-            telefono: ciudad?.acf?.telefono,
+            telefono: tienda4?.acf?.telefono,
             mobil: tienda4?.acf?.mobile,
             enlacemobil: tienda4?.acf?.mobile,
             direccion: tienda4Google?.result?.formatted_address,
@@ -105,7 +105,7 @@ const index = ({ ciudad , general , tienda1 , tienda2 , tienda3 , tienda4 , tien
             id: 5,
             nombreTienda: tienda5?.acf?.nombre_tienda,
             idTienda: tienda5?.acf?.tienda,
-            telefono: ciudad?.acf?.telefono,
+            telefono: tienda5?.acf?.telefono,
             mobil: tienda5?.acf?.mobile,
             enlacemobil: tienda5?.acf?.mobile,
             direccion: tienda5Google?.result?.formatted_address,
@@ -146,6 +146,7 @@ const index = ({ ciudad , general , tienda1 , tienda2 , tienda3 , tienda4 , tien
             }),
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_componentes_Layout_Layout__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
                 ciudad: ciudad,
+                telefono: ciudad?.acf?.telefono,
                 children: [
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_componentes_SeccionUno_SeccionUno__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
                         nombreCiudad: ciudad?.acf?.ciudad_landing,
@@ -160,8 +161,9 @@ const index = ({ ciudad , general , tienda1 , tienda2 , tienda3 , tienda4 , tien
                     }) : "",
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_componentes_SeccionDos_SeccionDos__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
                         ciudad: ciudad,
-                        comprar: ciudad.acf.vende_divisa,
-                        arrayTiendas: arrayTiendas
+                        comprar: ciudad?.acf?.vende_divisa,
+                        arrayTiendas: arrayTiendas,
+                        telefono: ciudad?.acf?.telefono
                     })
                 ]
             })

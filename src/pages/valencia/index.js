@@ -39,7 +39,7 @@ const index = ({
       id: 1,
       nombreTienda: tienda1?.acf?.nombre_tienda,
       idTienda: tienda1?.acf?.tienda,
-      telefono: ciudad?.acf?.telefono,
+      telefono: tienda1?.acf?.telefono,
       mobil: tienda1?.acf?.mobile,
       enlacemobil: tienda1?.acf?.mobile,
       direccion: tienda1Google?.result?.formatted_address,
@@ -56,7 +56,7 @@ const index = ({
       id: 2,
       nombreTienda: tienda2?.acf?.nombre_tienda,
       idTienda: tienda2?.acf?.tienda,
-      telefono: ciudad?.acf?.telefono,
+      telefono: tienda2?.acf?.telefono,
       mobil: tienda2?.acf?.mobile,
       enlacemobil: tienda2?.acf?.mobile,
       direccion: tienda2Google?.result?.formatted_address,
@@ -73,7 +73,7 @@ const index = ({
       id: 3,
       nombreTienda: tienda3?.acf?.nombre_tienda,
       idTienda: tienda3?.acf?.tienda,
-      telefono: ciudad?.acf?.telefono,
+      telefono: tienda3?.acf?.telefono,
       mobil: tienda3?.acf?.mobile,
       enlacemobil: tienda3?.acf?.mobile,
       direccion: tienda3Google?.result?.formatted_address,
@@ -90,7 +90,7 @@ const index = ({
       id: 4,
       nombreTienda: tienda4?.acf?.nombre_tienda,
       idTienda: tienda4?.acf?.tienda,
-      telefono: ciudad?.acf?.telefono,
+      telefono: tienda4?.acf?.telefono,
       mobil: tienda4?.acf?.mobile,
       enlacemobil: tienda4?.acf?.mobile,
       direccion: tienda4Google?.result?.formatted_address,
@@ -107,7 +107,7 @@ const index = ({
       id: 5,
       nombreTienda: tienda5?.acf?.nombre_tienda,
       idTienda: tienda5?.acf?.tienda,
-      telefono: ciudad?.acf?.telefono,
+      telefono: tienda5?.acf?.telefono,
       mobil: tienda5?.acf?.mobile,
       enlacemobil: tienda5?.acf?.mobile,
       direccion: tienda5Google?.result?.formatted_address,
@@ -125,11 +125,12 @@ const index = ({
     <>
       <Head>
         <title>
-          El mejor cambio de divisas de {ciudad.acf.ciudad_landing} | Quickgold
+          El mejor cambio de divisas de {ciudad?.acf?.ciudad_landing} |
+          Quickgold
         </title>
         <meta
           name="description"
-          content={`La mejor tasa de cambio por tu divisa en ${ciudad.acf.ciudad_landing} Tenemos más de 30 monedas diferentes al momento y sin comisiones`}
+          content={`La mejor tasa de cambio por tu divisa en ${ciudad?.acf?.ciudad_landing} Tenemos más de 30 monedas diferentes al momento y sin comisiones`}
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/assets/icon.png" />
@@ -138,10 +139,10 @@ const index = ({
       <Script id="livechat" strategy="afterInteractive">
         {ciudad?.acf?.script_chat}
       </Script>
-      <Layout ciudad={ciudad}>
+      <Layout ciudad={ciudad} telefono={ciudad?.acf?.telefono}>
         <SeccionUno
-          nombreCiudad={ciudad.acf.ciudad_landing}
-          telefono={ciudad.acf.telefono}
+          nombreCiudad={ciudad?.acf?.ciudad_landing}
+          telefono={ciudad?.acf?.telefono}
         />
         {ciudad?.acf?.promo_activa_cambiardivisa ? (
           <BannerPromoUno
@@ -149,14 +150,14 @@ const index = ({
               ciudad
             }
           />
-        ) : ciudad.acf.promo_activa_cambiardivisa == false &&
+        ) : ciudad?.acf?.promo_activa_cambiardivisa == false &&
           general?.acf?.promo_activa_cambiardivisa ? (
           <BannerPromoDos
             /*banner para cada ciudad de las landings solo cambiardivisas (prioridad tres)*/ general={
               general
             }
           />
-        ) : general.acf.promo_activa_cambiardivisa == false &&
+        ) : general?.acf?.promo_activa_cambiardivisa == false &&
           general?.acf?.promo_general_activa ? (
           <BannerPromoGeneral
             /*banner general para todas las landings (prioridad dos)*/ general={
@@ -169,8 +170,9 @@ const index = ({
 
         <SeccionDos
           ciudad={ciudad}
-          comprar={ciudad.acf.vende_divisa}
+          comprar={ciudad?.acf?.vende_divisa}
           arrayTiendas={arrayTiendas}
+          telefono={ciudad?.acf?.telefono}
         />
       </Layout>
     </>

@@ -6,19 +6,13 @@ import BannerPromoUno from "../../componentes/BannerPromoUno/BannerPromoUno";
 import BannerPromoDos from "../../componentes/BannerPromoDos/BannerPromoDos";
 import BannerPromoGeneral from "@/componentes/BannerGeneral/BannerPromoGeneral";
 
-const index = ({
-  ciudad,
-  general,
-
-  tienda1,
-  tienda1Google,
-}) => {
+const index = ({ ciudad, general, tienda1, tienda1Google }) => {
   const arrayTiendas = [
     {
       id: 1,
       nombreTienda: tienda1?.acf?.nombre_tienda,
       idTienda: tienda1?.acf?.tienda,
-      telefono: ciudad?.acf?.telefono,
+      telefono: tienda1?.acf?.telefono,
       mobil: tienda1?.acf?.mobile,
       enlacemobil: tienda1?.acf?.mobile,
       direccion: tienda1Google?.result?.formatted_address,
@@ -36,19 +30,20 @@ const index = ({
     <>
       <Head>
         <title>
-          El mejor cambio de divisas de {ciudad.acf.ciudad_landing} | Quickgold
+          El mejor cambio de divisas de {ciudad?.acf?.ciudad_landing} |
+          Quickgold
         </title>
         <meta
           name="description"
-          content={`La mejor tasa de cambio por tu divisa en ${ciudad.acf.ciudad_landing} Tenemos más de 30 monedas diferentes al momento y sin comisiones`}
+          content={`La mejor tasa de cambio por tu divisa en ${ciudad?.acf?.ciudad_landing} Tenemos más de 30 monedas diferentes al momento y sin comisiones`}
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/assets/icon.png" />
       </Head>
-      <Layout ciudad={ciudad}>
+      <Layout ciudad={ciudad} telefono={ciudad?.acf?.telefono}>
         <SeccionUno
-          nombreCiudad={ciudad.acf.ciudad_landing}
-          telefono={ciudad.acf.telefono}
+          nombreCiudad={ciudad?.acf?.ciudad_landing}
+          telefono={ciudad?.acf?.telefono}
         />
         {ciudad?.acf?.promo_activa_cambiardivisa ? (
           <BannerPromoUno
@@ -56,14 +51,14 @@ const index = ({
               ciudad
             }
           />
-        ) : ciudad.acf.promo_activa_cambiardivisa == false &&
+        ) : ciudad?.acf?.promo_activa_cambiardivisa == false &&
           general?.acf?.promo_activa_cambiardivisa ? (
           <BannerPromoDos
             /*banner para cada ciudad de las landings solo cambiardivisas (prioridad tres)*/ general={
               general
             }
           />
-        ) : general.acf.promo_activa_cambiardivisa == false &&
+        ) : general?.acf?.promo_activa_cambiardivisa == false &&
           general?.acf?.promo_general_activa ? (
           <BannerPromoGeneral
             /*banner general para todas las landings (prioridad dos)*/ general={
@@ -76,8 +71,9 @@ const index = ({
 
         <SeccionDos
           ciudad={ciudad}
-          comprar={ciudad.acf.vende_divisa}
+          comprar={ciudad?.acf?.vende_divisa}
           arrayTiendas={arrayTiendas}
+          telefono={ciudad?.acf?.telefono}
         />
       </Layout>
     </>

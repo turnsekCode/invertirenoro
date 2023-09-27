@@ -45,13 +45,13 @@ const index = ({ ciudad , tiendaGoogle , general  })=>{
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("title", {
                         children: [
                             "El mejor cambio de divisas de ",
-                            ciudad.acf.ciudad_landing,
+                            ciudad?.acf?.ciudad_landing,
                             " | Quickgold"
                         ]
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
                         name: "description",
-                        content: `La mejor tasa de cambio por tu divisa en ${ciudad.acf.ciudad_landing} Tenemos más de 30 monedas diferentes al momento y sin comisiones`
+                        content: `La mejor tasa de cambio por tu divisa en ${ciudad?.acf?.ciudad_landing} Tenemos más de 30 monedas diferentes al momento y sin comisiones`
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
                         name: "viewport",
@@ -61,32 +61,34 @@ const index = ({ ciudad , tiendaGoogle , general  })=>{
                         rel: "icon",
                         href: "/assets/icon.png"
                     }),
-                    ciudad.acf.nonscript_chat
+                    ciudad?.acf?.nonscript_chat
                 ]
             }),
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_script__WEBPACK_IMPORTED_MODULE_8___default()), {
                 id: "livechat",
                 strategy: "afterInteractive",
-                children: ciudad.acf.script_chat
+                children: ciudad?.acf?.script_chat
             }),
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_componentes_Layout_Layout__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
                 ciudad: ciudad,
+                telefono: ciudad?.acf?.telefono,
                 children: [
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_componentes_SeccionUno_SeccionUno__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
-                        nombreCiudad: ciudad.acf.ciudad_landing,
-                        telefono: ciudad.acf.telefono
+                        nombreCiudad: ciudad?.acf?.ciudad_landing,
+                        telefono: ciudad?.acf?.telefono
                     }),
                     ciudad?.acf?.promo_activa_cambiardivisa ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_componentes_BannerPromoUno_BannerPromoUno__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
                         /*banner para cada tienda o ciudad personalizado (prioridad uno)*/ ciudad: ciudad
-                    }) : ciudad.acf.promo_activa_cambiardivisa == false && general?.acf?.promo_activa_cambiardivisa ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_componentes_BannerPromoDos_BannerPromoDos__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
+                    }) : ciudad?.acf?.promo_activa_cambiardivisa == false && general?.acf?.promo_activa_cambiardivisa ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_componentes_BannerPromoDos_BannerPromoDos__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
                         /*banner para cada ciudad de las landings solo cambiardivisas (prioridad tres)*/ general: general
-                    }) : general.acf.promo_activa_cambiardivisa == false && general?.acf?.promo_general_activa ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_componentes_BannerGeneral_BannerPromoGeneral__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {
+                    }) : general?.acf?.promo_activa_cambiardivisa == false && general?.acf?.promo_general_activa ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_componentes_BannerGeneral_BannerPromoGeneral__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {
                         /*banner general para todas las landings (prioridad dos)*/ general: general
                     }) : "",
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_componentes_SeccionTres_SeccionTres__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z, {
                         ciudad: ciudad,
                         tiendaGoogle: tiendaGoogle,
-                        comprar: ciudad.acf.vende_divisa
+                        comprar: ciudad?.acf?.vende_divisa,
+                        telefono: ciudad?.acf?.telefono
                     })
                 ]
             })

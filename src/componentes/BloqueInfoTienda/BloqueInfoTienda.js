@@ -32,7 +32,7 @@ const BloqueInfoTienda = ({ ciudad, tiendaGoogle }) => {
       <div className={styles.bloqueResenas}>
         <div className={styles.contenedorLogoGoogle}>
           <Image
-            src="/../public/assets/GOOGLE.png"
+            src="/assets/GOOGLE.png"
             width={29}
             height={30}
             alt="Logo google"

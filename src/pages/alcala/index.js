@@ -12,24 +12,25 @@ const index = ({ ciudad, tiendaGoogle, general }) => {
     <>
       <Head>
         <title>
-          El mejor cambio de divisas de {ciudad.acf.ciudad_landing} | Quickgold
+          El mejor cambio de divisas de {ciudad?.acf?.ciudad_landing} |
+          Quickgold
         </title>
         <meta
           name="description"
-          content={`La mejor tasa de cambio por tu divisa en ${ciudad.acf.ciudad_landing} Tenemos más de 30 monedas diferentes al momento y sin comisiones`}
+          content={`La mejor tasa de cambio por tu divisa en ${ciudad?.acf?.ciudad_landing} Tenemos más de 30 monedas diferentes al momento y sin comisiones`}
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/assets/icon.png" />
-        {ciudad.acf.nonscript_chat}
+        {ciudad?.acf?.nonscript_chat}
       </Head>
       <Script id="livechat" strategy="afterInteractive">
-        {ciudad.acf.script_chat}
+        {ciudad?.acf?.script_chat}
       </Script>
 
-      <Layout ciudad={ciudad}>
+      <Layout ciudad={ciudad} telefono={ciudad?.acf?.telefono}>
         <SeccionUno
-          nombreCiudad={ciudad.acf.ciudad_landing}
-          telefono={ciudad.acf.telefono}
+          nombreCiudad={ciudad?.acf?.ciudad_landing}
+          telefono={ciudad?.acf?.telefono}
         />
         {ciudad?.acf?.promo_activa_cambiardivisa ? (
           <BannerPromoUno
@@ -37,14 +38,14 @@ const index = ({ ciudad, tiendaGoogle, general }) => {
               ciudad
             }
           />
-        ) : ciudad.acf.promo_activa_cambiardivisa == false &&
+        ) : ciudad?.acf?.promo_activa_cambiardivisa == false &&
           general?.acf?.promo_activa_cambiardivisa ? (
           <BannerPromoDos
             /*banner para cada ciudad de las landings solo cambiardivisas (prioridad tres)*/ general={
               general
             }
           />
-        ) : general.acf.promo_activa_cambiardivisa == false &&
+        ) : general?.acf?.promo_activa_cambiardivisa == false &&
           general?.acf?.promo_general_activa ? (
           <BannerPromoGeneral
             /*banner general para todas las landings (prioridad dos)*/ general={
@@ -58,7 +59,8 @@ const index = ({ ciudad, tiendaGoogle, general }) => {
         <SeccionTres
           ciudad={ciudad}
           tiendaGoogle={tiendaGoogle}
-          comprar={ciudad.acf.vende_divisa}
+          comprar={ciudad?.acf?.vende_divisa}
+          telefono={ciudad?.acf?.telefono}
         />
       </Layout>
     </>

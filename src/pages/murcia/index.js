@@ -5,6 +5,7 @@ import SeccionUno from "@/componentes/SeccionUno/SeccionUno";
 import BannerPromoUno from "../../componentes/BannerPromoUno/BannerPromoUno";
 import BannerPromoDos from "../../componentes/BannerPromoDos/BannerPromoDos";
 import BannerPromoGeneral from "@/componentes/BannerGeneral/BannerPromoGeneral";
+import Script from "next/script";
 
 const index = ({
   ciudad,
@@ -38,7 +39,8 @@ const index = ({
       id: 1,
       nombreTienda: tienda1?.acf?.nombre_tienda,
       idTienda: tienda1?.acf?.tienda,
-      telefono: ciudad?.acf?.telefono,
+      //telefono: ciudad?.acf?.telefono,
+      telefono: "968 204 201",
       mobil: tienda1?.acf?.mobile,
       enlacemobil: tienda1?.acf?.mobile,
       direccion: tienda1Google?.result?.formatted_address,
@@ -55,7 +57,8 @@ const index = ({
       id: 2,
       nombreTienda: tienda2?.acf?.nombre_tienda,
       idTienda: tienda2?.acf?.tienda,
-      telefono: ciudad?.acf?.telefono,
+      //telefono: ciudad?.acf?.telefono,
+      telefono: "968 416 924",
       mobil: tienda2?.acf?.mobile,
       enlacemobil: tienda2?.acf?.mobile,
       direccion: tienda2Google?.result?.formatted_address,
@@ -82,11 +85,16 @@ const index = ({
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/assets/icon.png" />
+        {ciudad?.acf?.nonscript_chat}
       </Head>
-      <Layout ciudad={ciudad}>
+      <Script id="livechat" strategy="afterInteractive">
+        {ciudad?.acf?.script_chat}
+      </Script>
+      <Layout ciudad={ciudad} telefono="968 416 924">
         <SeccionUno
           nombreCiudad={ciudad?.acf?.ciudad_landing}
-          telefono={ciudad?.acf?.telefono}
+          //telefono={ciudad?.acf?.telefono}
+          telefono="968 416 924"
         />
         {ciudad?.acf?.promo_activa_cambiardivisa ? (
           <BannerPromoUno
@@ -114,8 +122,10 @@ const index = ({
 
         <SeccionDos
           ciudad={ciudad}
-          comprar={ciudad.acf.vende_divisa}
+          comprar={ciudad?.acf?.vende_divisa}
           arrayTiendas={arrayTiendas}
+          telefono="968 416 924"
+          //telefono={ciudad?.acf?.telefono}
         />
       </Layout>
     </>

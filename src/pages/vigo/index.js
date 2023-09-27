@@ -38,7 +38,7 @@ const index = ({
       id: 1,
       nombreTienda: tienda1?.acf?.nombre_tienda,
       idTienda: tienda1?.acf?.tienda,
-      telefono: ciudad?.acf?.telefono,
+      telefono: tienda1?.acf?.telefono,
       mobil: tienda1?.acf?.mobile,
       enlacemobil: tienda1?.acf?.mobile,
       direccion: tienda1Google?.result?.formatted_address,
@@ -65,7 +65,7 @@ const index = ({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/assets/icon.png" />
       </Head>
-      <Layout ciudad={ciudad}>
+      <Layout ciudad={ciudad} telefono={ciudad?.acf?.telefono}>
         <SeccionUno
           nombreCiudad={ciudad.acf.ciudad_landing}
           telefono={ciudad.acf.telefono}
@@ -98,6 +98,7 @@ const index = ({
           ciudad={ciudad}
           comprar={ciudad.acf.vende_divisa}
           arrayTiendas={arrayTiendas}
+          telefono={ciudad?.acf?.telefono}
         />
       </Layout>
     </>

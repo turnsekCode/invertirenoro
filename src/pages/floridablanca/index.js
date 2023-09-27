@@ -58,6 +58,7 @@ const index = ({ ciudad, tiendaGoogle, general }) => {
           ciudad={ciudad}
           tiendaGoogle={tiendaGoogle}
           comprar={ciudad?.acf?.vende_divisa}
+          telefono={ciudad?.acf?.telefono}
         />
       </Layout>
     </>

@@ -178,7 +178,7 @@ const ListadoTiendas = ({ ciudad , arrayTiendas  })=>{
                                                 className: (listadoTienda_module_default()).contenedorLogoGoogle,
                                                 children: [
                                                     /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
-                                                        src: "/../public/assets/GOOGLE.png",
+                                                        src: "/assets/GOOGLE.png",
                                                         width: 29,
                                                         height: 30,
                                                         alt: "Logo google"
@@ -283,17 +283,19 @@ var seccionDos_module_default = /*#__PURE__*/__webpack_require__.n(seccionDos_mo
 
 
 
-const SeccionDos = ({ ciudad , comprar , arrayTiendas  })=>{
+const SeccionDos = ({ ciudad , comprar , arrayTiendas , telefono  })=>{
     return /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
         className: (seccionDos_module_default()).contenedorSeccionDos,
         children: [
             /*#__PURE__*/ jsx_runtime_.jsx(Conversor/* default */.Z, {
                 comprar: comprar,
-                ciudad: ciudad
+                ciudad: ciudad,
+                telefono: telefono
             }),
             /*#__PURE__*/ jsx_runtime_.jsx(ListadoTiendas_ListadoTiendas, {
                 ciudad: ciudad,
-                arrayTiendas: arrayTiendas
+                arrayTiendas: arrayTiendas,
+                telefono: telefono
             })
         ]
     });

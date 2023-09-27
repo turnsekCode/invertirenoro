@@ -5,7 +5,7 @@ import logoDivisa from "../../../public/assets/logodivisa.png";
 import Vender from "../ConversorDivisa/Vender";
 import Comprar from "../ConversorDivisa/Comprar";
 
-const Conversor = ({ comprar, ciudad }) => {
+const Conversor = ({ comprar, ciudad, telefono }) => {
   const [switched, setSwitched] = useState(null);
   const [valorMoneda, setValorMoneda] = useState("0");
   const [DataAcronimo, setAcronimo] = useState("");
@@ -113,6 +113,7 @@ const Conversor = ({ comprar, ciudad }) => {
         </div>
         {switched ? (
           <Vender
+            telefono={telefono}
             setValorMoneda={setValorMoneda}
             setAcronimo={setAcronimo}
             valorMoneda={valorMoneda}
@@ -128,6 +129,7 @@ const Conversor = ({ comprar, ciudad }) => {
           />
         ) : (
           <Comprar
+            telefono={telefono}
             setValorMoneda={setValorMoneda}
             setAcronimo={setAcronimo}
             valorMoneda={valorMoneda}

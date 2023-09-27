@@ -327,8 +327,8 @@ var ImportExport_default = /*#__PURE__*/__webpack_require__.n(ImportExport_);
 
 //import { useFetchData } from "../../utilities/DataTiendas";
 /*El dia que y no haya dolar de cotizacion reemplazar donde el data-acronimo "USD" por este codigo {data[1]?.Productos[0].Acronimo}
-y volver habilitar el usd en los map y comentar el div que pinta el precio del dolar de cotizacion*/ const Vender = ({ valorMoneda , DataAcronimo , setAcronimo , setValorMoneda , setSelectDivisa , selectDivisa , setActiveId , ciudad , replace , setUsdGoogleActivo , select , setSelect  })=>{
-    const nombreCiudad = ciudad.acf.ciudad_oro;
+y volver habilitar el usd en los map y comentar el div que pinta el precio del dolar de cotizacion*/ const Vender = ({ valorMoneda , DataAcronimo , setAcronimo , setValorMoneda , setSelectDivisa , selectDivisa , setActiveId , ciudad , replace , setUsdGoogleActivo , select , setSelect , telefono  })=>{
+    const nombreCiudad = ciudad?.acf?.ciudad_oro;
     const [data, setData] = (0,external_react_.useState)([]);
     const [loading, setLoading] = (0,external_react_.useState)(null);
     (0,external_react_.useEffect)(()=>{
@@ -545,10 +545,10 @@ y volver habilitar el usd en los map y comentar el div que pinta el precio del d
             }),
             /*#__PURE__*/ (0,jsx_runtime_.jsxs)("a", {
                 className: (conversor_module_default()).botonLlamarTienda,
-                href: `tel:${ciudad?.acf?.telefono}`,
+                href: `tel:${telefono}`,
                 children: [
                     "LLAMA GRATIS AL ",
-                    ciudad?.acf?.telefono
+                    telefono
                 ]
             })
         ]
@@ -564,8 +564,8 @@ y volver habilitar el usd en los map y comentar el div que pinta el precio del d
 
 
 
-const Comprar = ({ valorMoneda , DataAcronimo , setAcronimo , setValorMoneda , setSelectDivisa , selectDivisa , setActiveId , ciudad , select , setSelect  })=>{
-    const nombreCiudad = ciudad.acf.ciudad_oro;
+const Comprar = ({ valorMoneda , DataAcronimo , setAcronimo , setValorMoneda , setSelectDivisa , selectDivisa , setActiveId , ciudad , select , setSelect , telefono  })=>{
+    const nombreCiudad = ciudad?.acf?.ciudad_oro;
     const [data, setData] = (0,external_react_.useState)([]);
     const [loading, setLoading] = (0,external_react_.useState)(null);
     (0,external_react_.useEffect)(()=>{
@@ -780,10 +780,10 @@ const Comprar = ({ valorMoneda , DataAcronimo , setAcronimo , setValorMoneda , s
             }),
             /*#__PURE__*/ (0,jsx_runtime_.jsxs)("a", {
                 className: (conversor_module_default()).botonLlamarTienda,
-                href: `tel:${ciudad?.acf?.telefono}`,
+                href: `tel:${telefono}`,
                 children: [
                     "LLAMA GRATIS AL ",
-                    ciudad?.acf?.telefono
+                    telefono
                 ]
             })
         ]
@@ -799,7 +799,7 @@ const Comprar = ({ valorMoneda , DataAcronimo , setAcronimo , setValorMoneda , s
 
 
 
-const Conversor = ({ comprar , ciudad  })=>{
+const Conversor = ({ comprar , ciudad , telefono  })=>{
     const [switched, setSwitched] = (0,external_react_.useState)(null);
     const [valorMoneda, setValorMoneda] = (0,external_react_.useState)("0");
     const [DataAcronimo, setAcronimo] = (0,external_react_.useState)("");
@@ -893,6 +893,7 @@ const Conversor = ({ comprar , ciudad  })=>{
                         }) : null
                     }),
                     switched ? /*#__PURE__*/ jsx_runtime_.jsx(ConversorDivisa_Vender, {
+                        telefono: telefono,
                         setValorMoneda: setValorMoneda,
                         setAcronimo: setAcronimo,
                         valorMoneda: valorMoneda,
@@ -906,6 +907,7 @@ const Conversor = ({ comprar , ciudad  })=>{
                         replace: replace,
                         setUsdGoogleActivo: setUsdGoogleActivo
                     }) : /*#__PURE__*/ jsx_runtime_.jsx(ConversorDivisa_Comprar, {
+                        telefono: telefono,
                         setValorMoneda: setValorMoneda,
                         setAcronimo: setAcronimo,
                         valorMoneda: valorMoneda,
@@ -1178,14 +1180,14 @@ var botonLlamarFijo_module_default = /*#__PURE__*/__webpack_require__.n(botonLla
 
 
 
-const BotonLlamarFijo = ({ ciudad  })=>{
+const BotonLlamarFijo = ({ ciudad , telefono  })=>{
     return /*#__PURE__*/ jsx_runtime_.jsx("div", {
         className: (botonLlamarFijo_module_default()).contenedorBotonFijo,
         children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("a", {
-            href: `tel:${ciudad.acf.telefono}`,
+            href: `tel:${telefono}`,
             children: [
                 "LLAMAR AL ",
-                ciudad.acf.telefono
+                telefono
             ]
         })
     });
@@ -1341,7 +1343,7 @@ var layout_module_default = /*#__PURE__*/__webpack_require__.n(layout_module);
 
 
 
-function Layout({ children , ciudad  }) {
+function Layout({ children , ciudad , telefono  }) {
     return /*#__PURE__*/ jsx_runtime_.jsx(jsx_runtime_.Fragment, {
         children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("main", {
             className: (layout_module_default()).contenedor,
@@ -1352,7 +1354,8 @@ function Layout({ children , ciudad  }) {
                 children,
                 /*#__PURE__*/ jsx_runtime_.jsx(Footer_Footer, {}),
                 ciudad?.acf?.tienda === "" ? /*#__PURE__*/ jsx_runtime_.jsx(BotonLlamarFijo_BotonLlamarFijo, {
-                    ciudad: ciudad
+                    ciudad: ciudad,
+                    telefono: telefono
                 }) : /*#__PURE__*/ jsx_runtime_.jsx(BotonesLlamarWT_BotonesLlamar, {
                     ciudad: ciudad
                 })

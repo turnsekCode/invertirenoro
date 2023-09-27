@@ -37,7 +37,7 @@ const index = ({ ciudad , general , tienda1 , tienda2 , tienda3 , tienda4 , tien
             id: 1,
             nombreTienda: tienda1?.acf?.nombre_tienda,
             idTienda: tienda1?.acf?.tienda,
-            telefono: ciudad?.acf?.telefono,
+            telefono: tienda1?.acf?.telefono,
             mobil: tienda1?.acf?.mobile,
             enlacemobil: tienda1?.acf?.mobile,
             direccion: tienda1Google?.result?.formatted_address,
@@ -78,6 +78,7 @@ const index = ({ ciudad , general , tienda1 , tienda2 , tienda3 , tienda4 , tien
             }),
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_componentes_Layout_Layout__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
                 ciudad: ciudad,
+                telefono: ciudad?.acf?.telefono,
                 children: [
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_componentes_SeccionUno_SeccionUno__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
                         nombreCiudad: ciudad.acf.ciudad_landing,
@@ -93,7 +94,8 @@ const index = ({ ciudad , general , tienda1 , tienda2 , tienda3 , tienda4 , tien
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_componentes_SeccionDos_SeccionDos__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
                         ciudad: ciudad,
                         comprar: ciudad.acf.vende_divisa,
-                        arrayTiendas: arrayTiendas
+                        arrayTiendas: arrayTiendas,
+                        telefono: ciudad?.acf?.telefono
                     })
                 ]
             })

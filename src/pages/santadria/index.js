@@ -60,7 +60,8 @@ const index = ({ ciudad, tiendaGoogle, general }) => {
         <SeccionTres
           ciudad={ciudad}
           tiendaGoogle={tiendaGoogle}
-          comprar={ciudad.acf.vende_divisa}
+          comprar={ciudad?.acf?.vende_divisa}
+          telefono={ciudad?.acf?.telefono}
         />
       </Layout>
     </>

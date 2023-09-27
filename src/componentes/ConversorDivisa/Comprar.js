@@ -16,8 +16,9 @@ const Comprar = ({
   ciudad,
   select,
   setSelect,
+  telefono,
 }) => {
-  const nombreCiudad = ciudad.acf.ciudad_oro;
+  const nombreCiudad = ciudad?.acf?.ciudad_oro;
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(null);
   useEffect(() => {
@@ -383,11 +384,8 @@ const Comprar = ({
           )}
         </div>
       </div>
-      <a
-        className={styles.botonLlamarTienda}
-        href={`tel:${ciudad?.acf?.telefono}`}
-      >
-        LLAMA GRATIS AL {ciudad?.acf?.telefono}
+      <a className={styles.botonLlamarTienda} href={`tel:${telefono}`}>
+        LLAMA GRATIS AL {telefono}
       </a>
     </div>
   );

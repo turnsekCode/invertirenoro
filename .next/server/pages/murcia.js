@@ -23,6 +23,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _componentes_BannerPromoUno_BannerPromoUno__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(8332);
 /* harmony import */ var _componentes_BannerPromoDos_BannerPromoDos__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(4284);
 /* harmony import */ var _componentes_BannerGeneral_BannerPromoGeneral__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(5939);
+/* harmony import */ var next_script__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(4298);
+/* harmony import */ var next_script__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(next_script__WEBPACK_IMPORTED_MODULE_8__);
+
 
 
 
@@ -37,7 +40,8 @@ const index = ({ ciudad , general , tienda1 , tienda2 , tienda3 , tienda4 , tien
             id: 1,
             nombreTienda: tienda1?.acf?.nombre_tienda,
             idTienda: tienda1?.acf?.tienda,
-            telefono: ciudad?.acf?.telefono,
+            //telefono: ciudad?.acf?.telefono,
+            telefono: "968 204 201",
             mobil: tienda1?.acf?.mobile,
             enlacemobil: tienda1?.acf?.mobile,
             direccion: tienda1Google?.result?.formatted_address,
@@ -54,7 +58,8 @@ const index = ({ ciudad , general , tienda1 , tienda2 , tienda3 , tienda4 , tien
             id: 2,
             nombreTienda: tienda2?.acf?.nombre_tienda,
             idTienda: tienda2?.acf?.tienda,
-            telefono: ciudad?.acf?.telefono,
+            //telefono: ciudad?.acf?.telefono,
+            telefono: "968 416 924",
             mobil: tienda2?.acf?.mobile,
             enlacemobil: tienda2?.acf?.mobile,
             direccion: tienda2Google?.result?.formatted_address,
@@ -90,15 +95,23 @@ const index = ({ ciudad , general , tienda1 , tienda2 , tienda3 , tienda4 , tien
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("link", {
                         rel: "icon",
                         href: "/assets/icon.png"
-                    })
+                    }),
+                    ciudad?.acf?.nonscript_chat
                 ]
+            }),
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_script__WEBPACK_IMPORTED_MODULE_8___default()), {
+                id: "livechat",
+                strategy: "afterInteractive",
+                children: ciudad?.acf?.script_chat
             }),
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_componentes_Layout_Layout__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {
                 ciudad: ciudad,
+                telefono: "968 416 924",
                 children: [
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_componentes_SeccionUno_SeccionUno__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
                         nombreCiudad: ciudad?.acf?.ciudad_landing,
-                        telefono: ciudad?.acf?.telefono
+                        //telefono={ciudad?.acf?.telefono}
+                        telefono: "968 416 924"
                     }),
                     ciudad?.acf?.promo_activa_cambiardivisa ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_componentes_BannerPromoUno_BannerPromoUno__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
                         /*banner para cada tienda o ciudad personalizado (prioridad uno)*/ ciudad: ciudad
@@ -109,8 +122,9 @@ const index = ({ ciudad , general , tienda1 , tienda2 , tienda3 , tienda4 , tien
                     }) : "",
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_componentes_SeccionDos_SeccionDos__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
                         ciudad: ciudad,
-                        comprar: ciudad.acf.vende_divisa,
-                        arrayTiendas: arrayTiendas
+                        comprar: ciudad?.acf?.vende_divisa,
+                        arrayTiendas: arrayTiendas,
+                        telefono: "968 416 924"
                     })
                 ]
             })
@@ -369,6 +383,13 @@ module.exports = require("react");
 
 /***/ }),
 
+/***/ 6405:
+/***/ ((module) => {
+
+module.exports = require("react-dom");
+
+/***/ }),
+
 /***/ 997:
 /***/ ((module) => {
 
@@ -383,7 +404,7 @@ module.exports = require("react/jsx-runtime");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [9210,2636,5675,29,1664,1581,3051], () => (__webpack_exec__(6949)));
+var __webpack_exports__ = __webpack_require__.X(0, [9210,2636,5675,29,1664,4298,1581,3051], () => (__webpack_exec__(6949)));
 module.exports = __webpack_exports__;
 
 })();

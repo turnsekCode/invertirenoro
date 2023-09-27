@@ -51,7 +51,6 @@ const ListadoTiendas = ({ ciudad, arrayTiendas }) => {
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
-
   return (
     <div className={styles.contenedorListadoTiendas}>
       <h2>Listado de tiendas en {ciudad?.acf?.ciudad_landing}</h2>
@@ -92,7 +91,7 @@ const ListadoTiendas = ({ ciudad, arrayTiendas }) => {
                 <div className={styles.bloqueResenas}>
                   <div className={styles.contenedorLogoGoogle}>
                     <Image
-                      src="/../public/assets/GOOGLE.png"
+                      src="/assets/GOOGLE.png"
                       width={29}
                       height={30}
                       alt="Logo google"

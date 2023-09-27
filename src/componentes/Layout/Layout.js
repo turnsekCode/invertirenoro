@@ -4,7 +4,7 @@ import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import styles from "./layout.module.css";
 
-export default function Layout({ children, ciudad }) {
+export default function Layout({ children, ciudad, telefono }) {
   return (
     <>
       <main className={styles.contenedor}>
@@ -12,7 +12,7 @@ export default function Layout({ children, ciudad }) {
         {children}
         <Footer />
         {ciudad?.acf?.tienda === "" ? (
-          <BotonLlamarFijo ciudad={ciudad} />
+          <BotonLlamarFijo ciudad={ciudad} telefono={telefono} />
         ) : (
           <BotonesLlamar ciudad={ciudad} />
         )}

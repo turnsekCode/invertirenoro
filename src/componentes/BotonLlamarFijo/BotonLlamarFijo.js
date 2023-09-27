@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./botonLlamarFijo.module.css";
 
-const BotonLlamarFijo = ({ ciudad }) => {
+const BotonLlamarFijo = ({ ciudad, telefono }) => {
   return (
     <div className={styles.contenedorBotonFijo}>
-      <a href={`tel:${ciudad.acf.telefono}`}>LLAMAR AL {ciudad.acf.telefono}</a>
+      <a href={`tel:${telefono}`}>LLAMAR AL {telefono}</a>
     </div>
   );
 };
