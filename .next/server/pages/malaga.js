@@ -162,11 +162,11 @@ async function getStaticProps() {
     const tienda_1 = tienda1.acf?.tienda;
     const tienda_2 = tienda2.acf?.tienda;
     const tienda_3 = tienda3.acf?.tienda;
-    const google1 = await fetch(`https://quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_1}.txt`);
+    const google1 = await fetch(`https://panel.quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_1}.txt`);
     const tienda1Google = await google1.json();
-    const google2 = await fetch(`https://quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_2}.txt`);
+    const google2 = await fetch(`https://panel.quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_2}.txt`);
     const tienda2Google = await google2.json();
-    const google3 = await fetch(`https://quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_3}.txt`);
+    const google3 = await fetch(`https://panel.quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_3}.txt`);
     const tienda3Google = await google3.json();
     return {
         props: {

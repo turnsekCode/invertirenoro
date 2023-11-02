@@ -87,7 +87,7 @@ export async function getStaticProps() {
   //datos de google para tiendas
   const tienda = ciudad?.acf?.tienda;
   const google = await fetch(
-    `https://quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda}.txt`
+    `https://panel.quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda}.txt`
   );
   const tiendaGoogle = await google.json();
 

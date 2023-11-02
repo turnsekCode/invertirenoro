@@ -332,7 +332,7 @@ y volver habilitar el usd en los map y comentar el div que pinta el precio del d
     const [data, setData] = (0,external_react_.useState)([]);
     const [loading, setLoading] = (0,external_react_.useState)(null);
     (0,external_react_.useEffect)(()=>{
-        fetch(`https://panel.quickgold.es/archivos-cache/Fixing${nombreCiudad}.txt`, {
+        fetch(`https://panel.quickgold.es/archivos/archivos-cache/Fixing${nombreCiudad}.txt`, {
             cache: "no-cache"
         }).then((response)=>response.json()).then((response)=>{
             setData(response?.result?.Tarifas?.Divisas_Venta.reverse());
@@ -569,7 +569,7 @@ const Comprar = ({ valorMoneda , DataAcronimo , setAcronimo , setValorMoneda , s
     const [data, setData] = (0,external_react_.useState)([]);
     const [loading, setLoading] = (0,external_react_.useState)(null);
     (0,external_react_.useEffect)(()=>{
-        fetch(`https://panel.quickgold.es/archivos-cache/Fixing${nombreCiudad}.txt`, {
+        fetch(`https://panel.quickgold.es/archivos/archivos-cache/Fixing${nombreCiudad}.txt`, {
             cache: "no-cache"
         }).then((response)=>response.json()).then((response)=>{
             setData(response?.result?.Tarifas?.Divisas_Compra.reverse());
@@ -831,7 +831,7 @@ const Conversor = ({ comprar , ciudad , telefono  })=>{
     const [dataVenta, setDataVenta] = (0,external_react_.useState)([]);
     //const [loading, setLoading] = useState(null);
     (0,external_react_.useEffect)(()=>{
-        fetch(`https://panel.quickgold.es/archivos-cache/Fixing${nombreCiudad}.txt`, {
+        fetch(`https://panel.quickgold.es/archivos/archivos-cache/Fixing${nombreCiudad}.txt`, {
             cache: "no-cache"
         }).then((response)=>response.json()).then((response)=>{
             setData(response?.result?.Tarifas?.Divisas_Compra.reverse());

@@ -120,7 +120,7 @@ async function getStaticProps() {
     //fin datos de los campos personalizados de tiendas
     //datos de google para tiendas
     const tienda_1 = tienda1.acf?.tienda;
-    const google1 = await fetch(`https://quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_1}.txt`);
+    const google1 = await fetch(`https://panel.quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_1}.txt`);
     const tienda1Google = await google1.json();
     return {
         props: {

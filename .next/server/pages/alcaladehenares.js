@@ -108,7 +108,7 @@ async function getStaticProps() {
     const general = await res.json();
     //datos de google para tiendas
     const tienda = ciudad?.acf?.tienda;
-    const google = await fetch(`https://quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda}.txt`);
+    const google = await fetch(`https://panel.quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda}.txt`);
     const tiendaGoogle = await google.json();
     return {
         props: {

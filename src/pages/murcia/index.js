@@ -165,11 +165,11 @@ export async function getStaticProps() {
   const tienda_1 = tienda1.acf?.tienda;
   const tienda_2 = tienda2.acf?.tienda;
   const google1 = await fetch(
-    `https://quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_1}.txt`
+    `https://panel.quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_1}.txt`
   );
   const tienda1Google = await google1.json();
   const google2 = await fetch(
-    `https://quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_2}.txt`
+    `https://panel.quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_2}.txt`
   );
   const tienda2Google = await google2.json();
 

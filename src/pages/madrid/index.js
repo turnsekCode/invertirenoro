@@ -364,47 +364,47 @@ export async function getStaticProps() {
   const tienda_10 = tienda10.acf?.tienda;
   const tienda_11 = tienda11.acf?.tienda;
   const google1 = await fetch(
-    `https://quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_1}.txt`
+    `https://panel.quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_1}.txt`
   );
   const tienda1Google = await google1.json();
   const google2 = await fetch(
-    `https://quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_2}.txt`
+    `https://panel.quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_2}.txt`
   );
   const tienda2Google = await google2.json();
   const google3 = await fetch(
-    `https://quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_3}.txt`
+    `https://panel.quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_3}.txt`
   );
   const tienda3Google = await google3.json();
   const google4 = await fetch(
-    `https://quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_4}.txt`
+    `https://panel.quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_4}.txt`
   );
   const tienda4Google = await google4.json();
   const google5 = await fetch(
-    `https://quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_5}.txt`
+    `https://panel.quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_5}.txt`
   );
   const tienda5Google = await google5.json();
   const google6 = await fetch(
-    `https://quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_6}.txt`
+    `https://panel.quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_6}.txt`
   );
   const tienda6Google = await google6.json();
   const google7 = await fetch(
-    `https://quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_7}.txt`
+    `https://panel.quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_7}.txt`
   );
   const tienda7Google = await google7.json();
   const google8 = await fetch(
-    `https://quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_8}.txt`
+    `https://panel.quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_8}.txt`
   );
   const tienda8Google = await google8.json();
   const google9 = await fetch(
-    `https://quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_9}.txt`
+    `https://panel.quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_9}.txt`
   );
   const tienda9Google = await google9.json();
   const google10 = await fetch(
-    `https://quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_10}.txt`
+    `https://panel.quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_10}.txt`
   );
   const tienda10Google = await google10.json();
   const google11 = await fetch(
-    `https://quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_11}.txt`
+    `https://panel.quickgold.es/archivos-cache/archivos-cache-gmb/cached-place_id-${tienda_11}.txt`
   );
   const tienda11Google = await google11.json();
 
