@@ -27,7 +27,7 @@ const Vender = ({
   const [loading, setLoading] = useState(null);
   useEffect(() => {
     fetch(
-      `https://panel.quickgold.es/archivos/archivos-cache/Fixing${nombreCiudad}.txt`,
+      `https://panel.quickgold.es/archivos-cache/Fixing${nombreCiudad}.txt`,
       {
         cache: "no-cache",
       }
