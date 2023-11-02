@@ -4,6 +4,7 @@ import Script from "next/script";
 export default function Document() {
   return (
     <Html lang="es">
+      <meta name="robots" content="noindex"></meta>
       <Script
         id="Cookiebot"
         src="https://consent.cookiebot.com/uc.js"
