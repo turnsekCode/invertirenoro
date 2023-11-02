@@ -191,26 +191,36 @@ const id5 = "5620";
 export async function getStaticProps() {
   //datos de los campos personalizados de la ciudad
   const madrid = await fetch(
-    `https://quickgold.es/wp-json/acf/v3/pages/${idPaginaWp}`
+    `https://panel.quickgold.es/wp-json/acf/v3/pages/${idPaginaWp}`
   );
   const ciudad = await madrid.json();
 
   //fin datos de los campos personalizados de la ciudad
   const res = await fetch(
-    `https://quickgold.es/wp-json/acf/v3/pages/${apiGeneral}`
+    `https://panel.quickgold.es/wp-json/acf/v3/pages/${apiGeneral}`
   );
   const general = await res.json();
 
   //datos de los campos personalizados de tiendas
-  const res1 = await fetch(`https://quickgold.es/wp-json/acf/v3/pages/${id1}`);
+  const res1 = await fetch(
+    `https://panel.quickgold.es/wp-json/acf/v3/pages/${id1}`
+  );
   const tienda1 = await res1.json();
-  const res2 = await fetch(`https://quickgold.es/wp-json/acf/v3/pages/${id2}`);
+  const res2 = await fetch(
+    `https://panel.quickgold.es/wp-json/acf/v3/pages/${id2}`
+  );
   const tienda2 = await res2.json();
-  const res3 = await fetch(`https://quickgold.es/wp-json/acf/v3/pages/${id3}`);
+  const res3 = await fetch(
+    `https://panel.quickgold.es/wp-json/acf/v3/pages/${id3}`
+  );
   const tienda3 = await res3.json();
-  const res4 = await fetch(`https://quickgold.es/wp-json/acf/v3/pages/${id4}`);
+  const res4 = await fetch(
+    `https://panel.quickgold.es/wp-json/acf/v3/pages/${id4}`
+  );
   const tienda4 = await res4.json();
-  const res5 = await fetch(`https://quickgold.es/wp-json/acf/v3/pages/${id5}`);
+  const res5 = await fetch(
+    `https://panel.quickgold.es/wp-json/acf/v3/pages/${id5}`
+  );
   const tienda5 = await res5.json();
   //fin datos de los campos personalizados de tiendas
   //datos de google para tiendas

@@ -75,12 +75,12 @@ const apiGeneral = "13848";
 export async function getStaticProps() {
   //datos de los campos personalizados de la ciudad
   const ciudad1 = await fetch(
-    `https://quickgold.es/wp-json/acf/v3/pages/${idPaginaWp}`
+    `https://panel.quickgold.es/wp-json/acf/v3/pages/${idPaginaWp}`
   );
   const ciudad = await ciudad1.json();
   //fin datos de los campos personalizados de la ciudad
   const res = await fetch(
-    `https://quickgold.es/wp-json/acf/v3/pages/${apiGeneral}`
+    `https://panel.quickgold.es/wp-json/acf/v3/pages/${apiGeneral}`
   );
   const general = await res.json();
   //datos de google para tiendas

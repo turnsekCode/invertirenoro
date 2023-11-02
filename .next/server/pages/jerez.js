@@ -94,15 +94,15 @@ const index = ({ ciudad , tiendaGoogle , general  })=>{
     });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (index);
-const idPaginaWp = "16849";
+const idPaginaWp = "17007";
 const apiGeneral = "13848";
 //variables id de tiendas de la api de wordpress
 async function getStaticProps() {
     //datos de los campos personalizados de la ciudad
-    const ciudad1 = await fetch(`https://quickgold.es/wp-json/acf/v3/pages/${idPaginaWp}`);
+    const ciudad1 = await fetch(`https://panel.quickgold.es/wp-json/acf/v3/pages/${idPaginaWp}`);
     const ciudad = await ciudad1.json();
     //fin datos de los campos personalizados de la ciudad
-    const res = await fetch(`https://quickgold.es/wp-json/acf/v3/pages/${apiGeneral}`);
+    const res = await fetch(`https://panel.quickgold.es/wp-json/acf/v3/pages/${apiGeneral}`);
     const general = await res.json();
     //datos de google para tiendas
     const tienda = ciudad?.acf?.tienda;

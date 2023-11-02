@@ -139,15 +139,15 @@ const id1 = "5371";
 const id2 = "5394";
 async function getStaticProps() {
     //datos de los campos personalizados de la ciudad
-    const madrid = await fetch(`https://quickgold.es/wp-json/acf/v3/pages/${idPaginaWp}`);
+    const madrid = await fetch(`https://panel.quickgold.es/wp-json/acf/v3/pages/${idPaginaWp}`);
     const ciudad = await madrid.json();
-    const res = await fetch(`https://quickgold.es/wp-json/acf/v3/pages/${apiGeneral}`);
+    const res = await fetch(`https://panel.quickgold.es/wp-json/acf/v3/pages/${apiGeneral}`);
     const general = await res.json();
     //fin datos de los campos personalizados de la ciudad
     //datos de los campos personalizados de tiendas
-    const res1 = await fetch(`https://quickgold.es/wp-json/acf/v3/pages/${id1}`);
+    const res1 = await fetch(`https://panel.quickgold.es/wp-json/acf/v3/pages/${id1}`);
     const tienda1 = await res1.json();
-    const res2 = await fetch(`https://quickgold.es/wp-json/acf/v3/pages/${id2}`);
+    const res2 = await fetch(`https://panel.quickgold.es/wp-json/acf/v3/pages/${id2}`);
     const tienda2 = await res2.json();
     //fin datos de los campos personalizados de tiendas
     //datos de google para tiendas

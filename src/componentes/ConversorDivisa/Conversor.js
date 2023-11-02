@@ -43,9 +43,12 @@ const Conversor = ({ comprar, ciudad, telefono }) => {
   const [dataVenta, setDataVenta] = useState([]);
   //const [loading, setLoading] = useState(null);
   useEffect(() => {
-    fetch(`https://quickgold.es/archivos-cache/Fixing${nombreCiudad}.txt`, {
-      cache: "no-cache",
-    })
+    fetch(
+      `https://panel.quickgold.es/archivos-cache/Fixing${nombreCiudad}.txt`,
+      {
+        cache: "no-cache",
+      }
+    )
       .then((response) => response.json())
       .then((response) => {
         setData(response?.result?.Tarifas?.Divisas_Compra.reverse());
