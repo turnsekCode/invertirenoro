@@ -95,7 +95,7 @@ const index = ({ ciudad , tiendaGoogle , general  })=>{
     });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (index);
-const idPaginaWp = "16563";
+const idPaginaWp = "16548";
 const apiGeneral = "13848";
 //variables id de tiendas de la api de wordpress
 async function getStaticProps() {
