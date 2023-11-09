@@ -5,6 +5,11 @@ export default function Document() {
   return (
     <Html lang="es">
       <meta name="robots" content="noindex"></meta>
+      <link
+        rel="stylesheet preload prefetch"
+        href="https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css"
+        as="style"
+      ></link>
       <Script
         id="Cookiebot"
         src="https://consent.cookiebot.com/uc.js"

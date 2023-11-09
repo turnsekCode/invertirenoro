@@ -28,6 +28,11 @@ function Document() {
                 name: "robots",
                 content: "noindex"
             }),
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("link", {
+                rel: "stylesheet preload prefetch",
+                href: "https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css",
+                as: "style"
+            }),
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_script__WEBPACK_IMPORTED_MODULE_2___default()), {
                 id: "Cookiebot",
                 src: "https://consent.cookiebot.com/uc.js",

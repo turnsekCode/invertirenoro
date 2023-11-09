@@ -1,629 +1,333 @@
-import React, { useState, useEffect } from "react";
-import styles from "./conversor.module.css";
+import React, { useEffect, useState } from "react";
+import styles from "./estilosConversor.module.css";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import PowerInputIcon from "@mui/icons-material/PowerInput";
-import ImportExportIcon from "@mui/icons-material/ImportExport";
-import Image from "next/image";
-//import { useFetchData } from "../../utilities/DataTiendas";
-/*El dia que y no haya dolar de cotizacion reemplazar donde el data-acronimo "USD" por este codigo {data[1]?.Productos[0].Acronimo}
-y volver habilitar el usd en los map y comentar el div que pinta el precio del dolar de cotizacion*/
-const Vender = ({
-  valorMoneda,
-  DataAcronimo,
-  setAcronimo,
-  setValorMoneda,
-  setSelectDivisa,
-  selectDivisa,
-  setActiveId,
-  ciudad,
-  replace,
-  setUsdGoogleActivo,
-  select,
-  setSelect,
-  telefono,
-}) => {
+
+function NuevoConversor2({ ciudad, setSelectDivisa, selectDivisa }) {
   const nombreCiudad = ciudad?.acf?.ciudad_oro;
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(null);
+  const [currencyOptions, setCurrencyOptions] = useState([]);
+  const [fromAcronimo, setFromAcronimo] = useState("");
+  const [nombreDivisa, setNombreDivisa] = useState("");
+  const [exchangeRate, setExchangeRate] = useState("");
+  const [amount, setAmount] = useState("");
+  const [amountInFromCurrency, setAmountInFromCurrency] = useState(true);
+  const [select, setSelect] = useState(null);
+  const precioDividido2 = 1 / exchangeRate;
+  let toAmount, fromAmount;
+  if (amountInFromCurrency) {
+    fromAmount = amount;
+    toAmount = (amount * exchangeRate).toFixed(2);
+  } else {
+    toAmount = amount;
+    fromAmount = (amount / exchangeRate).toFixed(2);
+  }
   useEffect(() => {
-    fetch(
-      `https://panel.quickgold.es/archivos-cache/Fixing${nombreCiudad}.txt`,
-      {
-        cache: "no-cache",
-      }
-    )
-      .then((response) => response.json())
-      .then((response) => {
-        setData(response?.result?.Tarifas?.Divisas_Venta.reverse());
-        setLoading(true);
+    fetch(`https://panel.quickgold.es/archivos-cache/Fixing${nombreCiudad}.txt`)
+      .then((res) => res.json())
+      .then((data) => {
+        setCurrencyOptions(data?.result?.Tarifas?.Divisas_Venta.reverse());
       });
   }, []);
-  const [valorInput, setValorInput] = useState("");
-  const [switched, setSwitched] = useState(null);
-  const precioDividido = valorMoneda / 1000;
-  const precioDividido2 = 1 / precioDividido;
-  const valorFinal = valorInput * precioDividido;
-  const valorFinal2 = valorInput / precioDividido;
-  const captureCodigo = (e) => {
-    setAcronimo(e.target.dataset.acronimo);
-    setValorMoneda(e.target.dataset.precio);
-    setActiveId(e.target.dataset.acronimo);
-  };
-  const MonedaSeleccionada = () => {
+  function handleFromAmountChange(e) {
+    setAmount(e.target.value);
+    setAmountInFromCurrency(true);
+  }
+  function handleToAmountChange(e) {
+    setAmount(e.target.value);
+    setAmountInFromCurrency(false);
+  }
+  function onChangeCurrency2(e) {
+    setNombreDivisa(e.target.dataset.nombre);
+    setExchangeRate(e.target.dataset.precio);
+    setFromAcronimo(e.target.dataset.acronimo);
     setSelectDivisa(false);
-  };
-  const captureHabitual = (e) => {
-    setAcronimo(e.target.dataset.acronimo);
-    setValorMoneda(e.target.dataset.precio);
-    setSelectDivisa(false);
-    setActiveId(e.target.dataset.acronimo);
-  };
-
+  }
   return (
-    <div className={styles.bloqueDer}>
-      <div className={styles.bloqueDivHabituales}>
-        <div className={styles.bloqueTituloSuperior}>
-          <h6>
-            Conversor <span></span> de divisa
-          </h6>
-          {/*<p className={styles.tituloDivisaHabitual}>Divisas más habituales</p>*/}
-        </div>
-        {/*<div className={styles.divisasHabituales}>
-          <div
-            className={styles.dolar}
-            onClick={(e) => {
-              captureHabitual(e);
-              setSelect(false);
-              setUsdGoogleActivo(false);
-            }}
-            data-acronimo={data[1]?.Productos[0].Acronimo}
-            data-precio={data[1]?.Productos[0].Precio}
-          >
-            <div
-              className={styles.imgMoneda}
-              onClick={(e) => {
-                captureHabitual(e);
-                setSelect(false);
-              }}
-              data-acronimo={data[1]?.Productos[0].Acronimo}
-              data-precio={data[1]?.Productos[0].Precio}
-            >
-              <Image
-                src="/assets/banderaUSA.png"
-                onClick={(e) => {
-                  captureHabitual(e);
-                  setSelect(false);
-                }}
-                data-acronimo={data[1]?.Productos[0].Acronimo}
-                data-precio={data[1]?.Productos[0].Precio}
-                width={40}
-                height={30}
-                alt="Bandera USA"
-              />
-              <span
-                onClick={(e) => {
-                  captureHabitual(e);
-                  setSelect(false);
-                }}
-                data-acronimo={data[1]?.Productos[0].Acronimo}
-                data-precio={data[1]?.Productos[0].Precio}
-              >
-                USD
-              </span>
-            </div>
-            <div className={styles.nombreMoneda}>
-              <p
-                onClick={(e) => {
-                  captureHabitual(e);
-                  setSelect(false);
-                }}
-                data-acronimo={data[1]?.Productos[0].Acronimo}
-                data-precio={data[1]?.Productos[0].Precio}
-              >
-                Dólar USA
-              </p>
-              <p
-                onClick={(e) => {
-                  captureHabitual(e);
-                  setSelect(false);
-                }}
-                data-acronimo={data[1]?.Productos[0].Acronimo}
-                data-precio={data[1]?.Productos[0].Precio}
-              >
-                <span
-                  onClick={(e) => {
-                    captureHabitual(e);
-                    setSelect(false);
-                  }}
-                  data-acronimo={data[1]?.Productos[0].Acronimo}
-                  data-precio={data[1]?.Productos[0].Precio}
-                >
-                  {loading
-                    ? (data[1]?.Productos[0].Precio / 1000).toFixed(4)
-                    : "Cargando..."}{" "}
-                  €
-                </span>
-              </p>
-            </div>
-          </div>
-          {/*ciudad.acf.ciudad_oro === "madrid" ? (
-            <div
-              className={styles.dolar}
-              onClick={(e) => {
-                captureHabitual(e);
-                setSelect(false);
-                setUsdGoogleActivo(true);
-              }}
-              data-acronimo={data[1]?.Productos[0].Acronimo}
-              data-precio={replace * 1000}
-            >
-              <div
-                className={styles.imgMoneda}
-                onClick={(e) => {
-                  captureHabitual(e);
-                  setSelect(false);
-                }}
-                data-acronimo={data[1]?.Productos[0].Acronimo}
-                data-precio={replace * 1000}
-              >
-                <Image
-                  src="/assets/banderaUSA.png"
-                  onClick={(e) => {
-                    captureHabitual(e);
-                    setSelect(false);
-                  }}
-                  data-acronimo={data[1]?.Productos[0].Acronimo}
-                  data-precio={replace * 1000}
-                  width={40}
-                  height={30}
-                  alt="Bandera USA"
-                />
-                <span
-                  onClick={(e) => {
-                    captureHabitual(e);
-                    setSelect(false);
-                  }}
-                  data-acronimo={data[1]?.Productos[0].Acronimo}
-                  data-precio={replace * 1000}
-                >
-                  USD
-                </span>
-              </div>
-              <div className={styles.nombreMoneda}>
-                <p
-                  onClick={(e) => {
-                    captureHabitual(e);
-                    setSelect(false);
-                  }}
-                  data-acronimo={data[1]?.Productos[0].Acronimo}
-                  data-precio={replace * 1000}
-                >
-                  Dólar USA
-                </p>
-                <p
-                  onClick={(e) => {
-                    captureHabitual(e);
-                    setSelect(false);
-                  }}
-                  data-acronimo={data[1]?.Productos[0].Acronimo}
-                  data-precio={replace * 1000}
-                >
-                  <span
-                    onClick={(e) => {
-                      captureHabitual(e);
-                      setSelect(false);
-                    }}
-                    data-acronimo={data[1]?.Productos[0].Acronimo}
-                    data-precio={replace * 1000}
-                  >
-                    {loading ? replace : "Cargando..."} €
-                  </span>
-                </p>
-              </div>
-            </div>
+    <div className={styles.contenedorCalculadora}>
+      <div className={styles.bloqueCalculadora}>
+        <p className={styles.bloqueCalculadoraTextoSup}>
+          Selecciona divisa para ver el tipo de cambio
+        </p>
+        <div
+          className={styles.select}
+          onClick={() => {
+            setSelect(!select);
+          }}
+        >
+          {selectDivisa ? (
+            <>
+              <p>Seleccione Divisa</p>
+              <KeyboardArrowDownIcon />
+            </>
           ) : (
-            <div
-              className={styles.dolar}
-              onClick={(e) => {
-                captureHabitual(e);
-                setSelect(false);
-                setUsdGoogleActivo(false);
-              }}
-              data-acronimo={data[1]?.Productos[0].Acronimo}
-              data-precio={data[1]?.Productos[0].Precio}
-            >
-              <div
-                className={styles.imgMoneda}
-                onClick={(e) => {
-                  captureHabitual(e);
-                  setSelect(false);
-                }}
-                data-acronimo={data[1]?.Productos[0].Acronimo}
-                data-precio={data[1]?.Productos[0].Precio}
-              >
-                <Image
-                  src="/assets/banderaUSA.png"
-                  onClick={(e) => {
-                    captureHabitual(e);
-                    setSelect(false);
-                  }}
-                  data-acronimo={data[1]?.Productos[0].Acronimo}
-                  data-precio={data[1]?.Productos[0].Precio}
-                  width={40}
-                  height={30}
-                  alt="Bandera USA"
-                />
-                <span
-                  onClick={(e) => {
-                    captureHabitual(e);
-                    setSelect(false);
-                  }}
-                  data-acronimo={data[1]?.Productos[0].Acronimo}
-                  data-precio={data[1]?.Productos[0].Precio}
-                >
-                  USD
-                </span>
-              </div>
-              <div className={styles.nombreMoneda}>
-                <p
-                  onClick={(e) => {
-                    captureHabitual(e);
-                    setSelect(false);
-                  }}
-                  data-acronimo={data[1]?.Productos[0].Acronimo}
-                  data-precio={data[1]?.Productos[0].Precio}
-                >
-                  Dólar USA
-                </p>
-                <p
-                  onClick={(e) => {
-                    captureHabitual(e);
-                    setSelect(false);
-                  }}
-                  data-acronimo={data[1]?.Productos[0].Acronimo}
-                  data-precio={data[1]?.Productos[0].Precio}
-                >
-                  <span
+            <>
+              {fromAcronimo} | {nombreDivisa}
+              <KeyboardArrowDownIcon />
+            </>
+          )}
+          <div
+            className={
+              select
+                ? `${styles.select_monedas} ${styles.select_activo}`
+                : `${styles.select_monedas}`
+            }
+          >
+            {currencyOptions
+              .filter(
+                (currency) =>
+                  currency.Name !== "HRK" &&
+                  currency.Name !== "DKK" &&
+                  currency.Name !== "RUB" &&
+                  currency.Name !== "NOK" &&
+                  currency.Name !== "ILS" &&
+                  currency.Name !== "SEK"
+              )
+              .map((data, i) =>
+                select ? (
+                  <div
+                    key={i}
+                    className={styles.contenedor_list}
+                    data-acronimo={data?.Productos[0].Acronimo}
+                    data-nombre={data?.Productos[0].Nombre}
+                    data-precio={(data?.Productos[0].Precio / 1000).toFixed(4)}
                     onClick={(e) => {
-                      captureHabitual(e);
-                      setSelect(false);
+                      onChangeCurrency2(e);
                     }}
-                    data-acronimo={data[1]?.Productos[0].Acronimo}
-                    data-precio={data[1]?.Productos[0].Precio}
                   >
-                    {loading
-                      ? (data[1]?.Productos[0].Precio / 1000).toFixed(4)
-                      : "Cargando..."}{" "}
-                    €
-                  </span>
-                </p>
-              </div>
-            </div>
-          )
-          <div
-            className={styles.libra}
-            onClick={(e) => {
-              captureHabitual(e);
-              setSelect(false);
-              setUsdGoogleActivo(false);
-            }}
-            data-acronimo={data[0]?.Productos[0].Acronimo}
-            data-precio={data[0]?.Productos[0].Precio}
-          >
-            <div
-              className={styles.imgMoneda}
-              onClick={(e) => {
-                captureHabitual(e);
-                setSelect(false);
-              }}
-              data-acronimo={data[0]?.Productos[0].Acronimo}
-              data-precio={data[0]?.Productos[0].Precio}
-            >
-              <Image
-                src="/assets/banderaGBP.png"
-                onClick={(e) => {
-                  captureHabitual(e);
-                  setSelect(false);
-                }}
-                data-acronimo={data[0]?.Productos[0].Acronimo}
-                data-precio={data[0]?.Productos[0].Precio}
-                width={40}
-                height={30}
-                alt="Bandera GBP"
-              />
-              <span
-                onClick={(e) => {
-                  captureHabitual(e);
-                  setSelect(false);
-                }}
-                data-acronimo={data[0]?.Productos[0].Acronimo}
-                data-precio={data[0]?.Productos[0].Precio}
-              >
-                GBP
-              </span>
-            </div>
-            <div className={styles.nombreMoneda}>
-              <p
-                onClick={(e) => {
-                  captureHabitual(e);
-                  setSelect(false);
-                }}
-                data-acronimo={data[0]?.Productos[0].Acronimo}
-                data-precio={data[0]?.Productos[0].Precio}
-              >
-                Libra Esterlina
-              </p>
-              <p
-                onClick={(e) => {
-                  captureHabitual(e);
-                  setSelect(false);
-                }}
-                data-acronimo={data[0]?.Productos[0].Acronimo}
-                data-precio={data[0]?.Productos[0].Precio}
-              >
-                <span
-                  onClick={(e) => {
-                    captureHabitual(e);
-                    setSelect(false);
-                  }}
-                  data-acronimo={data[0]?.Productos[0].Acronimo}
-                  data-precio={data[0]?.Productos[0].Precio}
-                >
-                  {loading
-                    ? (data[0]?.Productos[0].Precio / 1000).toFixed(4)
-                    : "Cargando..."}{" "}
-                  €
-                </span>
-              </p>
-            </div>
-          </div>
-        </div>*/}
-      </div>
-      <div className={styles.contenedorInputSuperior}>
-        <div className={styles.bloqueIzqInput}>
-          <div
-            className={styles.select}
-            onClick={() => {
-              setSelect(!select);
-            }}
-          >
-            {selectDivisa ? (
-              <>
-                <p>Seleccione Divisa</p>
-                <KeyboardArrowDownIcon />
-              </>
-            ) : (
-              <>
-                {DataAcronimo} <KeyboardArrowDownIcon />
-              </>
-            )}
-            <div
-              className={
-                select
-                  ? `${styles.select_monedas} ${styles.select_activo}`
-                  : `${styles.select_monedas}`
-              }
-            >
-              {/*ciudad.acf.ciudad_oro === "madrid" ? (
-                <div
-                  data-acronimo="USD"
-                  data-precio={replace * 1000}
-                  className={styles.contenedorDolarGoogle}
-                  onClick={(e) => {
-                    captureCodigo(e);
-                    MonedaSeleccionada();
-                    setUsdGoogleActivo(true);
-                  }}
-                >
-                  <div className={styles.bandera}>
-                    <Image
-                      width={35}
-                      height={23}
-                      src={`/assets/USD.png`}
-                      data-acronimo="USD"
-                      data-precio={replace * 1000}
-                      alt="USD"
-                    />
-                  </div>
-                  <div
-                    className={styles.nombreDolarGoogle}
-                    data-acronimo="USD"
-                    data-precio={replace * 1000}
-                  >
-                    <p data-acronimo="USD" data-precio={replace * 1000}>
-                      USD
-                    </p>
-                    <p data-acronimo="USD" data-precio={replace * 1000}>
-                      DOLARES USA
-                    </p>
-                  </div>
-                </div>
-              ) : (
-                <div
-                  data-acronimo="USD"
-                  data-precio={data[1]?.Productos[0].Precio}
-                  className={styles.contenedorDolarGoogle}
-                  onClick={(e) => {
-                    captureCodigo(e);
-                    MonedaSeleccionada();
-                    setUsdGoogleActivo(true);
-                  }}
-                >
-                  <div className={styles.bandera}>
-                    <Image
-                      width={35}
-                      height={23}
-                      src={`/assets/USD.png`}
-                      data-acronimo="USD"
-                      data-precio={data[1]?.Productos[0].Precio}
-                      alt="USD"
-                    />
-                  </div>
-                  <div
-                    className={styles.nombreDolarGoogle}
-                    data-acronimo="USD"
-                    data-precio={data[1]?.Productos[0].Precio}
-                  >
-                    <p
-                      data-acronimo="USD"
-                      data-precio={data[1]?.Productos[0].Precio}
-                    >
-                      USD
-                    </p>
-                    <p
-                      data-acronimo="USD"
-                      data-precio={data[1]?.Productos[0].Precio}
-                    >
-                      DOLARES USA
-                    </p>
-                  </div>
-                </div>
-              )*/}
-              {data
-                ?.filter(
-                  (currency) => currency.Name !== "HRK" //&& currency.Name !== "USD"
-                )
-                .map((data, i) =>
-                  select ? (
                     <div
-                      key={i}
-                      className={styles.contenedor_list}
                       data-acronimo={data?.Productos[0].Acronimo}
-                      data-precio={data?.Productos[0].Precio}
+                      data-nombre={data?.Productos[0].Nombre}
+                      data-precio={(data?.Productos[0].Precio / 1000).toFixed(
+                        4
+                      )}
+                      className={styles.bandera}
                       onClick={(e) => {
-                        captureCodigo(e);
-                        MonedaSeleccionada();
-                        setUsdGoogleActivo(false);
+                        onChangeCurrency2(e);
                       }}
                     >
-                      <div className={styles.bandera}>
-                        <Image
-                          width={35}
-                          height={23}
-                          src={`/assets/${data?.Productos[0].Acronimo}.png`}
-                          data-acronimo={data?.Productos[0].Acronimo}
-                          data-precio={data?.Productos[0].Precio}
-                          alt={data?.Productos[0].Acronimo}
-                        />
-                      </div>
-                      <div className={styles.moneda}>
-                        <p
-                          data-acronimo={data?.Productos[0].Acronimo}
-                          data-precio={data?.Productos[0].Precio}
-                        >
-                          {data?.Productos[0].Acronimo}
-                        </p>
-                        <span
-                          className={styles.nombre}
-                          data-acronimo={data?.Productos[0].Acronimo}
-                          data-precio={data?.Productos[0].Precio}
-                        >
-                          {data?.Productos[0].Nombre}
-                        </span>
-                      </div>
+                      <img
+                        onClick={(e) => {
+                          onChangeCurrency2(e);
+                        }}
+                        width={35}
+                        height={23}
+                        src={`/assets/${data?.Productos[0].Acronimo}.png`}
+                        data-acronimo={data?.Productos[0].Acronimo}
+                        data-nombre={data?.Productos[0].Nombre}
+                        data-precio={(data?.Productos[0].Precio / 1000).toFixed(
+                          4
+                        )}
+                        alt={data?.Productos[0].Acronimo}
+                      />
                     </div>
-                  ) : (
-                    ""
-                  )
-                )}
-            </div>
+                    <div
+                      data-acronimo={data?.Productos[0].Acronimo}
+                      data-nombre={data?.Productos[0].Nombre}
+                      data-precio={(data?.Productos[0].Precio / 1000).toFixed(
+                        4
+                      )}
+                      className={styles.moneda}
+                      onClick={(e) => {
+                        onChangeCurrency2(e);
+                      }}
+                    >
+                      <p
+                        className={styles.acronimo}
+                        onClick={(e) => {
+                          onChangeCurrency2(e);
+                        }}
+                        data-acronimo={data?.Productos[0].Acronimo}
+                        data-nombre={data?.Productos[0].Nombre}
+                        data-precio={(data?.Productos[0].Precio / 1000).toFixed(
+                          4
+                        )}
+                      >
+                        {data?.Productos[0].Acronimo}
+                      </p>
+                      <span
+                        onClick={(e) => {
+                          onChangeCurrency2(e);
+                        }}
+                        className={styles.nombre}
+                        data-acronimo={data?.Productos[0].Acronimo}
+                        data-nombre={data?.Productos[0].Nombre}
+                        data-precio={(data?.Productos[0].Precio / 1000).toFixed(
+                          4
+                        )}
+                      >
+                        | {data?.Productos[0].Nombre}
+                      </span>
+                    </div>
+                  </div>
+                ) : (
+                  ""
+                )
+              )}
           </div>
         </div>
-        <div className={styles.bloqueDerInput}>
-          {selectDivisa ? (
-            <PowerInputIcon />
-          ) : (
-            <div className={styles.contenedorInput}>
-              {switched ? (
-                <input
-                  style={{ border: "none" }}
-                  type="text"
-                  pattern="[0-9]*"
-                  placeholder="0.00"
-                  inputMode="numeric"
-                  readOnly
-                  value={valorFinal.toFixed(2)}
-                />
-              ) : (
-                <input
-                  type="text"
-                  pattern="[0-9]*"
-                  placeholder="0.00"
-                  inputMode="numeric"
-                  className={styles.inputInferior}
-                  onChange={(event) => setValorInput(event.target.value)}
-                />
-              )}
-              <span>EUR</span>
-            </div>
-          )}
-          {selectDivisa ? (
-            <p></p>
-          ) : (
-            <p>
-              1EUR = {precioDividido2.toFixed(4)}
-              {DataAcronimo}
-            </p>
-          )}
+        <div className={styles.contenedorTipoCambio}>
+          <div className={styles.tipoCambioIzq}>
+            {selectDivisa ? (
+              <p>-</p>
+            ) : (
+              <p>
+                1 EUR ={" "}
+                <span>
+                  {precioDividido2.toFixed(4)} {fromAcronimo}
+                </span>
+              </p>
+            )}
+          </div>
+          <div className={styles.tipoCambioDer}>
+            {selectDivisa ? (
+              <p>-</p>
+            ) : (
+              <p>
+                1 {fromAcronimo} =<span>{exchangeRate}€</span>
+              </p>
+            )}
+          </div>
+        </div>
+        <div className={styles.contenedorInputs}>
+          <div className={styles.contenedorInputSuperior}>
+            {selectDivisa ? (
+              <p>-</p>
+            ) : (
+              <p className={styles.acronimoTexto}>EUR</p>
+            )}
+            {selectDivisa ? (
+              <input
+                className={styles.inputSuperior}
+                value=""
+                placeholder="Cantidad"
+                disabled
+                type="number"
+              />
+            ) : (
+              <input
+                className={styles.inputSuperior}
+                type="number"
+                value={toAmount}
+                onChange={handleToAmountChange}
+                placeholder="Cantidad"
+              />
+            )}
+          </div>
+          <div className={styles.contenedorInputSuperior}>
+            {selectDivisa ? (
+              <p>-</p>
+            ) : (
+              <p className={styles.acronimoTexto}>{fromAcronimo}</p>
+            )}
+            {selectDivisa ? (
+              <input
+                className={styles.inputInferior}
+                value=""
+                placeholder="Cantidad"
+                disabled
+                type="number"
+              />
+            ) : (
+              <input
+                type="number"
+                className={styles.inputInferior}
+                value={fromAmount}
+                onChange={handleFromAmountChange}
+                placeholder="Cantidad"
+              />
+            )}
+          </div>
         </div>
       </div>
-      <div className={styles.botonSwith}>
-        <ImportExportIcon
-          onClick={(e) => {
-            setSwitched(!switched);
-          }}
-        />
-      </div>
-      <div className={styles.contenedorInputInferior}>
-        {selectDivisa ? (
-          <PowerInputIcon />
-        ) : (
-          <div className={styles.monedaInferior}>{DataAcronimo}</div>
-        )}
-
-        <div className={styles.bloqueDerInput}>
-          {selectDivisa ? (
-            <PowerInputIcon />
-          ) : (
-            <div className={styles.contenedorInput}>
-              {switched ? (
-                <input
-                  type="text"
-                  pattern="[0-9]*"
-                  placeholder="Cantidad"
-                  inputMode="numeric"
-                  className={styles.inputInferior}
-                  onChange={(event) => setValorInput(event.target.value)}
-                />
-              ) : (
-                <input
-                  type="text"
-                  pattern="[0-9]*"
-                  placeholder="Cantidad"
-                  inputMode="numeric"
-                  value={valorFinal2.toFixed(2)}
-                  readOnly
-                  style={{ border: "none" }}
-                />
-              )}
-              <span>{DataAcronimo}</span>
-            </div>
-          )}
-          {selectDivisa ? (
-            <p></p>
-          ) : (
-            <p>
-              1{DataAcronimo} = {precioDividido.toFixed(4)}
-              EUR
-            </p>
-          )}
+      <div className={styles.bloqueBotonLamar}>
+        <p className={styles.bloqueBotonLamarTexto}>
+          ¿Sabías que hacemos <strong>mejoras de precio por cantidad</strong>?.
+          ¡LLÁMANOS!
+        </p>
+        <a
+          title={`Llamar a Quickgold ${ciudad?.acf?.ciudad_landing}`}
+          href={`tel:${ciudad?.acf?.telefono}`}
+          className={styles.botonLlamarTienda}
+        >
+          LLAMA GRATIS
+        </a>
+      </div>{" "}
+      <p className={styles.bloqueDivisaHabitualTexto}>
+        Cambios de divisa más habituales
+      </p>
+      <div className={styles.bloqueDivisaHabitual}>
+        <div className={styles.contenedorDivisaHabitual}>
+          <p
+            onClick={(e) => onChangeCurrency2(e)}
+            data-nombre={currencyOptions[0]?.Productos[0].Nombre}
+            data-acronimo={currencyOptions[0]?.Productos[0].Acronimo}
+            data-precio={(
+              currencyOptions[0]?.Productos[0].Precio / 1000
+            ).toFixed(4)}
+            className={styles.bloqueDivisaHabitual1}
+          >
+            Euro a Libra
+          </p>
+          <p
+            onClick={(e) => onChangeCurrency2(e)}
+            data-nombre={currencyOptions[1]?.Productos[0].Nombre}
+            data-acronimo={currencyOptions[1]?.Productos[0].Acronimo}
+            data-precio={(
+              currencyOptions[1]?.Productos[0].Precio / 1000
+            ).toFixed(4)}
+            className={styles.bloqueDivisaHabitual2}
+          >
+            Euro a Dólar USA
+          </p>
+          <p
+            onClick={(e) => onChangeCurrency2(e)}
+            data-nombre={currencyOptions[5]?.Productos[0].Nombre}
+            data-acronimo={currencyOptions[5]?.Productos[0].Acronimo}
+            data-precio={(
+              currencyOptions[5]?.Productos[0].Precio / 1000
+            ).toFixed(4)}
+            className={styles.bloqueDivisaHabitual3}
+          >
+            Euro a Franco Suizo
+          </p>
+        </div>
+        <div className={styles.contenedorDivisaHabitual}>
+          <p
+            onClick={(e) => onChangeCurrency2(e)}
+            data-nombre={currencyOptions[12]?.Productos[0].Nombre}
+            data-acronimo={currencyOptions[12]?.Productos[0].Acronimo}
+            data-precio={(
+              currencyOptions[12]?.Productos[0].Precio / 1000
+            ).toFixed(4)}
+            className={styles.bloqueDivisaHabitual4}
+          >
+            Euro a Real brasileño
+          </p>
+          <p
+            onClick={(e) => onChangeCurrency2(e)}
+            data-nombre={currencyOptions[15]?.Productos[0].Nombre}
+            data-acronimo={currencyOptions[15]?.Productos[0].Acronimo}
+            data-precio={(
+              currencyOptions[15]?.Productos[0].Precio / 1000
+            ).toFixed(4)}
+            className={styles.bloqueDivisaHabitual5}
+          >
+            Euro a Corona checa
+          </p>
+          <p
+            onClick={(e) => onChangeCurrency2(e)}
+            data-nombre={currencyOptions[19]?.Productos[0].Nombre}
+            data-acronimo={currencyOptions[19]?.Productos[0].Acronimo}
+            data-precio={(
+              currencyOptions[19]?.Productos[0].Precio / 1000
+            ).toFixed(4)}
+            className={styles.bloqueDivisaHabitual6}
+          >
+            Euro a Peso chileno
+          </p>
         </div>
       </div>
-      <a className={styles.botonLlamarTienda} href={`tel:${telefono}`}>
-        LLAMA GRATIS AL {telefono}
-      </a>
     </div>
   );
-};
+}
 
-export default Vender;
+export default NuevoConversor2;

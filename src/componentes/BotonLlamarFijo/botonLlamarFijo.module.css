@@ -6,6 +6,7 @@
     align-items: center;
     bottom: 8px;
     left: 0;
+    z-index: 100;
 }
 .contenedorBotonFijo a {
     width: 240px;
