@@ -91,8 +91,6 @@ __webpack_require__.d(__webpack_exports__, {
 var jsx_runtime_ = __webpack_require__(997);
 // EXTERNAL MODULE: external "react"
 var external_react_ = __webpack_require__(6689);
-// EXTERNAL MODULE: ./src/componentes/ConversorDivisa/Conversor.js + 2 modules
-var Conversor = __webpack_require__(5702);
 // EXTERNAL MODULE: ./src/componentes/ListadoTiendas/listadoTienda.module.css
 var listadoTienda_module = __webpack_require__(7331);
 var listadoTienda_module_default = /*#__PURE__*/__webpack_require__.n(listadoTienda_module);
@@ -359,20 +357,20 @@ const ListadoTiendas = ({ markers  })=>{
 // EXTERNAL MODULE: ./src/componentes/SeccionDos/seccionDos.module.css
 var seccionDos_module = __webpack_require__(1599);
 var seccionDos_module_default = /*#__PURE__*/__webpack_require__.n(seccionDos_module);
+// EXTERNAL MODULE: ./src/componentes/InvertirEnOro/Tabla2Lingotes.js
+var Tabla2Lingotes = __webpack_require__(3839);
 ;// CONCATENATED MODULE: ./src/componentes/SeccionDos/SeccionDos.js
 
 
 
 
 
-const SeccionDos = ({ ciudad , comprar , markers , telefono  })=>{
+const SeccionDos = ({ ciudad , markers , telefono  })=>{
     return /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
         className: (seccionDos_module_default()).contenedorSeccionDos,
         children: [
-            /*#__PURE__*/ jsx_runtime_.jsx(Conversor/* default */.Z, {
-                comprar: comprar,
-                ciudad: ciudad,
-                telefono: telefono
+            /*#__PURE__*/ jsx_runtime_.jsx(Tabla2Lingotes/* default */.Z, {
+                ciudad: ciudad
             }),
             /*#__PURE__*/ jsx_runtime_.jsx(ListadoTiendas_ListadoTiendas, {
                 ciudad: ciudad,

@@ -10,12 +10,11 @@ const index = ({ ciudad, tiendaGoogle, general }) => {
     <>
       <Head>
         <title>
-          El mejor cambio de divisas de {ciudad?.acf?.ciudad_landing} |
-          Quickgold
+          Reserva tu lingote de oro en {ciudad?.acf?.ciudad_landing} | Quickgold
         </title>
         <meta
           name="description"
-          content={`La mejor tasa de cambio por tu divisa en ${ciudad?.acf?.ciudad_landing} Tenemos más de 30 monedas diferentes al momento y sin comisiones`}
+          content={`Conoce el precio por gramo de oro de ${ciudad?.acf?.ciudad_landing}. Reserva tu lingote de oro con el mejor servicio garantizado`}
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="noindex"></meta>

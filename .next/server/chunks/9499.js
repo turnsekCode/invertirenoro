@@ -351,8 +351,8 @@ const SeccionTres = ({ tiendaGoogle , ciudad  })=>{
 };
 /* harmony default export */ const BloqueInfoTienda = (SeccionTres);
 
-// EXTERNAL MODULE: ./src/componentes/ConversorDivisa/Conversor.js + 2 modules
-var Conversor = __webpack_require__(5702);
+// EXTERNAL MODULE: ./src/componentes/InvertirEnOro/Tabla2Lingotes.js
+var Tabla2Lingotes = __webpack_require__(3839);
 // EXTERNAL MODULE: ./src/componentes/SeccionTres/seccionDos.module.css
 var seccionDos_module = __webpack_require__(700);
 var seccionDos_module_default = /*#__PURE__*/__webpack_require__.n(seccionDos_module);
@@ -362,14 +362,12 @@ var seccionDos_module_default = /*#__PURE__*/__webpack_require__.n(seccionDos_mo
 
 
 
-const SeccionTres_SeccionTres = ({ ciudad , telefono , tiendaGoogle , comprar  })=>{
+const SeccionTres_SeccionTres = ({ ciudad , tiendaGoogle  })=>{
     return /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
         className: (seccionDos_module_default()).contenedorSeccionDos,
         children: [
-            /*#__PURE__*/ jsx_runtime_.jsx(Conversor/* default */.Z, {
-                comprar: comprar,
-                ciudad: ciudad,
-                telefono: telefono
+            /*#__PURE__*/ jsx_runtime_.jsx(Tabla2Lingotes/* default */.Z, {
+                ciudad: ciudad
             }),
             /*#__PURE__*/ jsx_runtime_.jsx(BloqueInfoTienda, {
                 ciudad: ciudad,

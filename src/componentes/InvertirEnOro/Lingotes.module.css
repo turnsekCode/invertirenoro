@@ -1,0 +1,217 @@
+.contenedorAmbosTablaLingotes{
+    padding: 20px 10px;
+    width: 100%;
+    height: auto;
+    margin: 10px auto;
+    background: #fff;
+    border-radius: 8px;
+    background: #0F2D45;
+    margin-bottom: 40px;
+}
+.contenedorAmbosTablaLingotes h2{
+    color: #FFF;
+    font-family: "Gotham Black";
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.subTituloServicio{
+    color: #FFF;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 30px;
+}
+.botonLlamar{
+    background: #E83C82;
+    border-radius: 2px;
+    padding: 6px 10px;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 14px;
+    text-align: center;
+    color: #FFFFFF;
+    width: 100%;
+    margin-top: 0;
+}
+.contenedorImagen{
+    width: 190px;
+    height: 62px;
+    background: #CCFEFF;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nombrePrecio{
+    display: flex;
+    justify-content: space-between;
+}
+.nombrePrecio p{
+    color: #0F2D45;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    font-family: "Gotham Bold";
+}
+.nombrePrecio p:nth-child(2) {
+    color: #0F2D45;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    font-family: "Gotham Black";
+}
+.oroFino{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #0F2D45;
+    margin-bottom: 10px;
+}
+.medidaBlister{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #0F2D45;
+}
+.separador {
+    width: 260px;
+    height: 2px;
+    background: rgba(0, 0, 0, 0.1);
+    display: block;
+    margin: 10px 0;
+}
+.contenedorTablas{
+    height: 340px;
+    overflow-y: scroll;
+    padding-left: 10px;
+    padding-right: 8px;
+}
+.contenedorInfo{
+    background: #fff;
+    padding: 20px;
+    border-radius: 4px;
+}
+.contenedorTablas::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.contenedorTablas::-webkit-scrollbar:vertical {
+    width: 10px;
+}
+
+.contenedorTablas::-webkit-scrollbar-button:increment,
+.contenedorTablas::-webkit-scrollbar-button {
+    display: none;
+}
+
+.contenedorTablas::-webkit-scrollbar:horizontal {
+    height: 10px;
+}
+
+.contenedorTablas::-webkit-scrollbar-thumb {
+    background: #B0B0B0;
+    border-radius: 20px;
+    border: 2px solid #f1f2f3;
+}
+.botonLlamarTienda {
+    background: #E83C82;
+    box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    align-items: center;
+    text-align: center;
+    padding: 13px 15px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 14px;
+    color: #FFFFFF;
+    width: 280px;
+    margin: 30px auto;
+    display: block;
+}
+
+@media (min-width: 610px) {
+.contenedorConversor {
+        width: 505px;
+        height: auto;
+        background: #0692D0;
+        border-radius: 8px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .conversorTitulo {
+        display: flex;
+        gap: 15px;
+    }
+
+    .conversorTexto p {
+        font-weight: 100;
+        font-size: 13px;
+        line-height: 16px;
+        color: #FFFFFF;
+    }
+
+    .conversorTexto h2 {
+        font-weight: 900;
+        font-size: 30px;
+        line-height: 37px;
+        color: #FFFFFF;
+    }
+    .botonLlamarTienda {
+        background: #E83C82;
+        box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 2px;
+        align-items: center;
+        text-align: center;
+        padding: 13px 15px;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 14px;
+        color: #FFFFFF;
+        width: 280px;
+        margin: 30px auto;
+        display: block;
+    }
+.contenedorAmbosTablaLingotes {
+    padding: 40px 30px;
+    width: 480px;
+    height: 640px;;
+    margin: 0;
+    border-radius: 8px;
+    background: #0F2D45;
+}
+.separador{
+    width: 260px;
+    height: 2px;
+    background: rgba(0, 0, 0, 0.1);
+    display: block;
+    margin: 10px 0;
+}
+.contenedorTablas {
+    height: 340px;
+    overflow-y: scroll;
+    padding: 10px;
+    border-radius: 2px;
+    border: 1px solid #0F2D45;
+
+
+}
+.contenedorTablas::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+.nombrePrecio p:nth-child(2) {
+    color: #0F2D45;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    font-family: Gotham Black;
+}
+
+}

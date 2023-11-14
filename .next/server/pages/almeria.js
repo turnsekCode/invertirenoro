@@ -32,14 +32,14 @@ const index = ({ ciudad , general , markers  })=>{
                 children: [
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("title", {
                         children: [
-                            "El mejor cambio de divisas de ",
+                            "Reserva tu lingote de oro en ",
                             ciudad?.acf?.ciudad_landing,
                             " | Quickgold"
                         ]
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
                         name: "description",
-                        content: `La mejor tasa de cambio por tu divisa en ${ciudad?.acf?.ciudad_landing} Tenemos más de 30 monedas diferentes al momento y sin comisiones`
+                        content: `Conoce el precio por gramo de oro de ${ciudad?.acf?.ciudad_landing}. Reserva tu lingote de oro con el mejor servicio garantizado`
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
                         name: "viewport",
@@ -319,7 +319,7 @@ module.exports = require("react/jsx-runtime");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [9210,2636,5675,29,1664,287,7751], () => (__webpack_exec__(812)));
+var __webpack_exports__ = __webpack_require__.X(0, [9210,2636,5675,29,1664,4426,7751], () => (__webpack_exec__(812)));
 module.exports = __webpack_exports__;
 
 })();

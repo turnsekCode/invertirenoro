@@ -1,12 +1,12 @@
 import React from "react";
 import BloqueInfoTienda from "../BloqueInfoTienda/BloqueInfoTienda";
-import Conversor from "../ConversorDivisa/Conversor";
+import Tabla2Lingotes from "../InvertirEnOro/Tabla2Lingotes";
 import styles from "./seccionDos.module.css";
 
-const SeccionTres = ({ ciudad, telefono, tiendaGoogle, comprar }) => {
+const SeccionTres = ({ ciudad, tiendaGoogle }) => {
   return (
     <div className={styles.contenedorSeccionDos}>
-      <Conversor comprar={comprar} ciudad={ciudad} telefono={telefono} />
+      <Tabla2Lingotes ciudad={ciudad} />
       <BloqueInfoTienda ciudad={ciudad} tiendaGoogle={tiendaGoogle} />
     </div>
   );
