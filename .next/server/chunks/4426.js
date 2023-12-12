@@ -402,7 +402,8 @@ const Header = ()=>{
                             alt: "Quickgold Logo",
                             className: (header_module_default()).logo,
                             width: 163,
-                            height: 30
+                            height: 30,
+                            priority: true
                         })
                     })
                 }),
