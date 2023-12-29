@@ -47,7 +47,7 @@ export async function getStaticProps() {
   const general = await res.json();
   const tienda = ciudad?.acf?.ciudad_oro;
   const marker = await fetch(
-    `https://panel.quickgold.es/markers${tienda}.json`
+    `https://panel.quickgold.es/markersMapaLandings/markers${tienda}.json`
   );
   const markers = await marker.json();
 

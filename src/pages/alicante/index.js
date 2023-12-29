@@ -2,7 +2,6 @@ import Head from "next/head";
 import Layout from "@/componentes/Layout/Layout";
 import SeccionDos from "@/componentes/SeccionDos/SeccionDos";
 import SeccionUno from "@/componentes/SeccionUno/SeccionUno";
-
 import React from "react";
 import Script from "next/script";
 
@@ -57,7 +56,7 @@ export async function getStaticProps() {
   //fin datos de los campos personalizados de tiendas
   const tienda = ciudad?.acf?.ciudad_oro;
   const marker = await fetch(
-    `https://panel.quickgold.es/markers${tienda}.json`
+    `https://panel.quickgold.es/markersMapaLandings/markers${tienda}.json`
   );
   const markers = await marker.json();
 
